@@ -1,0 +1,31 @@
+{
+  "name": "se-tools",
+  "version": "1.0.0",
+  "author": "reboot0-de",
+  "keywords": [
+    "streamelements",
+    "widgets",
+    "reboot0",
+    "streaming",
+    "twitch",
+    "toolset"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/reboot0-de/se-tools",
+  "description": "A toolset designed to make the life of StreamElements widget developers easier.",
+  "scripts": {
+    "build": "webpack",
+    "generate docs": "jsdoc modules -c jsdoc/jsdoc.config.json -u jsdoc/tutorials -d docs -t jsdoc/template --readme README.md"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+    "@babel/plugin-proposal-private-methods": "^7.13.0",
+    "@babel/preset-env": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "jsdoc": "^3.6.6",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  }
+}

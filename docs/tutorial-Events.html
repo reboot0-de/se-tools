@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding meta -->
+    
+    
+    <meta name="author" content="Reboot0" />
+    
+    <meta name="description" content="Documentation for the StreamElements widget tools" />
+    
+    
+
+    <!-- Adding overlay style-->
+    <link rel="stylesheet" href="./styles/third-party/OverlayScrollbars.min.css" />
+    <link rel="stylesheet" href="./styles/third-party/OverlayScrollbars.custom.css" />
+
+    <!-- Adding overlay script-->
+    <script src="./scripts/third-party/OverlayScrollbars.min.js"></script>
+
+    <title>StreamElements Widget Tools</title>
+
+    <!--[if lt IE 9]>
+      <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="./styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="./styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="./styles/clean-jsdoc-theme-dark.css">
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+            <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z">
+            </path>
+        </symbol>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div id="navbar-heading-container">
+                <a id="navbar-heading-link" href="index.html">
+                  <div id="navbar-heading">
+                    <img id="navbar-heading-logo" src="images/logo_white.png" alt="Logo" />
+                    <h2 id="navbar-heading-text">Widget Tools</h2>
+                  </div>
+                </a>
+              </div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><ul><li class="menu-li"><a href='./index.html' class='getting-started menu-link' id='' target=''>Getting Started</a></li><li class="menu-li"><a href='https://github.com/StreamElements/widgets/blob/master/CustomCode.md' class='external-link menu-link' id='' target='_blank'>Overlay Editor Docs</a></li><li class="menu-li"><a href='https://dev.streamelements.com/docs/kappa/api.yaml' class='external-link menu-link' id='' target='_blank'>SE API Docs</a></li><li class="menu-li"><a href='https://dev.streamelements.com/docs/kappa/docs/OAuth2.md' class='external-link menu-link' id='' target='_blank'>Connection Guides</a></li></ul><div class="accordion" id="8384723" > <h3 class="accordion-heading">Tutorials<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="tutorial-ChatMessage.html">ChatMessage</a></li><li class="accordion-list" id=""><a href="tutorial-DOM.html">DOM</a></li><li class="accordion-list" id=""><a href="tutorial-Events.html">Events</a></li><li class="accordion-list" id=""><a href="tutorial-Queue.html">Queue</a></li><li class="accordion-list" id=""><a href="tutorial-Utils.html">Utils</a></li></ul> </div><div class="accordion" id="5863855" > <h3 class="accordion-heading">Modules<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion collapsed child" id=2792167><div class="accordion-heading child"><a href="module-ChatMessage.html">ChatMessage</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-ChatMessage.html#contains">contains</a></li><li data-type='method'><a href="module-ChatMessage.html#containsRegex">containsRegex</a></li><li data-type='method'><a href="module-ChatMessage.html#getBitsBadge">getBitsBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#getCommand">getCommand</a></li><li data-type='method'><a href="module-ChatMessage.html#getDisplayColor">getDisplayColor</a></li><li data-type='method'><a href="module-ChatMessage.html#getGiftsBadge">getGiftsBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#getMonthsSubscribed">getMonthsSubscribed</a></li><li data-type='method'><a href="module-ChatMessage.html#getStats">getStats</a></li><li data-type='method'><a href="module-ChatMessage.html#getTierBadge">getTierBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#getWordList">getWordList</a></li><li data-type='method'><a href="module-ChatMessage.html#hasPrimeBadge">hasPrimeBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#hasRole">hasRole</a></li><li data-type='method'><a href="module-ChatMessage.html#hasTurboBadge">hasTurboBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#hasUserId">hasUserId</a></li><li data-type='method'><a href="module-ChatMessage.html#hasUsername">hasUsername</a></li><li data-type='method'><a href="module-ChatMessage.html#isAction">isAction</a></li><li data-type='method'><a href="module-ChatMessage.html#isBroadcaster">isBroadcaster</a></li><li data-type='method'><a href="module-ChatMessage.html#isCommand">isCommand</a></li><li data-type='method'><a href="module-ChatMessage.html#isCustomReward">isCustomReward</a></li><li data-type='method'><a href="module-ChatMessage.html#isModerator">isModerator</a></li><li data-type='method'><a href="module-ChatMessage.html#isStaff">isStaff</a></li><li data-type='method'><a href="module-ChatMessage.html#isSubscriber">isSubscriber</a></li><li data-type='method'><a href="module-ChatMessage.html#isVIP">isVIP</a></li><li data-type='method'><a href="module-ChatMessage.html#notOnList">notOnList</a></li><li data-type='method'><a href="module-ChatMessage.html#usernameContains">usernameContains</a></li><li data-type='method'><a href="module-ChatMessage.html#usernameContainsRegex">usernameContainsRegex</a></li></ul></li><li class="accordion collapsed child" id=6704774><div class="accordion-heading child"><a href="module-DOM.html">DOM</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-DOM.html#.addClass">addClass</a></li><li data-type='method'><a href="module-DOM.html#.find">find</a></li><li data-type='method'><a href="module-DOM.html#.findAll">findAll</a></li><li data-type='method'><a href="module-DOM.html#.findAllOrNull">findAllOrNull</a></li><li data-type='method'><a href="module-DOM.html#.getAttr">getAttr</a></li><li data-type='method'><a href="module-DOM.html#.getCSS">getCSS</a></li><li data-type='method'><a href="module-DOM.html#.getCSSFloat">getCSSFloat</a></li><li data-type='method'><a href="module-DOM.html#.getCSSInt">getCSSInt</a></li><li data-type='method'><a href="module-DOM.html#.getDataAttr">getDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.hasAttr">hasAttr</a></li><li data-type='method'><a href="module-DOM.html#.hasDataAttr">hasDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.isAudioElement">isAudioElement</a></li><li data-type='method'><a href="module-DOM.html#.isHTMLElement">isHTMLElement</a></li><li data-type='method'><a href="module-DOM.html#.isImageElement">isImageElement</a></li><li data-type='method'><a href="module-DOM.html#.isImgElement">isImgElement</a></li><li data-type='method'><a href="module-DOM.html#.isMediaElement">isMediaElement</a></li><li data-type='method'><a href="module-DOM.html#.isPictureElement">isPictureElement</a></li><li data-type='method'><a href="module-DOM.html#.isVideoElement">isVideoElement</a></li><li data-type='method'><a href="module-DOM.html#.onEach">onEach</a></li><li data-type='method'><a href="module-DOM.html#.onFirst">onFirst</a></li><li data-type='method'><a href="module-DOM.html#.remAttr">remAttr</a></li><li data-type='method'><a href="module-DOM.html#.remDataAttr">remDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.removeClass">removeClass</a></li><li data-type='method'><a href="module-DOM.html#.setAttr">setAttr</a></li><li data-type='method'><a href="module-DOM.html#.setCSS">setCSS</a></li><li data-type='method'><a href="module-DOM.html#.setCSSProp">setCSSProp</a></li><li data-type='method'><a href="module-DOM.html#.setDataAttr">setDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.setHTML">setHTML</a></li><li data-type='method'><a href="module-DOM.html#.setText">setText</a></li><li data-type='method'><a href="module-DOM.html#.setVolume">setVolume</a></li><li data-type='method'><a href="module-DOM.html#.swapClass">swapClass</a></li><li data-type='method'><a href="module-DOM.html#.updateAudioSrc">updateAudioSrc</a></li><li data-type='method'><a href="module-DOM.html#.updateImgSrc">updateImgSrc</a></li><li data-type='method'><a href="module-DOM.html#.updatePictureSrc">updatePictureSrc</a></li><li data-type='method'><a href="module-DOM.html#.updateSrc">updateSrc</a></li><li data-type='method'><a href="module-DOM.html#.updateVideoSrc">updateVideoSrc</a></li></ul></li><li class="accordion collapsed child" id=8997082><div class="accordion-heading child"><a href="module-Events.html">Events</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-Events.html#expectsEventListener">expectsEventListener</a></li><li data-type='method'><a href="module-Events.html#expectsEventName">expectsEventName</a></li><li data-type='method'><a href="module-Events.html#expectsEvents">expectsEvents</a></li><li data-type='method'><a href="module-Events.html#isSkippable">isSkippable</a></li><li data-type='method'><a href="module-Events.html#onBotCounterHandler">onBotCounterHandler</a></li><li data-type='method'><a href="module-Events.html#onCheerHandler">onCheerHandler</a></li><li data-type='method'><a href="module-Events.html#onCommunityGiftHandler">onCommunityGiftHandler</a></li><li data-type='method'><a href="module-Events.html#onDeleteMessageHandler">onDeleteMessageHandler</a></li><li data-type='method'><a href="module-Events.html#onDeleteMessagesHandler">onDeleteMessagesHandler</a></li><li data-type='method'><a href="module-Events.html#onEventReceivedHandler">onEventReceivedHandler</a></li><li data-type='method'><a href="module-Events.html#onEventSkipHandler">onEventSkipHandler</a></li><li data-type='method'><a href="module-Events.html#onFollowHandler">onFollowHandler</a></li><li data-type='method'><a href="module-Events.html#onHostHandler">onHostHandler</a></li><li data-type='method'><a href="module-Events.html#onKVStoreUpdateHandler">onKVStoreUpdateHandler</a></li><li data-type='method'><a href="module-Events.html#onMessageHandler">onMessageHandler</a></li><li data-type='method'><a href="module-Events.html#onRaidHandler">onRaidHandler</a></li><li data-type='method'><a href="module-Events.html#onResubHandler">onResubHandler</a></li><li data-type='method'><a href="module-Events.html#onSessionUpdateHandler">onSessionUpdateHandler</a></li><li data-type='method'><a href="module-Events.html#onSubBombCompleteHandler">onSubBombCompleteHandler</a></li><li data-type='method'><a href="module-Events.html#onSubBombHandler">onSubBombHandler</a></li><li data-type='method'><a href="module-Events.html#onSubGiftHandler">onSubGiftHandler</a></li><li data-type='method'><a href="module-Events.html#onSubscriberHandler">onSubscriberHandler</a></li><li data-type='method'><a href="module-Events.html#onTipHandler">onTipHandler</a></li><li data-type='method'><a href="module-Events.html#onToggleSoundHandler">onToggleSoundHandler</a></li><li data-type='method'><a href="module-Events.html#onWidgetButtonHandler">onWidgetButtonHandler</a></li><li data-type='method'><a href="module-Events.html#onWidgetLoadHandler">onWidgetLoadHandler</a></li><li data-type='method'><a href="module-Events.html#preflightEventListeners">preflightEventListeners</a></li><li data-type='method'><a href="module-Events.html#registerOnEventReceived">registerOnEventReceived</a></li><li data-type='method'><a href="module-Events.html#registerOnSessionUpdate">registerOnSessionUpdate</a></li><li data-type='method'><a href="module-Events.html#registerOnWidgetLoad">registerOnWidgetLoad</a></li><li data-type='method'><a href="module-Events.html#unregisterOnEventReceived">unregisterOnEventReceived</a></li><li data-type='method'><a href="module-Events.html#unregisterOnSessionUpdate">unregisterOnSessionUpdate</a></li><li data-type='method'><a href="module-Events.html#unregisterOnWidgetLoad">unregisterOnWidgetLoad</a></li></ul></li><li class="accordion collapsed child" id=7108126><div class="accordion-heading child"><a href="module-Queue.html">Queue</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-Queue.html#add">add</a></li><li data-type='method'><a href="module-Queue.html#empty">empty</a></li><li data-type='method'><a href="module-Queue.html#first">first</a></li><li data-type='method'><a href="module-Queue.html#get">get</a></li><li data-type='method'><a href="module-Queue.html#indexLength">indexLength</a></li><li data-type='method'><a href="module-Queue.html#last">last</a></li><li data-type='method'><a href="module-Queue.html#length">length</a></li><li data-type='method'><a href="module-Queue.html#processAll">processAll</a></li><li data-type='method'><a href="module-Queue.html#processFirst">processFirst</a></li><li data-type='method'><a href="module-Queue.html#ready">ready</a></li><li data-type='method'><a href="module-Queue.html#remove">remove</a></li><li data-type='method'><a href="module-Queue.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="module-Queue.html#removeLast">removeLast</a></li></ul></li><li class="accordion collapsed child" id=6827439><div class="accordion-heading child"><a href="module-Utils.html">Utils</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-Utils.html#.allset">allset</a></li><li data-type='method'><a href="module-Utils.html#.callFunc">callFunc</a></li><li data-type='method'><a href="module-Utils.html#.camelCaseToKebabCase">camelCaseToKebabCase</a></li><li data-type='method'><a href="module-Utils.html#.containsText">containsText</a></li><li data-type='method'><a href="module-Utils.html#.createList">createList</a></li><li data-type='method'><a href="module-Utils.html#.divisibleBy">divisibleBy</a></li><li data-type='method'><a href="module-Utils.html#.formatCurrency">formatCurrency</a></li><li data-type='method'><a href="module-Utils.html#.formatTimerValue">formatTimerValue</a></li><li data-type='method'><a href="module-Utils.html#.funcExists">funcExists</a></li><li data-type='method'><a href="module-Utils.html#.getChromeVersion">getChromeVersion</a></li><li data-type='method'><a href="module-Utils.html#.getPercentageOf">getPercentageOf</a></li><li data-type='method'><a href="module-Utils.html#.getRandomDecimal">getRandomDecimal</a></li><li data-type='method'><a href="module-Utils.html#.getRandomHexColor">getRandomHexColor</a></li><li data-type='method'><a href="module-Utils.html#.getRandomNumber">getRandomNumber</a></li><li data-type='method'><a href="module-Utils.html#.getRandomRGBAColor">getRandomRGBAColor</a></li><li data-type='method'><a href="module-Utils.html#.getRandomRGBColor">getRandomRGBColor</a></li><li data-type='method'><a href="module-Utils.html#.isBrowserSource">isBrowserSource</a></li><li data-type='method'><a href="module-Utils.html#.isChrome">isChrome</a></li><li data-type='method'><a href="module-Utils.html#.isset">isset</a></li><li data-type='method'><a href="module-Utils.html#.isWholeNumber">isWholeNumber</a></li><li data-type='method'><a href="module-Utils.html#.kebabCaseToCamelCase">kebabCaseToCamelCase</a></li><li data-type='method'><a href="module-Utils.html#.matchesRegex">matchesRegex</a></li><li data-type='method'><a href="module-Utils.html#.matchRegexGroups">matchRegexGroups</a></li><li data-type='method'><a href="module-Utils.html#.nextIterator">nextIterator</a></li><li data-type='method'><a href="module-Utils.html#.resolves">resolves</a></li><li data-type='method'><a href="module-Utils.html#.resumeSEQueue">resumeSEQueue</a></li><li data-type='method'><a href="module-Utils.html#.trimSpaces">trimSpaces</a></li></ul></li></ul> </div></div>
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        Tutorial: Events
+      </h1>
+      
+
+      <section>
+
+<header>
+    
+
+    <h2>Events</h2>
+</header>
+
+<article>
+    <p>The Events class is designed to make working with StreamElements events easier and eliminate a lot of boilerplate code.</p>
+<p><strong>Currently only Twitch and StreamElements events are supported.</strong></p>
+<p>This class will check if certain functions exist on the window and if so, execute and pass data to them.</p>
+<h1>Listening For Events</h1>
+<p>Usually the listener nesting can get quite tricky, since one listener can account for multiple different events.</p>
+<p>For example the <code>subscriber-latest</code> listener is triggered either for a new subscription, a resub, a targeted gifted sub or community gifts with random receivers.</p>
+<p>What the actual event was, is on you to determine.</p>
+<p>So right now you would need something like this to do so:</p>
+<pre class="prettyprint source lang-javascript"><code>if(listener === 'subscriber-latest')
+{
+    if(event.amount === 1 && event.sender === undefined)
+    {
+      // New Subscriber
+    }
+    else if(event.amount > 1 && event.sender === undefined)
+    {
+      // Resub
+    }
+    else if(event.gifted && !event.isCommunityGift)
+    {
+      // Gifted Sub
+    }
+    else if(event.bulkGifted)
+    {
+      // Community Gift - Initial Announcement
+    }
+    else if(event.gifted && event.isCommunityGift)
+    {
+      // Community Gift - Individual Gift
+    }
+}
+</code></pre>
+<p>That is neither trivial to figure out nor easy to remember. (And this is just the subscriber-listener)</p>
+<p>We don't want this. We want an easier approach.</p>
+<p>How about an event-listener syntax of <code>onEvent(data)</code>:</p>
+<pre class="prettyprint source lang-javascript"><code>function onResub(data)
+{
+    // Resub
+}
+</code></pre>
+<p>Now that looks a lot cleaner, doesn't it?</p>
+<p>We support this syntax for almost all events, so let's take a look at each of them.</p>
+<h2>Twitch Events</h2>
+<h2>onSubscriber</h2>
+<p>This gets triggered on every new subscriber.</p>
+<p>&quot;New&quot; as in: Has never been subscribed to the channel before.</p>
+<pre class="prettyprint source lang-javascript"><code>function onSubscriber(data)
+{
+    console.log(`${data.name} is our newest subscriber!`);
+}
+</code></pre>
+<h2>onResub</h2>
+<p>This gets triggered everytime a viewer continues their subscription for (at least) another month.</p>
+<p>They do not have to be consecutive months.</p>
+<p>Even if some time passed since the user last subscribed to the channel, the next subscription will still be considered a resub.</p>
+<pre class="prettyprint source lang-javascript"><code>function onResub(data)
+{
+    console.log(`${data.name} resubscribed for ${data.amount} months!`);
+}
+</code></pre>
+<h2>onSubGift</h2>
+<p>A SubGift is considered a targeted gifted subscription towards a single pre-determined user.</p>
+<p>These are not part of SubBombs and have to be issued individually. (See <code>onCommunityGift</code> for gifts part of SubBombs)</p>
+<pre class="prettyprint source lang-javascript"><code>function onSubGift(data)
+{
+    console.log(`${data.sender} just gifted a subscription to ${data.name}!`);
+}
+</code></pre>
+<h2>onSubBomb</h2>
+<p>SubBombs are triggered, when a user gifts one or more subscriptions to the community. The actual receivers are chosen randomly.</p>
+<p>This specific event here only gets triggered on initiation and does not know who the receivers are.</p>
+<p>Only the username of the gifter and the amount are known at this point in time. (See <code>onSubBombComplete</code> to also get the receivers)</p>
+<p>This is useful for widgets, that want to be notified as fast as possible and don't need to process the receivers anyways.</p>
+<pre class="prettyprint source lang-javascript"><code>function onSubBomb(data)
+{
+    console.log(`${data.sender} just gifted ${data.amount} subs to the community!`);
+}
+</code></pre>
+<h2>onSubBombComplete</h2>
+<p>This event only gets triggered <strong>after</strong> all random subs in a SubBomb were distributed to users.</p>
+<p>Since distribution takes a variable amount of time on Twitch's side, this event can take some time to trigger.</p>
+<p>However, the listener function for this, gets a second special parameter <code>receivers</code>, which is an array of usernames that got gifted a sub as part of the SubBomb.</p>
+<pre class="prettyprint source lang-javascript"><code>function onSubBombComplete(data, receivers)
+{
+    console.log(`${data.name} just gifted a sub to the following ${data.amount} people: ${receivers.join(', ')}`);
+}
+</code></pre>
+<h2>onCommunityGift</h2>
+<p>CommunityGifts are singular gift events related to a SubBomb.</p>
+<p>You can use this, if you want to handle each gift in a SubBomb individually.</p>
+<pre class="prettyprint source lang-javascript"><code>function onCommunityGift(data)
+{
+    console.log(`${data.sender} just gifted a sub to ${data.name} as part of their SubBomb!`);
+}
+</code></pre>
+<h2>onHost</h2>
+<p>This gets triggered, when somebody hosts your channel.</p>
+<p>However, due to some changes to the Twitch API some conditions have to be met to trigger this:</p>
+<ul>
+<li>The hosting channel has to be online and have at least 1+ viewer</li>
+<li>Auto-hosts also need to have at least 1+ viewer and have to come from a channel that just went offline</li>
+</ul>
+<pre class="prettyprint source lang-javascript"><code>function onHost(data)
+{
+    console.log(`${data.name} now hosts our channel for ${data.amount} viewers!`);
+}
+</code></pre>
+<h2>onRaid</h2>
+<p>This gets triggered, when somebody raids your channel.</p>
+<p>Raids do not need to meet certain conditions to trigger.</p>
+<pre class="prettyprint source lang-javascript"><code>function onRaid(data)
+{
+    console.log(`${data.name} just raided our channel with ${data.amount} raiders!`);
+}
+</code></pre>
+<h2>onCheer</h2>
+<p>This gets triggered, when sombeody cheers (uses Bits) on your channel.</p>
+<p>Bits are a virtual currency on Twitch, that have to be bought with real money. 1 Bit is roughly equivalent to 1 cent.</p>
+<pre class="prettyprint source lang-javascript"><code>function onCheer(data)
+{
+    console.log(`${data.name} just cheered ${data.amount} Bits!`);
+}
+</code></pre>
+<h2>onFollow</h2>
+<p>This gets triggered, when somebody follows your channel.</p>
+<pre class="prettyprint source lang-javascript"><code>function onFollow(data)
+{
+    console.log(`${data.name} just followed!`);
+}
+</code></pre>
+<h2>onMessage</h2>
+<p>This gets triggered, when somebody writes something in your chat.</p>
+<p>This event works a little different, as it gets its own <a href="./tutorial-ChatMessage.html">ChatMessage</a> object as parameter.</p>
+<p>Please take a look at the ChatMessage tutorial for more infos.</p>
+<pre class="prettyprint source lang-javascript"><code>function onMessage(message)
+{
+    console.log(`${message.username} wrote: ${message.text}`);
+    // You can still access the original data object via the &quot;raw&quot; class property
+    console.log(JSON.stringify(message.raw));
+}
+</code></pre>
+<h2>onDeleteMessage</h2>
+<p>This gets triggered, when a single message in your chat gets deleted.</p>
+<p>For more information, please take a look at the &quot;Message Deletion&quot; article in the <a href="./tutorial-ChatMessage.html">ChatMessage tutorial</a>.</p>
+<pre class="prettyprint source lang-javascript"><code>function onDeleteMessage(data)
+{
+    console.log(`A message with the ID ${data.msgId} just got deleted!`);
+}
+</code></pre>
+<h2>onDeleteMessages</h2>
+<p>This gets triggered, when a user in your chat gets banned or timeouted and hence their previous messages also get deleted.</p>
+<p>For more information, please take a look at the &quot;Message Deletion&quot; article in the <a href="./tutorial-ChatMessage.html">ChatMessage tutorial</a>.</p>
+<pre class="prettyprint source lang-javascript"><code>function onDeleteMessages(data)
+{
+    console.log(`A chatter with the userID ${data.userId} just got banned or timeouted!`);
+}
+</code></pre>
+<h2>StreamElements Events</h2>
+<h2>onTip</h2>
+<p>This gets triggered everytime somebody tips through your StreamElements tipping page.</p>
+<pre class="prettyprint source lang-javascript"><code>function onTip(data)
+{
+    console.log(`${data.name} just tipped ${Utils.formatCurrency(data.amount, &quot;USD&quot;, &quot;en-US&quot;)}!`);
+}
+</code></pre>
+<p><em>Bonus Tipp</em>: <code>Utils.formatCurrency(amount, currencyCode, locale)</code> is an easy way of formatting amounts of money to your local/national notation.</p>
+<p>The <code>currencyCode</code> parameter accepts any valid ISO 4217 currency code to format the amount in.</p>
+<p>The <code>locale</code> parameter is optional and will be set by the browser if you omit it.</p>
+<p>This will also remove trailing zeros, if the amount is not a decimal. An amount of $20,00 would become $20, while $4,20 would stay $4,20.</p>
+<h2>onWidgetLoad</h2>
+<p>This gets triggered, when the widget and document finished loading and necessary pieces of information (like data about widget and user) is available.</p>
+<p>This only executes once. However, changing values of custom fields will cause the widget to reload and hence trigger this again when ready.</p>
+<p>For most widgets this is the main entry point for initialization logic.</p>
+<p>For more details: https://github.com/StreamElements/widgets/blob/master/CustomCode.md#on-widget-load</p>
+<pre class="prettyprint source lang-javascript"><code>function onWidgetLoad(obj)
+{
+    const data        = obj.detail.session.data;
+    const recents     = obj.detail.recents;
+    const currency    = obj.detail.currency;
+    const channelName = obj.detail.channel.username;
+    const apiToken    = obj.detail.channel.apiToken;
+    const fieldData   = obj.detail.fieldData;
+    
+    console.log(&quot;Widget and document loaded!&quot;);
+}
+</code></pre>
+<h2>onSessionUpdate</h2>
+<p>This gets triggered, whenever an event updates your current session data.</p>
+<p>However, this should not be used as a one-for-all solution`to handle events.</p>
+<p>Use the corresponding listener functions for specific events instead and only use <code>onSessionUpdate</code>, when you need to update any top-* values in the current session.</p>
+<p>For more details: https://github.com/StreamElements/widgets/blob/master/CustomCode.md#on-session-update</p>
+<p><code>obj.detail.session</code> holds the same data as <code>obj.detail.session.data</code> in <code>onWidgetLoad(obj)</code> above.</p>
+<pre class="prettyprint source lang-javascript"><code>function onSessionUpdate(obj)
+{
+    const session = obj.detail.session;
+    console.log(&quot;Session updated!&quot;);
+}
+</code></pre>
+<h2>onBotCounter</h2>
+<p>This gets triggered, when the value of a Bot Counter changes.</p>
+<pre class="prettyprint source lang-javascript"><code>function onBotCounter(data)
+{
+    console.log(`Your counter named &quot;${data.counter}&quot; updated its value to: ${data.value}`);
+}
+</code></pre>
+<h2>onWidgetButton</h2>
+<p>This gets triggered, when a custom button (defined in the fields of a custom widget) was pressed in the Overlay-Editor.</p>
+<pre class="prettyprint source lang-javascript"><code>function onWidgetButton(data)
+{
+    console.log(`Your button with the fieldName ${data.fieldName} and value ${data.value} just got clicked in the Overlay-Editor!`);
+}
+</code></pre>
+<h2>onKVStoreUpdate</h2>
+<p>Gets triggered, when the value of stored item in your key-value-store is updated. This can also be used across widgets.</p>
+<p>This event here has nothing to do with store redemptions!</p>
+<p>See https://github.com/StreamElements/widgets/blob/master/CustomCode.md#se-api for more details regarding the key-value-store.</p>
+<pre class="prettyprint source lang-javascript"><code>function onKVStoreUpdate(data)
+{
+    console.log(`Your kvstore-item with the key ${data.key} just got updated to: `, data.value);
+}
+</code></pre>
+<h2>onEventSkip</h2>
+<p>Gets triggered, when the streamer clicks the &quot;Skip alert&quot; button in the top bar of their activity feed.</p>
+<p>This event does not get a parameter passed.</p>
+<pre class="prettyprint source lang-javascript"><code>function onEventSkip()
+{
+    console.log(`Event skipped!`);
+}
+</code></pre>
+<h2>onToggleSound</h2>
+<p>Gets triggered, when the streamer clicks the &quot;Mute alerts&quot; button in the top bar of their activity feed.</p>
+<pre class="prettyprint source lang-javascript"><code>function onToggleSound(data)
+{
+    console.log(`Alerts are now ${(data.muted) ? 'muted' : 'unmuted'}!`);
+}
+</code></pre>
+<h1>Destructuring Parameters</h1>
+<p>In the previous code-examples we always had whole objects as parameters, but then only used 1-2 properties of it.</p>
+<p>Also in a real-world example, we should probably also check if the property even exist on the object, so that they don't throw any errors and possibly break events.</p>
+<p>In JavaScript, we have the so-called &quot;destructuring assignment syntax&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">[MDN]</a>, which allows us to isolate specific properties from an object in its own variable.</p>
+<p>If you try to destrcuture properties, that do not exist on the object, the value of the variable will just be undefined (without throwing an error).</p>
+<p>Keep in mind, that once you destructure a parameter, the original object will not be available in the scope anymore. Also, any non-destructured property will be lost as well.</p>
+<pre class="prettyprint source lang-javascript"><code>function onResub({ username, amount, iDontExist } = data)
+{
+    // This would for example just output &quot;MyUsername just resubscribed for 42 months: undefined&quot; without throwing an error
+    console.log(`${username} just resubscribed for ${amount} months: ${iDontExist}`);
+    // This won't work, since data is not available anymore.
+    console.log(data.username);
+}
+</code></pre>
+<p>For the sake of completeness we should also mention, that this works for arrays as well.</p>
+<p>It is not as helpful there, as it is for objects, but it works.</p>
+<pre class="prettyprint source lang-javascript"><code>function onSubBombComplete({ sender, amount } = data, [first] = recipients)
+{
+    // This would for example output &quot;SenderName just gifted 69 subs to the community and Username1 got the first one!&quot;
+    console.log(`${sender} just gifted ${amount} subs to the community and ${first} got the first one!`);
+}
+</code></pre>
+<p>Again, this would discard all other recipients besides the first one.</p>
+<p>So only use this feature, when you really just need specific values and don't care about the rest.</p>
+</article>
+
+</section>
+
+    </div>
+
+    <footer class="footer" id="footer">
+      <div class="footer-text">Made by <a href="https://reboot0.de">@Reboot0</a> with a lot of ☕</div>
+    </footer>
+
+    <script src="./scripts/third-party/prettify.js"></script>
+    <script src="./scripts/third-party/lang-css.js"></script>
+    <script src="./scripts/search.js"></script>
+    <script src="./scripts/third-party/fuse.js"></script>
+    <script src="./scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="./scripts/linenumber.js"></script>
+    <script src="./scripts/fix-code-block.js"></script>
+    <script src="./scripts/fix-navbar.js"></script>
+    <script>
+      var list = [{"title":"ChatMessage","link":"ChatMessage"},{"title":"DOM","link":"DOM"},{"title":"Events","link":"Events"},{"title":"Queue","link":"Queue"},{"title":"Utils","link":"Utils"},{"title":"ChatMessage","link":"<a href=\"module-ChatMessage.html\">ChatMessage</a>"},{"title":"module:ChatMessage#contains","link":"<a href=\"module-ChatMessage.html#contains\">module:ChatMessage &rtrif; contains</a>"},{"title":"module:ChatMessage#containsRegex","link":"<a href=\"module-ChatMessage.html#containsRegex\">module:ChatMessage &rtrif; containsRegex</a>"},{"title":"module:ChatMessage#getBitsBadge","link":"<a href=\"module-ChatMessage.html#getBitsBadge\">module:ChatMessage &rtrif; getBitsBadge</a>"},{"title":"module:ChatMessage#getCommand","link":"<a href=\"module-ChatMessage.html#getCommand\">module:ChatMessage &rtrif; getCommand</a>"},{"title":"module:ChatMessage#getDisplayColor","link":"<a href=\"module-ChatMessage.html#getDisplayColor\">module:ChatMessage &rtrif; getDisplayColor</a>"},{"title":"module:ChatMessage#getGiftsBadge","link":"<a href=\"module-ChatMessage.html#getGiftsBadge\">module:ChatMessage &rtrif; getGiftsBadge</a>"},{"title":"module:ChatMessage#getMonthsSubscribed","link":"<a href=\"module-ChatMessage.html#getMonthsSubscribed\">module:ChatMessage &rtrif; getMonthsSubscribed</a>"},{"title":"module:ChatMessage#getStats","link":"<a href=\"module-ChatMessage.html#getStats\">module:ChatMessage &rtrif; getStats</a>"},{"title":"module:ChatMessage#getTierBadge","link":"<a href=\"module-ChatMessage.html#getTierBadge\">module:ChatMessage &rtrif; getTierBadge</a>"},{"title":"module:ChatMessage#getWordList","link":"<a href=\"module-ChatMessage.html#getWordList\">module:ChatMessage &rtrif; getWordList</a>"},{"title":"module:ChatMessage#hasPrimeBadge","link":"<a href=\"module-ChatMessage.html#hasPrimeBadge\">module:ChatMessage &rtrif; hasPrimeBadge</a>"},{"title":"module:ChatMessage#hasRole","link":"<a href=\"module-ChatMessage.html#hasRole\">module:ChatMessage &rtrif; hasRole</a>"},{"title":"module:ChatMessage#hasTurboBadge","link":"<a href=\"module-ChatMessage.html#hasTurboBadge\">module:ChatMessage &rtrif; hasTurboBadge</a>"},{"title":"module:ChatMessage#hasUserId","link":"<a href=\"module-ChatMessage.html#hasUserId\">module:ChatMessage &rtrif; hasUserId</a>"},{"title":"module:ChatMessage#hasUsername","link":"<a href=\"module-ChatMessage.html#hasUsername\">module:ChatMessage &rtrif; hasUsername</a>"},{"title":"module:ChatMessage#isAction","link":"<a href=\"module-ChatMessage.html#isAction\">module:ChatMessage &rtrif; isAction</a>"},{"title":"module:ChatMessage#isBroadcaster","link":"<a href=\"module-ChatMessage.html#isBroadcaster\">module:ChatMessage &rtrif; isBroadcaster</a>"},{"title":"module:ChatMessage#isCommand","link":"<a href=\"module-ChatMessage.html#isCommand\">module:ChatMessage &rtrif; isCommand</a>"},{"title":"module:ChatMessage#isCustomReward","link":"<a href=\"module-ChatMessage.html#isCustomReward\">module:ChatMessage &rtrif; isCustomReward</a>"},{"title":"module:ChatMessage#isModerator","link":"<a href=\"module-ChatMessage.html#isModerator\">module:ChatMessage &rtrif; isModerator</a>"},{"title":"module:ChatMessage#isStaff","link":"<a href=\"module-ChatMessage.html#isStaff\">module:ChatMessage &rtrif; isStaff</a>"},{"title":"module:ChatMessage#isSubscriber","link":"<a href=\"module-ChatMessage.html#isSubscriber\">module:ChatMessage &rtrif; isSubscriber</a>"},{"title":"module:ChatMessage#isVIP","link":"<a href=\"module-ChatMessage.html#isVIP\">module:ChatMessage &rtrif; isVIP</a>"},{"title":"module:ChatMessage#notOnList","link":"<a href=\"module-ChatMessage.html#notOnList\">module:ChatMessage &rtrif; notOnList</a>"},{"title":"module:ChatMessage#usernameContains","link":"<a href=\"module-ChatMessage.html#usernameContains\">module:ChatMessage &rtrif; usernameContains</a>"},{"title":"module:ChatMessage#usernameContainsRegex","link":"<a href=\"module-ChatMessage.html#usernameContainsRegex\">module:ChatMessage &rtrif; usernameContainsRegex</a>"},{"title":"DOM","link":"<a href=\"module-DOM.html\">DOM</a>"},{"title":"module:DOM.addClass","link":"<a href=\"module-DOM.html#.addClass\">module:DOM.addClass &rtrif; undefined</a>"},{"title":"module:DOM.find","link":"<a href=\"module-DOM.html#.find\">module:DOM.find &rtrif; undefined</a>"},{"title":"module:DOM.findAll","link":"<a href=\"module-DOM.html#.findAll\">module:DOM.findAll &rtrif; undefined</a>"},{"title":"module:DOM.findAllOrNull","link":"<a href=\"module-DOM.html#.findAllOrNull\">module:DOM.findAllOrNull &rtrif; undefined</a>"},{"title":"module:DOM.getAttr","link":"<a href=\"module-DOM.html#.getAttr\">module:DOM.getAttr &rtrif; undefined</a>"},{"title":"module:DOM.getCSS","link":"<a href=\"module-DOM.html#.getCSS\">module:DOM.getCSS &rtrif; undefined</a>"},{"title":"module:DOM.getCSSFloat","link":"<a href=\"module-DOM.html#.getCSSFloat\">module:DOM.getCSSFloat &rtrif; undefined</a>"},{"title":"module:DOM.getCSSInt","link":"<a href=\"module-DOM.html#.getCSSInt\">module:DOM.getCSSInt &rtrif; undefined</a>"},{"title":"module:DOM.getDataAttr","link":"<a href=\"module-DOM.html#.getDataAttr\">module:DOM.getDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.hasAttr","link":"<a href=\"module-DOM.html#.hasAttr\">module:DOM.hasAttr &rtrif; undefined</a>"},{"title":"module:DOM.hasDataAttr","link":"<a href=\"module-DOM.html#.hasDataAttr\">module:DOM.hasDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.isAudioElement","link":"<a href=\"module-DOM.html#.isAudioElement\">module:DOM.isAudioElement &rtrif; undefined</a>"},{"title":"module:DOM.isHTMLElement","link":"<a href=\"module-DOM.html#.isHTMLElement\">module:DOM.isHTMLElement &rtrif; undefined</a>"},{"title":"module:DOM.isImageElement","link":"<a href=\"module-DOM.html#.isImageElement\">module:DOM.isImageElement &rtrif; undefined</a>"},{"title":"module:DOM.isImgElement","link":"<a href=\"module-DOM.html#.isImgElement\">module:DOM.isImgElement &rtrif; undefined</a>"},{"title":"module:DOM.isMediaElement","link":"<a href=\"module-DOM.html#.isMediaElement\">module:DOM.isMediaElement &rtrif; undefined</a>"},{"title":"module:DOM.isPictureElement","link":"<a href=\"module-DOM.html#.isPictureElement\">module:DOM.isPictureElement &rtrif; undefined</a>"},{"title":"module:DOM.isVideoElement","link":"<a href=\"module-DOM.html#.isVideoElement\">module:DOM.isVideoElement &rtrif; undefined</a>"},{"title":"module:DOM.onEach","link":"<a href=\"module-DOM.html#.onEach\">module:DOM.onEach &rtrif; undefined</a>"},{"title":"module:DOM.onFirst","link":"<a href=\"module-DOM.html#.onFirst\">module:DOM.onFirst &rtrif; undefined</a>"},{"title":"module:DOM.remAttr","link":"<a href=\"module-DOM.html#.remAttr\">module:DOM.remAttr &rtrif; undefined</a>"},{"title":"module:DOM.remDataAttr","link":"<a href=\"module-DOM.html#.remDataAttr\">module:DOM.remDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.removeClass","link":"<a href=\"module-DOM.html#.removeClass\">module:DOM.removeClass &rtrif; undefined</a>"},{"title":"module:DOM.setAttr","link":"<a href=\"module-DOM.html#.setAttr\">module:DOM.setAttr &rtrif; undefined</a>"},{"title":"module:DOM.setCSS","link":"<a href=\"module-DOM.html#.setCSS\">module:DOM.setCSS &rtrif; undefined</a>"},{"title":"module:DOM.setCSSProp","link":"<a href=\"module-DOM.html#.setCSSProp\">module:DOM.setCSSProp &rtrif; undefined</a>"},{"title":"module:DOM.setDataAttr","link":"<a href=\"module-DOM.html#.setDataAttr\">module:DOM.setDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.setHTML","link":"<a href=\"module-DOM.html#.setHTML\">module:DOM.setHTML &rtrif; undefined</a>"},{"title":"module:DOM.setText","link":"<a href=\"module-DOM.html#.setText\">module:DOM.setText &rtrif; undefined</a>"},{"title":"module:DOM.setVolume","link":"<a href=\"module-DOM.html#.setVolume\">module:DOM.setVolume &rtrif; undefined</a>"},{"title":"module:DOM.swapClass","link":"<a href=\"module-DOM.html#.swapClass\">module:DOM.swapClass &rtrif; undefined</a>"},{"title":"module:DOM.updateAudioSrc","link":"<a href=\"module-DOM.html#.updateAudioSrc\">module:DOM.updateAudioSrc &rtrif; undefined</a>"},{"title":"module:DOM.updateImgSrc","link":"<a href=\"module-DOM.html#.updateImgSrc\">module:DOM.updateImgSrc &rtrif; undefined</a>"},{"title":"module:DOM.updatePictureSrc","link":"<a href=\"module-DOM.html#.updatePictureSrc\">module:DOM.updatePictureSrc &rtrif; undefined</a>"},{"title":"module:DOM.updateSrc","link":"<a href=\"module-DOM.html#.updateSrc\">module:DOM.updateSrc &rtrif; undefined</a>"},{"title":"module:DOM.updateVideoSrc","link":"<a href=\"module-DOM.html#.updateVideoSrc\">module:DOM.updateVideoSrc &rtrif; undefined</a>"},{"title":"Events","link":"<a href=\"module-Events.html\">Events</a>"},{"title":"module:Events#expectsEventListener","link":"<a href=\"module-Events.html#expectsEventListener\">module:Events &rtrif; expectsEventListener</a>"},{"title":"module:Events#expectsEventName","link":"<a href=\"module-Events.html#expectsEventName\">module:Events &rtrif; expectsEventName</a>"},{"title":"module:Events#expectsEvents","link":"<a href=\"module-Events.html#expectsEvents\">module:Events &rtrif; expectsEvents</a>"},{"title":"module:Events#isSkippable","link":"<a href=\"module-Events.html#isSkippable\">module:Events &rtrif; isSkippable</a>"},{"title":"module:Events#onBotCounterHandler","link":"<a href=\"module-Events.html#onBotCounterHandler\">module:Events &rtrif; onBotCounterHandler</a>"},{"title":"module:Events#onCheerHandler","link":"<a href=\"module-Events.html#onCheerHandler\">module:Events &rtrif; onCheerHandler</a>"},{"title":"module:Events#onCommunityGiftHandler","link":"<a href=\"module-Events.html#onCommunityGiftHandler\">module:Events &rtrif; onCommunityGiftHandler</a>"},{"title":"module:Events#onDeleteMessageHandler","link":"<a href=\"module-Events.html#onDeleteMessageHandler\">module:Events &rtrif; onDeleteMessageHandler</a>"},{"title":"module:Events#onDeleteMessagesHandler","link":"<a href=\"module-Events.html#onDeleteMessagesHandler\">module:Events &rtrif; onDeleteMessagesHandler</a>"},{"title":"module:Events#onEventReceivedHandler","link":"<a href=\"module-Events.html#onEventReceivedHandler\">module:Events &rtrif; onEventReceivedHandler</a>"},{"title":"module:Events#onEventSkipHandler","link":"<a href=\"module-Events.html#onEventSkipHandler\">module:Events &rtrif; onEventSkipHandler</a>"},{"title":"module:Events#onFollowHandler","link":"<a href=\"module-Events.html#onFollowHandler\">module:Events &rtrif; onFollowHandler</a>"},{"title":"module:Events#onHostHandler","link":"<a href=\"module-Events.html#onHostHandler\">module:Events &rtrif; onHostHandler</a>"},{"title":"module:Events#onKVStoreUpdateHandler","link":"<a href=\"module-Events.html#onKVStoreUpdateHandler\">module:Events &rtrif; onKVStoreUpdateHandler</a>"},{"title":"module:Events#onMessageHandler","link":"<a href=\"module-Events.html#onMessageHandler\">module:Events &rtrif; onMessageHandler</a>"},{"title":"module:Events#onRaidHandler","link":"<a href=\"module-Events.html#onRaidHandler\">module:Events &rtrif; onRaidHandler</a>"},{"title":"module:Events#onResubHandler","link":"<a href=\"module-Events.html#onResubHandler\">module:Events &rtrif; onResubHandler</a>"},{"title":"module:Events#onSessionUpdateHandler","link":"<a href=\"module-Events.html#onSessionUpdateHandler\">module:Events &rtrif; onSessionUpdateHandler</a>"},{"title":"module:Events#onSubBombCompleteHandler","link":"<a href=\"module-Events.html#onSubBombCompleteHandler\">module:Events &rtrif; onSubBombCompleteHandler</a>"},{"title":"module:Events#onSubBombHandler","link":"<a href=\"module-Events.html#onSubBombHandler\">module:Events &rtrif; onSubBombHandler</a>"},{"title":"module:Events#onSubGiftHandler","link":"<a href=\"module-Events.html#onSubGiftHandler\">module:Events &rtrif; onSubGiftHandler</a>"},{"title":"module:Events#onSubscriberHandler","link":"<a href=\"module-Events.html#onSubscriberHandler\">module:Events &rtrif; onSubscriberHandler</a>"},{"title":"module:Events#onTipHandler","link":"<a href=\"module-Events.html#onTipHandler\">module:Events &rtrif; onTipHandler</a>"},{"title":"module:Events#onToggleSoundHandler","link":"<a href=\"module-Events.html#onToggleSoundHandler\">module:Events &rtrif; onToggleSoundHandler</a>"},{"title":"module:Events#onWidgetButtonHandler","link":"<a href=\"module-Events.html#onWidgetButtonHandler\">module:Events &rtrif; onWidgetButtonHandler</a>"},{"title":"module:Events#onWidgetLoadHandler","link":"<a href=\"module-Events.html#onWidgetLoadHandler\">module:Events &rtrif; onWidgetLoadHandler</a>"},{"title":"module:Events#preflightEventListeners","link":"<a href=\"module-Events.html#preflightEventListeners\">module:Events &rtrif; preflightEventListeners</a>"},{"title":"module:Events#registerOnEventReceived","link":"<a href=\"module-Events.html#registerOnEventReceived\">module:Events &rtrif; registerOnEventReceived</a>"},{"title":"module:Events#registerOnSessionUpdate","link":"<a href=\"module-Events.html#registerOnSessionUpdate\">module:Events &rtrif; registerOnSessionUpdate</a>"},{"title":"module:Events#registerOnWidgetLoad","link":"<a href=\"module-Events.html#registerOnWidgetLoad\">module:Events &rtrif; registerOnWidgetLoad</a>"},{"title":"module:Events#unregisterOnEventReceived","link":"<a href=\"module-Events.html#unregisterOnEventReceived\">module:Events &rtrif; unregisterOnEventReceived</a>"},{"title":"module:Events#unregisterOnSessionUpdate","link":"<a href=\"module-Events.html#unregisterOnSessionUpdate\">module:Events &rtrif; unregisterOnSessionUpdate</a>"},{"title":"module:Events#unregisterOnWidgetLoad","link":"<a href=\"module-Events.html#unregisterOnWidgetLoad\">module:Events &rtrif; unregisterOnWidgetLoad</a>"},{"title":"Queue","link":"<a href=\"module-Queue.html\">Queue</a>"},{"title":"module:Queue#add","link":"<a href=\"module-Queue.html#add\">module:Queue &rtrif; add</a>"},{"title":"module:Queue#empty","link":"<a href=\"module-Queue.html#empty\">module:Queue &rtrif; empty</a>"},{"title":"module:Queue#first","link":"<a href=\"module-Queue.html#first\">module:Queue &rtrif; first</a>"},{"title":"module:Queue#get","link":"<a href=\"module-Queue.html#get\">module:Queue &rtrif; get</a>"},{"title":"module:Queue#indexLength","link":"<a href=\"module-Queue.html#indexLength\">module:Queue &rtrif; indexLength</a>"},{"title":"module:Queue#last","link":"<a href=\"module-Queue.html#last\">module:Queue &rtrif; last</a>"},{"title":"module:Queue#length","link":"<a href=\"module-Queue.html#length\">module:Queue &rtrif; length</a>"},{"title":"module:Queue#processAll","link":"<a href=\"module-Queue.html#processAll\">module:Queue &rtrif; processAll</a>"},{"title":"module:Queue#processFirst","link":"<a href=\"module-Queue.html#processFirst\">module:Queue &rtrif; processFirst</a>"},{"title":"module:Queue#ready","link":"<a href=\"module-Queue.html#ready\">module:Queue &rtrif; ready</a>"},{"title":"module:Queue#remove","link":"<a href=\"module-Queue.html#remove\">module:Queue &rtrif; remove</a>"},{"title":"module:Queue#removeFirst","link":"<a href=\"module-Queue.html#removeFirst\">module:Queue &rtrif; removeFirst</a>"},{"title":"module:Queue#removeLast","link":"<a href=\"module-Queue.html#removeLast\">module:Queue &rtrif; removeLast</a>"},{"title":"Utils","link":"<a href=\"module-Utils.html\">Utils</a>"},{"title":"module:Utils.allset","link":"<a href=\"module-Utils.html#.allset\">module:Utils.allset &rtrif; undefined</a>"},{"title":"module:Utils.callFunc","link":"<a href=\"module-Utils.html#.callFunc\">module:Utils.callFunc &rtrif; undefined</a>"},{"title":"module:Utils.camelCaseToKebabCase","link":"<a href=\"module-Utils.html#.camelCaseToKebabCase\">module:Utils.camelCaseToKebabCase &rtrif; undefined</a>"},{"title":"module:Utils.containsText","link":"<a href=\"module-Utils.html#.containsText\">module:Utils.containsText &rtrif; undefined</a>"},{"title":"module:Utils.createList","link":"<a href=\"module-Utils.html#.createList\">module:Utils.createList &rtrif; undefined</a>"},{"title":"module:Utils.divisibleBy","link":"<a href=\"module-Utils.html#.divisibleBy\">module:Utils.divisibleBy &rtrif; undefined</a>"},{"title":"module:Utils.formatCurrency","link":"<a href=\"module-Utils.html#.formatCurrency\">module:Utils.formatCurrency &rtrif; undefined</a>"},{"title":"module:Utils.formatTimerValue","link":"<a href=\"module-Utils.html#.formatTimerValue\">module:Utils.formatTimerValue &rtrif; undefined</a>"},{"title":"module:Utils.funcExists","link":"<a href=\"module-Utils.html#.funcExists\">module:Utils.funcExists &rtrif; undefined</a>"},{"title":"module:Utils.getChromeVersion","link":"<a href=\"module-Utils.html#.getChromeVersion\">module:Utils.getChromeVersion &rtrif; undefined</a>"},{"title":"module:Utils.getPercentageOf","link":"<a href=\"module-Utils.html#.getPercentageOf\">module:Utils.getPercentageOf &rtrif; undefined</a>"},{"title":"module:Utils.getRandomDecimal","link":"<a href=\"module-Utils.html#.getRandomDecimal\">module:Utils.getRandomDecimal &rtrif; undefined</a>"},{"title":"module:Utils.getRandomHexColor","link":"<a href=\"module-Utils.html#.getRandomHexColor\">module:Utils.getRandomHexColor &rtrif; undefined</a>"},{"title":"module:Utils.getRandomNumber","link":"<a href=\"module-Utils.html#.getRandomNumber\">module:Utils.getRandomNumber &rtrif; undefined</a>"},{"title":"module:Utils.getRandomRGBAColor","link":"<a href=\"module-Utils.html#.getRandomRGBAColor\">module:Utils.getRandomRGBAColor &rtrif; undefined</a>"},{"title":"module:Utils.getRandomRGBColor","link":"<a href=\"module-Utils.html#.getRandomRGBColor\">module:Utils.getRandomRGBColor &rtrif; undefined</a>"},{"title":"module:Utils.isBrowserSource","link":"<a href=\"module-Utils.html#.isBrowserSource\">module:Utils.isBrowserSource &rtrif; undefined</a>"},{"title":"module:Utils.isChrome","link":"<a href=\"module-Utils.html#.isChrome\">module:Utils.isChrome &rtrif; undefined</a>"},{"title":"module:Utils.isset","link":"<a href=\"module-Utils.html#.isset\">module:Utils.isset &rtrif; undefined</a>"},{"title":"module:Utils.isWholeNumber","link":"<a href=\"module-Utils.html#.isWholeNumber\">module:Utils.isWholeNumber &rtrif; undefined</a>"},{"title":"module:Utils.kebabCaseToCamelCase","link":"<a href=\"module-Utils.html#.kebabCaseToCamelCase\">module:Utils.kebabCaseToCamelCase &rtrif; undefined</a>"},{"title":"module:Utils.matchesRegex","link":"<a href=\"module-Utils.html#.matchesRegex\">module:Utils.matchesRegex &rtrif; undefined</a>"},{"title":"module:Utils.matchRegexGroups","link":"<a href=\"module-Utils.html#.matchRegexGroups\">module:Utils.matchRegexGroups &rtrif; undefined</a>"},{"title":"module:Utils.nextIterator","link":"<a href=\"module-Utils.html#.nextIterator\">module:Utils.nextIterator &rtrif; undefined</a>"},{"title":"module:Utils.resolves","link":"<a href=\"module-Utils.html#.resolves\">module:Utils.resolves &rtrif; undefined</a>"},{"title":"module:Utils.resumeSEQueue","link":"<a href=\"module-Utils.html#.resumeSEQueue\">module:Utils.resumeSEQueue &rtrif; undefined</a>"},{"title":"module:Utils.trimSpaces","link":"<a href=\"module-Utils.html#.trimSpaces\">module:Utils.trimSpaces &rtrif; undefined</a>"}];
+      var options = {"include_matches":true}
+        setupSearch(list, options)
+    </script>
+
+    
+    <script type="text/javascript">
+    var option = JSON.parse('{"sidebar":{"className":"os-theme-block-light","scrollbars":{"autoHide":"never"}},"body":{"className":"os-theme-block-light","scrollbars":{"autoHide":"scroll"}}}')
+      document.addEventListener("DOMContentLoaded", function()
+      {
+        OverlayScrollbars(document.querySelector('body'), option.body || {});
+        OverlayScrollbars(document.getElementById('navbar'), option.sidebar || {});
+      });
+    </script>
+    
+
+  </body>
+</html>

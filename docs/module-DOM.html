@@ -1,0 +1,6839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding meta -->
+    
+    
+    <meta name="author" content="Reboot0" />
+    
+    <meta name="description" content="Documentation for the StreamElements widget tools" />
+    
+    
+
+    <!-- Adding overlay style-->
+    <link rel="stylesheet" href="./styles/third-party/OverlayScrollbars.min.css" />
+    <link rel="stylesheet" href="./styles/third-party/OverlayScrollbars.custom.css" />
+
+    <!-- Adding overlay script-->
+    <script src="./scripts/third-party/OverlayScrollbars.min.js"></script>
+
+    <title>StreamElements Widget Tools</title>
+
+    <!--[if lt IE 9]>
+      <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="./styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="./styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="./styles/clean-jsdoc-theme-dark.css">
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+            <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z">
+            </path>
+        </symbol>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div id="navbar-heading-container">
+                <a id="navbar-heading-link" href="index.html">
+                  <div id="navbar-heading">
+                    <img id="navbar-heading-logo" src="images/logo_white.png" alt="Logo" />
+                    <h2 id="navbar-heading-text">Widget Tools</h2>
+                  </div>
+                </a>
+              </div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><ul><li class="menu-li"><a href='./index.html' class='getting-started menu-link' id='' target=''>Getting Started</a></li><li class="menu-li"><a href='https://github.com/StreamElements/widgets/blob/master/CustomCode.md' class='external-link menu-link' id='' target='_blank'>Overlay Editor Docs</a></li><li class="menu-li"><a href='https://dev.streamelements.com/docs/kappa/api.yaml' class='external-link menu-link' id='' target='_blank'>SE API Docs</a></li><li class="menu-li"><a href='https://dev.streamelements.com/docs/kappa/docs/OAuth2.md' class='external-link menu-link' id='' target='_blank'>Connection Guides</a></li></ul><div class="accordion" id="8384723" > <h3 class="accordion-heading">Tutorials<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="tutorial-ChatMessage.html">ChatMessage</a></li><li class="accordion-list" id=""><a href="tutorial-DOM.html">DOM</a></li><li class="accordion-list" id=""><a href="tutorial-Events.html">Events</a></li><li class="accordion-list" id=""><a href="tutorial-Queue.html">Queue</a></li><li class="accordion-list" id=""><a href="tutorial-Utils.html">Utils</a></li></ul> </div><div class="accordion" id="5863855" > <h3 class="accordion-heading">Modules<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion collapsed child" id=2792167><div class="accordion-heading child"><a href="module-ChatMessage.html">ChatMessage</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-ChatMessage.html#contains">contains</a></li><li data-type='method'><a href="module-ChatMessage.html#containsRegex">containsRegex</a></li><li data-type='method'><a href="module-ChatMessage.html#getBitsBadge">getBitsBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#getCommand">getCommand</a></li><li data-type='method'><a href="module-ChatMessage.html#getDisplayColor">getDisplayColor</a></li><li data-type='method'><a href="module-ChatMessage.html#getGiftsBadge">getGiftsBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#getMonthsSubscribed">getMonthsSubscribed</a></li><li data-type='method'><a href="module-ChatMessage.html#getStats">getStats</a></li><li data-type='method'><a href="module-ChatMessage.html#getTierBadge">getTierBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#getWordList">getWordList</a></li><li data-type='method'><a href="module-ChatMessage.html#hasPrimeBadge">hasPrimeBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#hasRole">hasRole</a></li><li data-type='method'><a href="module-ChatMessage.html#hasTurboBadge">hasTurboBadge</a></li><li data-type='method'><a href="module-ChatMessage.html#hasUserId">hasUserId</a></li><li data-type='method'><a href="module-ChatMessage.html#hasUsername">hasUsername</a></li><li data-type='method'><a href="module-ChatMessage.html#isAction">isAction</a></li><li data-type='method'><a href="module-ChatMessage.html#isBroadcaster">isBroadcaster</a></li><li data-type='method'><a href="module-ChatMessage.html#isCommand">isCommand</a></li><li data-type='method'><a href="module-ChatMessage.html#isCustomReward">isCustomReward</a></li><li data-type='method'><a href="module-ChatMessage.html#isModerator">isModerator</a></li><li data-type='method'><a href="module-ChatMessage.html#isStaff">isStaff</a></li><li data-type='method'><a href="module-ChatMessage.html#isSubscriber">isSubscriber</a></li><li data-type='method'><a href="module-ChatMessage.html#isVIP">isVIP</a></li><li data-type='method'><a href="module-ChatMessage.html#notOnList">notOnList</a></li><li data-type='method'><a href="module-ChatMessage.html#usernameContains">usernameContains</a></li><li data-type='method'><a href="module-ChatMessage.html#usernameContainsRegex">usernameContainsRegex</a></li></ul></li><li class="accordion collapsed child" id=6704774><div class="accordion-heading child"><a href="module-DOM.html">DOM</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-DOM.html#.addClass">addClass</a></li><li data-type='method'><a href="module-DOM.html#.find">find</a></li><li data-type='method'><a href="module-DOM.html#.findAll">findAll</a></li><li data-type='method'><a href="module-DOM.html#.findAllOrNull">findAllOrNull</a></li><li data-type='method'><a href="module-DOM.html#.getAttr">getAttr</a></li><li data-type='method'><a href="module-DOM.html#.getCSS">getCSS</a></li><li data-type='method'><a href="module-DOM.html#.getCSSFloat">getCSSFloat</a></li><li data-type='method'><a href="module-DOM.html#.getCSSInt">getCSSInt</a></li><li data-type='method'><a href="module-DOM.html#.getDataAttr">getDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.hasAttr">hasAttr</a></li><li data-type='method'><a href="module-DOM.html#.hasDataAttr">hasDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.isAudioElement">isAudioElement</a></li><li data-type='method'><a href="module-DOM.html#.isHTMLElement">isHTMLElement</a></li><li data-type='method'><a href="module-DOM.html#.isImageElement">isImageElement</a></li><li data-type='method'><a href="module-DOM.html#.isImgElement">isImgElement</a></li><li data-type='method'><a href="module-DOM.html#.isMediaElement">isMediaElement</a></li><li data-type='method'><a href="module-DOM.html#.isPictureElement">isPictureElement</a></li><li data-type='method'><a href="module-DOM.html#.isVideoElement">isVideoElement</a></li><li data-type='method'><a href="module-DOM.html#.onEach">onEach</a></li><li data-type='method'><a href="module-DOM.html#.onFirst">onFirst</a></li><li data-type='method'><a href="module-DOM.html#.remAttr">remAttr</a></li><li data-type='method'><a href="module-DOM.html#.remDataAttr">remDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.removeClass">removeClass</a></li><li data-type='method'><a href="module-DOM.html#.setAttr">setAttr</a></li><li data-type='method'><a href="module-DOM.html#.setCSS">setCSS</a></li><li data-type='method'><a href="module-DOM.html#.setCSSProp">setCSSProp</a></li><li data-type='method'><a href="module-DOM.html#.setDataAttr">setDataAttr</a></li><li data-type='method'><a href="module-DOM.html#.setHTML">setHTML</a></li><li data-type='method'><a href="module-DOM.html#.setText">setText</a></li><li data-type='method'><a href="module-DOM.html#.setVolume">setVolume</a></li><li data-type='method'><a href="module-DOM.html#.swapClass">swapClass</a></li><li data-type='method'><a href="module-DOM.html#.updateAudioSrc">updateAudioSrc</a></li><li data-type='method'><a href="module-DOM.html#.updateImgSrc">updateImgSrc</a></li><li data-type='method'><a href="module-DOM.html#.updatePictureSrc">updatePictureSrc</a></li><li data-type='method'><a href="module-DOM.html#.updateSrc">updateSrc</a></li><li data-type='method'><a href="module-DOM.html#.updateVideoSrc">updateVideoSrc</a></li></ul></li><li class="accordion collapsed child" id=8997082><div class="accordion-heading child"><a href="module-Events.html">Events</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-Events.html#expectsEventListener">expectsEventListener</a></li><li data-type='method'><a href="module-Events.html#expectsEventName">expectsEventName</a></li><li data-type='method'><a href="module-Events.html#expectsEvents">expectsEvents</a></li><li data-type='method'><a href="module-Events.html#isSkippable">isSkippable</a></li><li data-type='method'><a href="module-Events.html#onBotCounterHandler">onBotCounterHandler</a></li><li data-type='method'><a href="module-Events.html#onCheerHandler">onCheerHandler</a></li><li data-type='method'><a href="module-Events.html#onCommunityGiftHandler">onCommunityGiftHandler</a></li><li data-type='method'><a href="module-Events.html#onDeleteMessageHandler">onDeleteMessageHandler</a></li><li data-type='method'><a href="module-Events.html#onDeleteMessagesHandler">onDeleteMessagesHandler</a></li><li data-type='method'><a href="module-Events.html#onEventReceivedHandler">onEventReceivedHandler</a></li><li data-type='method'><a href="module-Events.html#onEventSkipHandler">onEventSkipHandler</a></li><li data-type='method'><a href="module-Events.html#onFollowHandler">onFollowHandler</a></li><li data-type='method'><a href="module-Events.html#onHostHandler">onHostHandler</a></li><li data-type='method'><a href="module-Events.html#onKVStoreUpdateHandler">onKVStoreUpdateHandler</a></li><li data-type='method'><a href="module-Events.html#onMessageHandler">onMessageHandler</a></li><li data-type='method'><a href="module-Events.html#onRaidHandler">onRaidHandler</a></li><li data-type='method'><a href="module-Events.html#onResubHandler">onResubHandler</a></li><li data-type='method'><a href="module-Events.html#onSessionUpdateHandler">onSessionUpdateHandler</a></li><li data-type='method'><a href="module-Events.html#onSubBombCompleteHandler">onSubBombCompleteHandler</a></li><li data-type='method'><a href="module-Events.html#onSubBombHandler">onSubBombHandler</a></li><li data-type='method'><a href="module-Events.html#onSubGiftHandler">onSubGiftHandler</a></li><li data-type='method'><a href="module-Events.html#onSubscriberHandler">onSubscriberHandler</a></li><li data-type='method'><a href="module-Events.html#onTipHandler">onTipHandler</a></li><li data-type='method'><a href="module-Events.html#onToggleSoundHandler">onToggleSoundHandler</a></li><li data-type='method'><a href="module-Events.html#onWidgetButtonHandler">onWidgetButtonHandler</a></li><li data-type='method'><a href="module-Events.html#onWidgetLoadHandler">onWidgetLoadHandler</a></li><li data-type='method'><a href="module-Events.html#preflightEventListeners">preflightEventListeners</a></li><li data-type='method'><a href="module-Events.html#registerOnEventReceived">registerOnEventReceived</a></li><li data-type='method'><a href="module-Events.html#registerOnSessionUpdate">registerOnSessionUpdate</a></li><li data-type='method'><a href="module-Events.html#registerOnWidgetLoad">registerOnWidgetLoad</a></li><li data-type='method'><a href="module-Events.html#unregisterOnEventReceived">unregisterOnEventReceived</a></li><li data-type='method'><a href="module-Events.html#unregisterOnSessionUpdate">unregisterOnSessionUpdate</a></li><li data-type='method'><a href="module-Events.html#unregisterOnWidgetLoad">unregisterOnWidgetLoad</a></li></ul></li><li class="accordion collapsed child" id=7108126><div class="accordion-heading child"><a href="module-Queue.html">Queue</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-Queue.html#add">add</a></li><li data-type='method'><a href="module-Queue.html#empty">empty</a></li><li data-type='method'><a href="module-Queue.html#first">first</a></li><li data-type='method'><a href="module-Queue.html#get">get</a></li><li data-type='method'><a href="module-Queue.html#indexLength">indexLength</a></li><li data-type='method'><a href="module-Queue.html#last">last</a></li><li data-type='method'><a href="module-Queue.html#length">length</a></li><li data-type='method'><a href="module-Queue.html#processAll">processAll</a></li><li data-type='method'><a href="module-Queue.html#processFirst">processFirst</a></li><li data-type='method'><a href="module-Queue.html#ready">ready</a></li><li data-type='method'><a href="module-Queue.html#remove">remove</a></li><li data-type='method'><a href="module-Queue.html#removeFirst">removeFirst</a></li><li data-type='method'><a href="module-Queue.html#removeLast">removeLast</a></li></ul></li><li class="accordion collapsed child" id=6827439><div class="accordion-heading child"><a href="module-Utils.html">Utils</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="module-Utils.html#.allset">allset</a></li><li data-type='method'><a href="module-Utils.html#.callFunc">callFunc</a></li><li data-type='method'><a href="module-Utils.html#.camelCaseToKebabCase">camelCaseToKebabCase</a></li><li data-type='method'><a href="module-Utils.html#.containsText">containsText</a></li><li data-type='method'><a href="module-Utils.html#.createList">createList</a></li><li data-type='method'><a href="module-Utils.html#.divisibleBy">divisibleBy</a></li><li data-type='method'><a href="module-Utils.html#.formatCurrency">formatCurrency</a></li><li data-type='method'><a href="module-Utils.html#.formatTimerValue">formatTimerValue</a></li><li data-type='method'><a href="module-Utils.html#.funcExists">funcExists</a></li><li data-type='method'><a href="module-Utils.html#.getChromeVersion">getChromeVersion</a></li><li data-type='method'><a href="module-Utils.html#.getPercentageOf">getPercentageOf</a></li><li data-type='method'><a href="module-Utils.html#.getRandomDecimal">getRandomDecimal</a></li><li data-type='method'><a href="module-Utils.html#.getRandomHexColor">getRandomHexColor</a></li><li data-type='method'><a href="module-Utils.html#.getRandomNumber">getRandomNumber</a></li><li data-type='method'><a href="module-Utils.html#.getRandomRGBAColor">getRandomRGBAColor</a></li><li data-type='method'><a href="module-Utils.html#.getRandomRGBColor">getRandomRGBColor</a></li><li data-type='method'><a href="module-Utils.html#.isBrowserSource">isBrowserSource</a></li><li data-type='method'><a href="module-Utils.html#.isChrome">isChrome</a></li><li data-type='method'><a href="module-Utils.html#.isset">isset</a></li><li data-type='method'><a href="module-Utils.html#.isWholeNumber">isWholeNumber</a></li><li data-type='method'><a href="module-Utils.html#.kebabCaseToCamelCase">kebabCaseToCamelCase</a></li><li data-type='method'><a href="module-Utils.html#.matchesRegex">matchesRegex</a></li><li data-type='method'><a href="module-Utils.html#.matchRegexGroups">matchRegexGroups</a></li><li data-type='method'><a href="module-Utils.html#.nextIterator">nextIterator</a></li><li data-type='method'><a href="module-Utils.html#.resolves">resolves</a></li><li data-type='method'><a href="module-Utils.html#.resumeSEQueue">resumeSEQueue</a></li><li data-type='method'><a href="module-Utils.html#.trimSpaces">trimSpaces</a></li></ul></li></ul> </div></div>
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        DOM
+      </h1>
+      
+
+      
+
+
+
+
+<section>
+
+
+<header>
+    
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".addClass">
+        <a href="#.addClass">#</a>
+        <span class="type-signature">(static) </span>addClass<span class="signature">(selector, newClass)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Adds one or more classes to the element(s) matching the selector.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Can either be a string if you only want to add one class or an array if you want to add multiple.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".find">
+        <a href="#.find">#</a>
+        <span class="type-signature">(static) </span>find<span class="signature">(selector, inElement<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Element|null}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Finds and returns the first matching Node in the document.</p>
+<p>Returns either an <code>Element</code> or <code>null</code> if nothing was found.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The selector can be any valid CSS-selector, but no Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>You can pass an HTMLElement as second parameter to perform the query only on that element.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".findAll">
+        <a href="#.findAll">#</a>
+        <span class="type-signature">(static) </span>findAll<span class="signature">(selector, inElement<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {NodeList}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Finds and returns all matching Nodes in the document.</p>
+<p>Always returns a <code>NodeListOf&lt;Element&gt;</code>. If no matches were found, this list will be empty.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The selector can be any valid CSS-selector, but no Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>You can pass an HTMLElement as second parameter to perform the query only on that element.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">NodeList</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".findAllOrNull">
+        <a href="#.findAllOrNull">#</a>
+        <span class="type-signature">(static) </span>findAllOrNull<span class="signature">(selector, inElement)</span><span class="type-signature"> &rarr; {NodeList|null}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Finds and returns all matching Nodes in the document.</p>
+<p>Returns a <code>NodeListOf&lt;Element&gt;</code> or <code>null</code> if no matches were found.</p>
+<p>This is an alternative to {@see DOM.findAll}, in case you need the same return value on not-found selectors as {@see DOM.find}.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The selector can be any valid CSS-selector, but no Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>[inElement=null] - You can pass an HTMLElement as second parameter to perform the query only on that element.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">NodeList</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getAttr">
+        <a href="#.getAttr">#</a>
+        <span class="type-signature">(static) </span>getAttr<span class="signature">(selector, attrName)</span><span class="type-signature"> &rarr; {any}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Gets the value of the specified attribute for a matching element.</p>
+<p>Returns undefined if the attribute doesn't exist.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the attribute to get.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">any</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getCSS">
+        <a href="#.getCSS">#</a>
+        <span class="type-signature">(static) </span>getCSS<span class="signature">(selector, property, pseudoElement<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {string|CSSStyleDeclaration|null}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns either the computed CSS-property of the first matching element as string or null if no element was found.</p>
+<p>If you pass &quot;*&quot; as property, this function will return the whole CSSStyleDeclaration object instead</p>
+<p>NOTE: Most properties return a string of their value with the according unit.</p>
+<p>See <code>DOM.getCSSInt</code> or <code>DOM.getCSSFloat</code> if you want to return a numeric value.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>property</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The property to return the computed value of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pseudoElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>Can be used to get properties of pseudo-elements like :after or :before.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">CSSStyleDeclaration</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getCSSFloat">
+        <a href="#.getCSSFloat">#</a>
+        <span class="type-signature">(static) </span>getCSSFloat<span class="signature">(selector, property, pseudoElement)</span><span class="type-signature"> &rarr; {float|null}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns either the computed CSS-property of the first matching element as float/decimal or null if no element was found.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>property</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The property to return the computed value of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pseudoElement</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>Can be used to get properties of pseudo-elements like :after or :before.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">float</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getCSSInt">
+        <a href="#.getCSSInt">#</a>
+        <span class="type-signature">(static) </span>getCSSInt<span class="signature">(selector, property, pseudoElement)</span><span class="type-signature"> &rarr; {int|null}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns either the computed CSS-property of the first matching element as integer or null if no element was found.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>property</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The property to return the computed value of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pseudoElement</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last"><p>Can be used to get properties of pseudo-elements like :after or :before.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">int</span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getDataAttr">
+        <a href="#.getDataAttr">#</a>
+        <span class="type-signature">(static) </span>getDataAttr<span class="signature">(selector, dataName)</span><span class="type-signature"> &rarr; {string|undefined}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Gets the value of the specified data-attribute on matching elements.</p>
+<p>Returns undefined, if the attribute doesn't exist.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the data-attribute to get.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".hasAttr">
+        <a href="#.hasAttr">#</a>
+        <span class="type-signature">(static) </span>hasAttr<span class="signature">(selector, attrName)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the matching element has the given attribute defined.</p>
+<p>Returns true as long as it is defined, even if it is empty.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the attribute to check for.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".hasDataAttr">
+        <a href="#.hasDataAttr">#</a>
+        <span class="type-signature">(static) </span>hasDataAttr<span class="signature">(selector, dataName)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the element has the given data-attribute.</p>
+<p>Returns true as long as the name is defined, even if it is empty.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the data-attribute to check for.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isAudioElement">
+        <a href="#.isAudioElement">#</a>
+        <span class="type-signature">(static) </span>isAudioElement<span class="signature">(element)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the passed Element is an audio element.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Element to check. Can not be a selector.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isHTMLElement">
+        <a href="#.isHTMLElement">#</a>
+        <span class="type-signature">(static) </span>isHTMLElement<span class="signature">(node)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the passed Node is an HTMLElement.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>node</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Node</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Node object to check. Can not be a selector.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isImageElement">
+        <a href="#.isImageElement">#</a>
+        <span class="type-signature">(static) </span>isImageElement<span class="signature">(element)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the passed Element is either an img or picture element.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Element to check. Can not be a selector.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isImgElement">
+        <a href="#.isImgElement">#</a>
+        <span class="type-signature">(static) </span>isImgElement<span class="signature">(element)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the passed Element is an img element.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Element to check. Can not be a selector.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isMediaElement">
+        <a href="#.isMediaElement">#</a>
+        <span class="type-signature">(static) </span>isMediaElement<span class="signature">(element)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the passed Element is any type of media-node. This can either be an image, a video or an audio element.</p>
+<p>Checks for <code>DOM.isAudioElement</code>, <code>DOM.isImageElement</code> and <code>DOM.isVideoElement</code> internally.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Element to check.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isPictureElement">
+        <a href="#.isPictureElement">#</a>
+        <span class="type-signature">(static) </span>isPictureElement<span class="signature">(element)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the passed Element is a picture element.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Element to check. Can not be a selector.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isVideoElement">
+        <a href="#.isVideoElement">#</a>
+        <span class="type-signature">(static) </span>isVideoElement<span class="signature">(element)</span><span class="type-signature"> &rarr; {boolean}</span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Returns whether the passed Element is a video element.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Element to check. Can not be a selector.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container mt-20">
+    <strong>Returns:</strong>
+        
+            
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+            
+    </div>
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".onEach">
+        <a href="#.onEach">#</a>
+        <span class="type-signature">(static) </span>onEach<span class="signature">(selector, exec)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Finds a matching <code>NodeListOf&lt;Element&gt;</code> for the selector and executes the given function with each <code>Element</code> in the list as parameter.</p>
+<p>These will execute after each other, not all of them at once.</p>
+<p>If no matches were found, the function will not be executed.</p>
+<p>Make sure your given function expects the passed <code>Element</code> as parameter.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">NodeList</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>exec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to execute on each element.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".onFirst">
+        <a href="#.onFirst">#</a>
+        <span class="type-signature">(static) </span>onFirst<span class="signature">(selector, exec)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Finds the first matching <code>Element</code> for the selector and executes the given function with it as parameter.</p>
+<p>If no matching element was found, the function will not be executed.</p>
+<p>Make sure your given function expects the passed <code>Element</code> as parameter.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>exec</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to execute with the found element as first parameter.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".remAttr">
+        <a href="#.remAttr">#</a>
+        <span class="type-signature">(static) </span>remAttr<span class="signature">(selector, attrName)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Removes the given attribute of every element matching the selector.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the attribute to remove.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".remDataAttr">
+        <a href="#.remDataAttr">#</a>
+        <span class="type-signature">(static) </span>remDataAttr<span class="signature">(selector, dataName)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Removes the specified data-attrbiute of matching elements.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the data-attribute to remove.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".removeClass">
+        <a href="#.removeClass">#</a>
+        <span class="type-signature">(static) </span>removeClass<span class="signature">(selector, remClass)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Removes one or more classes from the element(s) matching the selector.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>remClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Can either be a string, if you only want to remove one class, or an array if you want to remove multiple.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setAttr">
+        <a href="#.setAttr">#</a>
+        <span class="type-signature">(static) </span>setAttr<span class="signature">(selector, attrName, attrValue)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Sets the value of the specified attribute for every matching element.</p>
+<p>If the attribute didn't exist before it will be added, else updated.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the attribute to set.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>New value of the attribute.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setCSS">
+        <a href="#.setCSS">#</a>
+        <span class="type-signature">(static) </span>setCSS<span class="signature">(selector, cssObj)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Sets multiple CSS-properties on an matching element.</p>
+<p>The passed object should have the form of { &quot;propName1&quot;: &quot;newValueWithUnit&quot;, &quot;prop2&quot;: &quot;123px&quot;, ... }</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cssObj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The objects with key-value-pairs of properties you want to update.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setCSSProp">
+        <a href="#.setCSSProp">#</a>
+        <span class="type-signature">(static) </span>setCSSProp<span class="signature">(selector, property, value)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Sets the value for a given property on an matching element.</p>
+<p>The value should be a string with units and you can only change one property. To update multiple properties at once see <code>DOM.setCSS</code>.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>property</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The property name you want to change.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The property value you want to set.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setDataAttr">
+        <a href="#.setDataAttr">#</a>
+        <span class="type-signature">(static) </span>setDataAttr<span class="signature">(selector, dataName, dataValue)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Sets the value for the specified data-attribute on matching elements.</p>
+<p>If the data-attribute didn't exist before it will be added, else updated.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the data-attribute to set.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dataValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>New value of the data-attribute.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setHTML">
+        <a href="#.setHTML">#</a>
+        <span class="type-signature">(static) </span>setHTML<span class="signature">(selector, htmlString)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Finds the first matching element for the given selector and replaces the innerHTML with the htmlString parameter.
+NOTE: Only use this method if you need to render trusted HTML-content. For just names and user-generated messages, please use the <code>DOM.setText</code> function instead.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>htmlString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new HTML to execute and insert.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setText">
+        <a href="#.setText">#</a>
+        <span class="type-signature">(static) </span>setText<span class="signature">(selector, text)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Finds the first matching element for the given selector and replaces the innerText with the text parameter.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new text to insert.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setVolume">
+        <a href="#.setVolume">#</a>
+        <span class="type-signature">(static) </span>setVolume<span class="signature">(selector, volume)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Sets the volume for <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>volume</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The volume should be a whole number between 0 and 100.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".swapClass">
+        <a href="#.swapClass">#</a>
+        <span class="type-signature">(static) </span>swapClass<span class="signature">(selector, remClass, newClass)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Removes one or more classes from the element(s) matching the selector and then adds one or more classes afterwards.</p>
+<p>Shorter form of <code>DOM.removeClass</code> and <code>DOM.addClass</code> on the same element/selector.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>remClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Can either be a string, if you only want to add one class, or an array if you want to add multiple.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Can either be a string, if you only want to remove one class, or an array if you want to remove multiple.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".updateAudioSrc">
+        <a href="#.updateAudioSrc">#</a>
+        <span class="type-signature">(static) </span>updateAudioSrc<span class="signature">(element, newSrc, type)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Updates the <code>&lt;source&gt;</code> children of an <code>&lt;audio&gt;</code> directly, depending on the given media-type.</p>
+<p>NOTE: This is part of the {@see DOM.updateSrc} function and should not be called outside of that, unless you validated the parameters yourself before.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DOM-Element you want to update the source of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newSrc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new source URL for the element</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Can be set, to only update the matching source tags.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".updateImgSrc">
+        <a href="#.updateImgSrc">#</a>
+        <span class="type-signature">(static) </span>updateImgSrc<span class="signature">(element, newSrc)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Updates the src attribute of an <code>&lt;img&gt;</code> directly.</p>
+<p>NOTE: This is part of the {@see DOM.updateSrc} function and should not be called outside of that, unless you validated the parameters yourself before.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DOM-Element you want to update the source of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newSrc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new source URL for the element</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".updatePictureSrc">
+        <a href="#.updatePictureSrc">#</a>
+        <span class="type-signature">(static) </span>updatePictureSrc<span class="signature">(element, newSrc, media)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Updates the <code>&lt;source&gt;</code> children of a <code>&lt;picture&gt;</code> directly, depending on the given media-type.</p>
+<p>NOTE: This is part of the {@see DOM.updateSrc} function and should not be called outside of that, unless you validated the parameters yourself before.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DOM-Element you want to update the source of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newSrc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new source URL for the element</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>media</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Can be set, to only update the matching source tags.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".updateSrc">
+        <a href="#.updateSrc">#</a>
+        <span class="type-signature">(static) </span>updateSrc<span class="signature">(selector, newSrc, type<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Updates the src attribute for image, audio and video elements.</p>
+<p>If an element has multiple sources for different types defined, only the matching type will be updated.</p>
+<p>The most commonly used types are video/mp4, video/webm, audio/mpeg &amp; audio/ogg depending on the type of media you want to change.</p>
+<p>If the media-type mismatches the element-type (e.g. you try to update an audio source to video/mpeg) the function will just exit without changing anything.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>selector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The selector can either be a valid CSS-selector or a DOM-Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newSrc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>The new source URL for the element</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ""
+                
+                </td>
+            
+
+            <td class="description last"><p>Can be set to only update the matching source tags.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".updateVideoSrc">
+        <a href="#.updateVideoSrc">#</a>
+        <span class="type-signature">(static) </span>updateVideoSrc<span class="signature">(element, newSrc, type)</span><span class="type-signature"></span>
+    </h4>
+
+    
+
+
+
+    <div class="description">
+        <p>Updates the <code>&lt;source&gt;</code> children of a <code>&lt;video&gt;</code> directly, depending on the given media-type.</p>
+<p>NOTE: This is part of the {@see DOM.updateSrc} function and should not be called outside of that, unless you validated the parameters yourself before.</p>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="method-member-container flex flex-col w-100 overflow-auto mt-20">
+        <strong>Parameters:</strong>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The DOM-Element you want to update the source of.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newSrc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new source URL for the element</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Can be set, to only update the matching source tags.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+        <div class="details-item-container">
+            <dt class="tag-since">Since:</dt>
+            <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    </div>
+
+    <footer class="footer" id="footer">
+      <div class="footer-text">Made by <a href="https://reboot0.de">@Reboot0</a> with a lot of ☕</div>
+    </footer>
+
+    <script src="./scripts/third-party/prettify.js"></script>
+    <script src="./scripts/third-party/lang-css.js"></script>
+    <script src="./scripts/search.js"></script>
+    <script src="./scripts/third-party/fuse.js"></script>
+    <script src="./scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="./scripts/linenumber.js"></script>
+    <script src="./scripts/fix-code-block.js"></script>
+    <script src="./scripts/fix-navbar.js"></script>
+    <script>
+      var list = [{"title":"ChatMessage","link":"ChatMessage"},{"title":"DOM","link":"DOM"},{"title":"Events","link":"Events"},{"title":"Queue","link":"Queue"},{"title":"Utils","link":"Utils"},{"title":"ChatMessage","link":"<a href=\"module-ChatMessage.html\">ChatMessage</a>"},{"title":"module:ChatMessage#contains","link":"<a href=\"module-ChatMessage.html#contains\">module:ChatMessage &rtrif; contains</a>"},{"title":"module:ChatMessage#containsRegex","link":"<a href=\"module-ChatMessage.html#containsRegex\">module:ChatMessage &rtrif; containsRegex</a>"},{"title":"module:ChatMessage#getBitsBadge","link":"<a href=\"module-ChatMessage.html#getBitsBadge\">module:ChatMessage &rtrif; getBitsBadge</a>"},{"title":"module:ChatMessage#getCommand","link":"<a href=\"module-ChatMessage.html#getCommand\">module:ChatMessage &rtrif; getCommand</a>"},{"title":"module:ChatMessage#getDisplayColor","link":"<a href=\"module-ChatMessage.html#getDisplayColor\">module:ChatMessage &rtrif; getDisplayColor</a>"},{"title":"module:ChatMessage#getGiftsBadge","link":"<a href=\"module-ChatMessage.html#getGiftsBadge\">module:ChatMessage &rtrif; getGiftsBadge</a>"},{"title":"module:ChatMessage#getMonthsSubscribed","link":"<a href=\"module-ChatMessage.html#getMonthsSubscribed\">module:ChatMessage &rtrif; getMonthsSubscribed</a>"},{"title":"module:ChatMessage#getStats","link":"<a href=\"module-ChatMessage.html#getStats\">module:ChatMessage &rtrif; getStats</a>"},{"title":"module:ChatMessage#getTierBadge","link":"<a href=\"module-ChatMessage.html#getTierBadge\">module:ChatMessage &rtrif; getTierBadge</a>"},{"title":"module:ChatMessage#getWordList","link":"<a href=\"module-ChatMessage.html#getWordList\">module:ChatMessage &rtrif; getWordList</a>"},{"title":"module:ChatMessage#hasPrimeBadge","link":"<a href=\"module-ChatMessage.html#hasPrimeBadge\">module:ChatMessage &rtrif; hasPrimeBadge</a>"},{"title":"module:ChatMessage#hasRole","link":"<a href=\"module-ChatMessage.html#hasRole\">module:ChatMessage &rtrif; hasRole</a>"},{"title":"module:ChatMessage#hasTurboBadge","link":"<a href=\"module-ChatMessage.html#hasTurboBadge\">module:ChatMessage &rtrif; hasTurboBadge</a>"},{"title":"module:ChatMessage#hasUserId","link":"<a href=\"module-ChatMessage.html#hasUserId\">module:ChatMessage &rtrif; hasUserId</a>"},{"title":"module:ChatMessage#hasUsername","link":"<a href=\"module-ChatMessage.html#hasUsername\">module:ChatMessage &rtrif; hasUsername</a>"},{"title":"module:ChatMessage#isAction","link":"<a href=\"module-ChatMessage.html#isAction\">module:ChatMessage &rtrif; isAction</a>"},{"title":"module:ChatMessage#isBroadcaster","link":"<a href=\"module-ChatMessage.html#isBroadcaster\">module:ChatMessage &rtrif; isBroadcaster</a>"},{"title":"module:ChatMessage#isCommand","link":"<a href=\"module-ChatMessage.html#isCommand\">module:ChatMessage &rtrif; isCommand</a>"},{"title":"module:ChatMessage#isCustomReward","link":"<a href=\"module-ChatMessage.html#isCustomReward\">module:ChatMessage &rtrif; isCustomReward</a>"},{"title":"module:ChatMessage#isModerator","link":"<a href=\"module-ChatMessage.html#isModerator\">module:ChatMessage &rtrif; isModerator</a>"},{"title":"module:ChatMessage#isStaff","link":"<a href=\"module-ChatMessage.html#isStaff\">module:ChatMessage &rtrif; isStaff</a>"},{"title":"module:ChatMessage#isSubscriber","link":"<a href=\"module-ChatMessage.html#isSubscriber\">module:ChatMessage &rtrif; isSubscriber</a>"},{"title":"module:ChatMessage#isVIP","link":"<a href=\"module-ChatMessage.html#isVIP\">module:ChatMessage &rtrif; isVIP</a>"},{"title":"module:ChatMessage#notOnList","link":"<a href=\"module-ChatMessage.html#notOnList\">module:ChatMessage &rtrif; notOnList</a>"},{"title":"module:ChatMessage#usernameContains","link":"<a href=\"module-ChatMessage.html#usernameContains\">module:ChatMessage &rtrif; usernameContains</a>"},{"title":"module:ChatMessage#usernameContainsRegex","link":"<a href=\"module-ChatMessage.html#usernameContainsRegex\">module:ChatMessage &rtrif; usernameContainsRegex</a>"},{"title":"DOM","link":"<a href=\"module-DOM.html\">DOM</a>"},{"title":"module:DOM.addClass","link":"<a href=\"module-DOM.html#.addClass\">module:DOM.addClass &rtrif; undefined</a>"},{"title":"module:DOM.find","link":"<a href=\"module-DOM.html#.find\">module:DOM.find &rtrif; undefined</a>"},{"title":"module:DOM.findAll","link":"<a href=\"module-DOM.html#.findAll\">module:DOM.findAll &rtrif; undefined</a>"},{"title":"module:DOM.findAllOrNull","link":"<a href=\"module-DOM.html#.findAllOrNull\">module:DOM.findAllOrNull &rtrif; undefined</a>"},{"title":"module:DOM.getAttr","link":"<a href=\"module-DOM.html#.getAttr\">module:DOM.getAttr &rtrif; undefined</a>"},{"title":"module:DOM.getCSS","link":"<a href=\"module-DOM.html#.getCSS\">module:DOM.getCSS &rtrif; undefined</a>"},{"title":"module:DOM.getCSSFloat","link":"<a href=\"module-DOM.html#.getCSSFloat\">module:DOM.getCSSFloat &rtrif; undefined</a>"},{"title":"module:DOM.getCSSInt","link":"<a href=\"module-DOM.html#.getCSSInt\">module:DOM.getCSSInt &rtrif; undefined</a>"},{"title":"module:DOM.getDataAttr","link":"<a href=\"module-DOM.html#.getDataAttr\">module:DOM.getDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.hasAttr","link":"<a href=\"module-DOM.html#.hasAttr\">module:DOM.hasAttr &rtrif; undefined</a>"},{"title":"module:DOM.hasDataAttr","link":"<a href=\"module-DOM.html#.hasDataAttr\">module:DOM.hasDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.isAudioElement","link":"<a href=\"module-DOM.html#.isAudioElement\">module:DOM.isAudioElement &rtrif; undefined</a>"},{"title":"module:DOM.isHTMLElement","link":"<a href=\"module-DOM.html#.isHTMLElement\">module:DOM.isHTMLElement &rtrif; undefined</a>"},{"title":"module:DOM.isImageElement","link":"<a href=\"module-DOM.html#.isImageElement\">module:DOM.isImageElement &rtrif; undefined</a>"},{"title":"module:DOM.isImgElement","link":"<a href=\"module-DOM.html#.isImgElement\">module:DOM.isImgElement &rtrif; undefined</a>"},{"title":"module:DOM.isMediaElement","link":"<a href=\"module-DOM.html#.isMediaElement\">module:DOM.isMediaElement &rtrif; undefined</a>"},{"title":"module:DOM.isPictureElement","link":"<a href=\"module-DOM.html#.isPictureElement\">module:DOM.isPictureElement &rtrif; undefined</a>"},{"title":"module:DOM.isVideoElement","link":"<a href=\"module-DOM.html#.isVideoElement\">module:DOM.isVideoElement &rtrif; undefined</a>"},{"title":"module:DOM.onEach","link":"<a href=\"module-DOM.html#.onEach\">module:DOM.onEach &rtrif; undefined</a>"},{"title":"module:DOM.onFirst","link":"<a href=\"module-DOM.html#.onFirst\">module:DOM.onFirst &rtrif; undefined</a>"},{"title":"module:DOM.remAttr","link":"<a href=\"module-DOM.html#.remAttr\">module:DOM.remAttr &rtrif; undefined</a>"},{"title":"module:DOM.remDataAttr","link":"<a href=\"module-DOM.html#.remDataAttr\">module:DOM.remDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.removeClass","link":"<a href=\"module-DOM.html#.removeClass\">module:DOM.removeClass &rtrif; undefined</a>"},{"title":"module:DOM.setAttr","link":"<a href=\"module-DOM.html#.setAttr\">module:DOM.setAttr &rtrif; undefined</a>"},{"title":"module:DOM.setCSS","link":"<a href=\"module-DOM.html#.setCSS\">module:DOM.setCSS &rtrif; undefined</a>"},{"title":"module:DOM.setCSSProp","link":"<a href=\"module-DOM.html#.setCSSProp\">module:DOM.setCSSProp &rtrif; undefined</a>"},{"title":"module:DOM.setDataAttr","link":"<a href=\"module-DOM.html#.setDataAttr\">module:DOM.setDataAttr &rtrif; undefined</a>"},{"title":"module:DOM.setHTML","link":"<a href=\"module-DOM.html#.setHTML\">module:DOM.setHTML &rtrif; undefined</a>"},{"title":"module:DOM.setText","link":"<a href=\"module-DOM.html#.setText\">module:DOM.setText &rtrif; undefined</a>"},{"title":"module:DOM.setVolume","link":"<a href=\"module-DOM.html#.setVolume\">module:DOM.setVolume &rtrif; undefined</a>"},{"title":"module:DOM.swapClass","link":"<a href=\"module-DOM.html#.swapClass\">module:DOM.swapClass &rtrif; undefined</a>"},{"title":"module:DOM.updateAudioSrc","link":"<a href=\"module-DOM.html#.updateAudioSrc\">module:DOM.updateAudioSrc &rtrif; undefined</a>"},{"title":"module:DOM.updateImgSrc","link":"<a href=\"module-DOM.html#.updateImgSrc\">module:DOM.updateImgSrc &rtrif; undefined</a>"},{"title":"module:DOM.updatePictureSrc","link":"<a href=\"module-DOM.html#.updatePictureSrc\">module:DOM.updatePictureSrc &rtrif; undefined</a>"},{"title":"module:DOM.updateSrc","link":"<a href=\"module-DOM.html#.updateSrc\">module:DOM.updateSrc &rtrif; undefined</a>"},{"title":"module:DOM.updateVideoSrc","link":"<a href=\"module-DOM.html#.updateVideoSrc\">module:DOM.updateVideoSrc &rtrif; undefined</a>"},{"title":"Events","link":"<a href=\"module-Events.html\">Events</a>"},{"title":"module:Events#expectsEventListener","link":"<a href=\"module-Events.html#expectsEventListener\">module:Events &rtrif; expectsEventListener</a>"},{"title":"module:Events#expectsEventName","link":"<a href=\"module-Events.html#expectsEventName\">module:Events &rtrif; expectsEventName</a>"},{"title":"module:Events#expectsEvents","link":"<a href=\"module-Events.html#expectsEvents\">module:Events &rtrif; expectsEvents</a>"},{"title":"module:Events#isSkippable","link":"<a href=\"module-Events.html#isSkippable\">module:Events &rtrif; isSkippable</a>"},{"title":"module:Events#onBotCounterHandler","link":"<a href=\"module-Events.html#onBotCounterHandler\">module:Events &rtrif; onBotCounterHandler</a>"},{"title":"module:Events#onCheerHandler","link":"<a href=\"module-Events.html#onCheerHandler\">module:Events &rtrif; onCheerHandler</a>"},{"title":"module:Events#onCommunityGiftHandler","link":"<a href=\"module-Events.html#onCommunityGiftHandler\">module:Events &rtrif; onCommunityGiftHandler</a>"},{"title":"module:Events#onDeleteMessageHandler","link":"<a href=\"module-Events.html#onDeleteMessageHandler\">module:Events &rtrif; onDeleteMessageHandler</a>"},{"title":"module:Events#onDeleteMessagesHandler","link":"<a href=\"module-Events.html#onDeleteMessagesHandler\">module:Events &rtrif; onDeleteMessagesHandler</a>"},{"title":"module:Events#onEventReceivedHandler","link":"<a href=\"module-Events.html#onEventReceivedHandler\">module:Events &rtrif; onEventReceivedHandler</a>"},{"title":"module:Events#onEventSkipHandler","link":"<a href=\"module-Events.html#onEventSkipHandler\">module:Events &rtrif; onEventSkipHandler</a>"},{"title":"module:Events#onFollowHandler","link":"<a href=\"module-Events.html#onFollowHandler\">module:Events &rtrif; onFollowHandler</a>"},{"title":"module:Events#onHostHandler","link":"<a href=\"module-Events.html#onHostHandler\">module:Events &rtrif; onHostHandler</a>"},{"title":"module:Events#onKVStoreUpdateHandler","link":"<a href=\"module-Events.html#onKVStoreUpdateHandler\">module:Events &rtrif; onKVStoreUpdateHandler</a>"},{"title":"module:Events#onMessageHandler","link":"<a href=\"module-Events.html#onMessageHandler\">module:Events &rtrif; onMessageHandler</a>"},{"title":"module:Events#onRaidHandler","link":"<a href=\"module-Events.html#onRaidHandler\">module:Events &rtrif; onRaidHandler</a>"},{"title":"module:Events#onResubHandler","link":"<a href=\"module-Events.html#onResubHandler\">module:Events &rtrif; onResubHandler</a>"},{"title":"module:Events#onSessionUpdateHandler","link":"<a href=\"module-Events.html#onSessionUpdateHandler\">module:Events &rtrif; onSessionUpdateHandler</a>"},{"title":"module:Events#onSubBombCompleteHandler","link":"<a href=\"module-Events.html#onSubBombCompleteHandler\">module:Events &rtrif; onSubBombCompleteHandler</a>"},{"title":"module:Events#onSubBombHandler","link":"<a href=\"module-Events.html#onSubBombHandler\">module:Events &rtrif; onSubBombHandler</a>"},{"title":"module:Events#onSubGiftHandler","link":"<a href=\"module-Events.html#onSubGiftHandler\">module:Events &rtrif; onSubGiftHandler</a>"},{"title":"module:Events#onSubscriberHandler","link":"<a href=\"module-Events.html#onSubscriberHandler\">module:Events &rtrif; onSubscriberHandler</a>"},{"title":"module:Events#onTipHandler","link":"<a href=\"module-Events.html#onTipHandler\">module:Events &rtrif; onTipHandler</a>"},{"title":"module:Events#onToggleSoundHandler","link":"<a href=\"module-Events.html#onToggleSoundHandler\">module:Events &rtrif; onToggleSoundHandler</a>"},{"title":"module:Events#onWidgetButtonHandler","link":"<a href=\"module-Events.html#onWidgetButtonHandler\">module:Events &rtrif; onWidgetButtonHandler</a>"},{"title":"module:Events#onWidgetLoadHandler","link":"<a href=\"module-Events.html#onWidgetLoadHandler\">module:Events &rtrif; onWidgetLoadHandler</a>"},{"title":"module:Events#preflightEventListeners","link":"<a href=\"module-Events.html#preflightEventListeners\">module:Events &rtrif; preflightEventListeners</a>"},{"title":"module:Events#registerOnEventReceived","link":"<a href=\"module-Events.html#registerOnEventReceived\">module:Events &rtrif; registerOnEventReceived</a>"},{"title":"module:Events#registerOnSessionUpdate","link":"<a href=\"module-Events.html#registerOnSessionUpdate\">module:Events &rtrif; registerOnSessionUpdate</a>"},{"title":"module:Events#registerOnWidgetLoad","link":"<a href=\"module-Events.html#registerOnWidgetLoad\">module:Events &rtrif; registerOnWidgetLoad</a>"},{"title":"module:Events#unregisterOnEventReceived","link":"<a href=\"module-Events.html#unregisterOnEventReceived\">module:Events &rtrif; unregisterOnEventReceived</a>"},{"title":"module:Events#unregisterOnSessionUpdate","link":"<a href=\"module-Events.html#unregisterOnSessionUpdate\">module:Events &rtrif; unregisterOnSessionUpdate</a>"},{"title":"module:Events#unregisterOnWidgetLoad","link":"<a href=\"module-Events.html#unregisterOnWidgetLoad\">module:Events &rtrif; unregisterOnWidgetLoad</a>"},{"title":"Queue","link":"<a href=\"module-Queue.html\">Queue</a>"},{"title":"module:Queue#add","link":"<a href=\"module-Queue.html#add\">module:Queue &rtrif; add</a>"},{"title":"module:Queue#empty","link":"<a href=\"module-Queue.html#empty\">module:Queue &rtrif; empty</a>"},{"title":"module:Queue#first","link":"<a href=\"module-Queue.html#first\">module:Queue &rtrif; first</a>"},{"title":"module:Queue#get","link":"<a href=\"module-Queue.html#get\">module:Queue &rtrif; get</a>"},{"title":"module:Queue#indexLength","link":"<a href=\"module-Queue.html#indexLength\">module:Queue &rtrif; indexLength</a>"},{"title":"module:Queue#last","link":"<a href=\"module-Queue.html#last\">module:Queue &rtrif; last</a>"},{"title":"module:Queue#length","link":"<a href=\"module-Queue.html#length\">module:Queue &rtrif; length</a>"},{"title":"module:Queue#processAll","link":"<a href=\"module-Queue.html#processAll\">module:Queue &rtrif; processAll</a>"},{"title":"module:Queue#processFirst","link":"<a href=\"module-Queue.html#processFirst\">module:Queue &rtrif; processFirst</a>"},{"title":"module:Queue#ready","link":"<a href=\"module-Queue.html#ready\">module:Queue &rtrif; ready</a>"},{"title":"module:Queue#remove","link":"<a href=\"module-Queue.html#remove\">module:Queue &rtrif; remove</a>"},{"title":"module:Queue#removeFirst","link":"<a href=\"module-Queue.html#removeFirst\">module:Queue &rtrif; removeFirst</a>"},{"title":"module:Queue#removeLast","link":"<a href=\"module-Queue.html#removeLast\">module:Queue &rtrif; removeLast</a>"},{"title":"Utils","link":"<a href=\"module-Utils.html\">Utils</a>"},{"title":"module:Utils.allset","link":"<a href=\"module-Utils.html#.allset\">module:Utils.allset &rtrif; undefined</a>"},{"title":"module:Utils.callFunc","link":"<a href=\"module-Utils.html#.callFunc\">module:Utils.callFunc &rtrif; undefined</a>"},{"title":"module:Utils.camelCaseToKebabCase","link":"<a href=\"module-Utils.html#.camelCaseToKebabCase\">module:Utils.camelCaseToKebabCase &rtrif; undefined</a>"},{"title":"module:Utils.containsText","link":"<a href=\"module-Utils.html#.containsText\">module:Utils.containsText &rtrif; undefined</a>"},{"title":"module:Utils.createList","link":"<a href=\"module-Utils.html#.createList\">module:Utils.createList &rtrif; undefined</a>"},{"title":"module:Utils.divisibleBy","link":"<a href=\"module-Utils.html#.divisibleBy\">module:Utils.divisibleBy &rtrif; undefined</a>"},{"title":"module:Utils.formatCurrency","link":"<a href=\"module-Utils.html#.formatCurrency\">module:Utils.formatCurrency &rtrif; undefined</a>"},{"title":"module:Utils.formatTimerValue","link":"<a href=\"module-Utils.html#.formatTimerValue\">module:Utils.formatTimerValue &rtrif; undefined</a>"},{"title":"module:Utils.funcExists","link":"<a href=\"module-Utils.html#.funcExists\">module:Utils.funcExists &rtrif; undefined</a>"},{"title":"module:Utils.getChromeVersion","link":"<a href=\"module-Utils.html#.getChromeVersion\">module:Utils.getChromeVersion &rtrif; undefined</a>"},{"title":"module:Utils.getPercentageOf","link":"<a href=\"module-Utils.html#.getPercentageOf\">module:Utils.getPercentageOf &rtrif; undefined</a>"},{"title":"module:Utils.getRandomDecimal","link":"<a href=\"module-Utils.html#.getRandomDecimal\">module:Utils.getRandomDecimal &rtrif; undefined</a>"},{"title":"module:Utils.getRandomHexColor","link":"<a href=\"module-Utils.html#.getRandomHexColor\">module:Utils.getRandomHexColor &rtrif; undefined</a>"},{"title":"module:Utils.getRandomNumber","link":"<a href=\"module-Utils.html#.getRandomNumber\">module:Utils.getRandomNumber &rtrif; undefined</a>"},{"title":"module:Utils.getRandomRGBAColor","link":"<a href=\"module-Utils.html#.getRandomRGBAColor\">module:Utils.getRandomRGBAColor &rtrif; undefined</a>"},{"title":"module:Utils.getRandomRGBColor","link":"<a href=\"module-Utils.html#.getRandomRGBColor\">module:Utils.getRandomRGBColor &rtrif; undefined</a>"},{"title":"module:Utils.isBrowserSource","link":"<a href=\"module-Utils.html#.isBrowserSource\">module:Utils.isBrowserSource &rtrif; undefined</a>"},{"title":"module:Utils.isChrome","link":"<a href=\"module-Utils.html#.isChrome\">module:Utils.isChrome &rtrif; undefined</a>"},{"title":"module:Utils.isset","link":"<a href=\"module-Utils.html#.isset\">module:Utils.isset &rtrif; undefined</a>"},{"title":"module:Utils.isWholeNumber","link":"<a href=\"module-Utils.html#.isWholeNumber\">module:Utils.isWholeNumber &rtrif; undefined</a>"},{"title":"module:Utils.kebabCaseToCamelCase","link":"<a href=\"module-Utils.html#.kebabCaseToCamelCase\">module:Utils.kebabCaseToCamelCase &rtrif; undefined</a>"},{"title":"module:Utils.matchesRegex","link":"<a href=\"module-Utils.html#.matchesRegex\">module:Utils.matchesRegex &rtrif; undefined</a>"},{"title":"module:Utils.matchRegexGroups","link":"<a href=\"module-Utils.html#.matchRegexGroups\">module:Utils.matchRegexGroups &rtrif; undefined</a>"},{"title":"module:Utils.nextIterator","link":"<a href=\"module-Utils.html#.nextIterator\">module:Utils.nextIterator &rtrif; undefined</a>"},{"title":"module:Utils.resolves","link":"<a href=\"module-Utils.html#.resolves\">module:Utils.resolves &rtrif; undefined</a>"},{"title":"module:Utils.resumeSEQueue","link":"<a href=\"module-Utils.html#.resumeSEQueue\">module:Utils.resumeSEQueue &rtrif; undefined</a>"},{"title":"module:Utils.trimSpaces","link":"<a href=\"module-Utils.html#.trimSpaces\">module:Utils.trimSpaces &rtrif; undefined</a>"}];
+      var options = {"include_matches":true}
+        setupSearch(list, options)
+    </script>
+
+    
+    <script type="text/javascript">
+    var option = JSON.parse('{"sidebar":{"className":"os-theme-block-light","scrollbars":{"autoHide":"never"}},"body":{"className":"os-theme-block-light","scrollbars":{"autoHide":"scroll"}}}')
+      document.addEventListener("DOMContentLoaded", function()
+      {
+        OverlayScrollbars(document.querySelector('body'), option.body || {});
+        OverlayScrollbars(document.getElementById('navbar'), option.sidebar || {});
+      });
+    </script>
+    
+
+  </body>
+</html>

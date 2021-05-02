@@ -1,0 +1,91 @@
+{
+  "plugins": ["plugins/markdown"],
+  "recurseDepth": 10,
+  "source":
+  {
+    "exclude": ["modules/_API.js", "modules/_OBS.js"]
+  },
+  "sourceType": "module",
+  "tags":
+  {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "templates":
+  {
+    "default":
+    {
+      "outputSourceFiles": false,
+      "includeDate": false
+    },
+    "cleverLinks": true
+  },
+  "opts":
+  {
+    "template": "./template",
+    "theme_opts":
+    {
+      "title": "Widget Tools",
+      "meta":
+      [
+        {
+          "name": "author",
+          "content": "Reboot0"
+        },
+        {
+          "name": "description",
+          "content": "Documentation for the StreamElements widget tools"
+        }
+      ],
+      "menu":
+      [
+        {
+          "title": "Getting Started",
+          "link": "./index.html",
+          "class": "getting-started"
+        },
+        {
+          "title": "Overlay Editor Docs",
+          "link": "https://github.com/StreamElements/widgets/blob/master/CustomCode.md",
+          "target": "_blank",
+          "class": "external-link"
+        },
+        {
+          "title": "SE API Docs",
+          "link": "https://dev.streamelements.com/docs/kappa/api.yaml",
+          "target": "_blank",
+          "class": "external-link"
+        },
+        {
+          "title": "Connection Guides",
+          "link": "https://dev.streamelements.com/docs/kappa/docs/OAuth2.md",
+          "target": "_blank",
+          "class": "external-link"
+        }
+      ],
+      "search":
+      {
+        "include_matches": true
+      },
+      "overlay_scrollbar":
+      {
+        "sidebar":
+        {
+          "className": "os-theme-block-light",
+          "scrollbars":
+          {
+            "autoHide": "never"
+          }
+        },
+        "body":
+        {
+          "className": "os-theme-block-light",
+          "scrollbars":
+          {
+            "autoHide": "scroll"
+          }
+        }
+      }
+    }
+  }
+}
