@@ -16,7 +16,7 @@ That's where this library comes in. Just include it and let it do the heavy lift
 You can include this in your HTML-Tab just like any other library.
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/reboot0-de/se-tools/dist/se-tools.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/reboot0-de/se-tools@main/dist/se-tools.min.js"></script>
 ```
 
 Make sure to not forget the `defer` attribute on the script-tag or else the script may not work properly.
