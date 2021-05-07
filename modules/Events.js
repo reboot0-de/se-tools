@@ -289,7 +289,7 @@ export default class Events
   }
 
   /**
-   * Returns whether the given event would not get queued by the StreamElemens API.
+   * Returns whether the given event would not get queued by the StreamElements API.
    * @param event {string} - The event-name to check for.
    * @returns {boolean}
    * @since 1.0.0
@@ -355,113 +355,113 @@ export default class Events
 
   /**
    * Handles and forwards the 'onWidgetLoad' event-data to window.onWidgetLoad.
-   * @param obj {object} - The proxied obj parameter of the original onWidgetLoad event
+   * @param p {object} - The proxied obj parameter of the original onWidgetLoad event
    * @since 1.0.0
    */
-  onWidgetLoadHandler(obj)
+  onWidgetLoadHandler(p)
   {
-    Utils.callFunc("onWidgetLoad", obj?.detail);
+    Utils.callFunc("onWidgetLoad", p?.detail);
   }
 
   /**
    * Handles and forwards the 'onSessionUpdate' event data to window.onSessionUpdate.
-   * @param obj {object} - The proxied obj parameter of the original onSessionUpdate event
+   * @param p {object} - The proxied obj parameter of the original onSessionUpdate event
    * @since 1.0.0
    */
-  onSessionUpdateHandler(obj)
+  onSessionUpdateHandler(p)
   {
-    Utils.callFunc("onSessionUpdate", obj?.detail?.session);
+    Utils.callFunc("onSessionUpdate", p?.detail?.session);
   }
 
   /**
    * Handles the 'onEventReceived' event and forwards the data parameter to the corresponding handler.
    * This function auto-determines which handler should be called, based on the provided data object.
-   * @param obj {object} - The proxied obj parameter of the original onEventReceived event
+   * @param p {object} - The proxied obj parameter of the original onEventReceived event
    * @since 1.0.0
    */
-  onEventReceivedHandler(obj)
+  onEventReceivedHandler(p)
   {
-    const listener = obj?.detail?.listener;
-    const event    = obj?.detail?.event;
+    const l = p?.detail?.listener;
+    const e    = p?.detail?.event;
 
-    if(listener === undefined || event === undefined || !this.expectsEventListener(listener))
+    if(l === undefined || e === undefined || !this.expectsEventListener(l))
     {
       Utils.resumeSEQueue();
       return;
     }
 
     // Chat message
-    if(this.expectsEventName("Message")             && listener === "message")
+    if(this.expectsEventName("Message")             && l === "message")
     {
-      this.onMessageHandler(event);
+      this.onMessageHandler(e);
     }
     // Single message deleted
-    else if(this.expectsEventName("DeleteMessage")  && listener === "delete-message")
+    else if(this.expectsEventName("DeleteMessage")  && l === "delete-message")
     {
-      this.onDeleteMessageHandler(event);
+      this.onDeleteMessageHandler(e);
     }
     // Multiple messages deleted (User Timeout)
-    else if(this.expectsEventName("DeleteMessages") && listener === "delete-messages")
+    else if(this.expectsEventName("DeleteMessages") && l === "delete-messages")
     {
-      this.onDeleteMessagesHandler(event);
+      this.onDeleteMessagesHandler(e);
     }
     // Check type of subscription
-    else if(listener === 'subscriber-latest')
+    else if(l === 'subscriber-latest')
     {
       // Correct sender on test alerts
-      if(event.isTest && !(event.gifted && event.isCommunityGift) && !event.bulkGifted)
+      if(e.isTest && !(e.gifted && e.isCommunityGift) && !e.bulkGifted)
       {
-        event.sender = undefined;
+        e.sender = undefined;
       }
       // New Sub
-      if(this.expectsEventName("Subscriber") && event.amount === 1 && event.sender === undefined)
+      if(this.expectsEventName("Subscriber") && e.amount === 1 && e.sender === undefined)
       {
-        this.onSubscriberHandler(event);
+        this.onSubscriberHandler(e);
       }
       // Gift
-      else if(this.expectsEventName("SubGift") && event.gifted && !event.isCommunityGift)
+      else if(this.expectsEventName("SubGift") && e.gifted && !e.isCommunityGift)
       {
-        this.onSubGiftHandler(event);
+        this.onSubGiftHandler(e);
       }
       // Resub
-      else if(this.expectsEventName("Resub") && event.amount > 1 && event.sender === undefined)
+      else if(this.expectsEventName("Resub") && e.amount > 1 && e.sender === undefined)
       {
-        this.onResubHandler(event);
+        this.onResubHandler(e);
       }
       // SubBomb - Main
-      else if(this.expectsEventName("SubBomb") && event.bulkGifted)
+      else if(this.expectsEventName("SubBomb") && e.bulkGifted)
       {
-        const gifter = event?.sender?.toLowerCase();
+        const g = e?.sender?.toLowerCase();
 
-        if(gifter && this.#giftCollection[gifter] === undefined)
+        if(g && this.#giftCollection[g] === undefined)
         {
-          this.#giftCollection[gifter] = { amount: event.amount, recipients: [] };
+          this.#giftCollection[g] = { amount: e.amount, recipients: [] };
         }
 
-        this.onSubBombHandler(event);
+        this.onSubBombHandler(e);
       }
       // SubBomb - Gift
-      else if(event.gifted && event.isCommunityGift)
+      else if(e.gifted && e.isCommunityGift)
       {
         if(this.expectsEventName("CommunityGift"))
         {
-          this.onCommunityGiftHandler(event);
+          this.onCommunityGiftHandler(e);
         }
 
         if(this.expectsEventName("SubBombComplete"))
         {
-          const gifter = event?.sender?.toLowerCase();
+          const g = e?.sender?.toLowerCase();
 
-          if(gifter && this.#giftCollection[gifter] !== undefined)
+          if(g && this.#giftCollection[g] !== undefined)
           {
-            this.#giftCollection[gifter].recipients.push(event.name);
+            this.#giftCollection[g].recipients.push(e.name);
 
-            if(this.#giftCollection[gifter].amount === this.#giftCollection[gifter].recipients.length)
+            if(this.#giftCollection[g].amount === this.#giftCollection[g].recipients.length)
             {
-              event.amount = this.#giftCollection[gifter].amount;
-              this.onSubBombCompleteHandler(event, this.#giftCollection[gifter].recipients);
+              e.amount = this.#giftCollection[g].amount;
+              this.onSubBombCompleteHandler(e, this.#giftCollection[g].recipients);
 
-              delete this.#giftCollection[gifter];
+              delete this.#giftCollection[g];
             }
             else
             {
@@ -472,107 +472,107 @@ export default class Events
       }
     }
     // Tip
-    else if(this.expectsEventName("Tip")           && listener === 'tip-latest')
+    else if(this.expectsEventName("Tip")           && l === 'tip-latest')
     {
-      this.onTipHandler(event);
+      this.onTipHandler(e);
     }
     // Cheer
-    else if(this.expectsEventName("Cheer")         && listener === 'cheer-latest')
+    else if(this.expectsEventName("Cheer")         && l === 'cheer-latest')
     {
-      this.onCheerHandler(event);
+      this.onCheerHandler(e);
     }
     // Host
-    else if(this.expectsEventName("Host")          && listener === 'host-latest')
+    else if(this.expectsEventName("Host")          && l === 'host-latest')
     {
-      this.onHostHandler(event);
+      this.onHostHandler(e);
     }
     // Raid
-    else if(this.expectsEventName("Raid")          && listener === 'raid-latest')
+    else if(this.expectsEventName("Raid")          && l === 'raid-latest')
     {
-      this.onRaidHandler(event);
+      this.onRaidHandler(e);
     }
     // Follow
-    else if(this.expectsEventName("Follow")        && listener === 'follower-latest')
+    else if(this.expectsEventName("Follow")        && l === 'follower-latest')
     {
-      this.onFollowHandler(event);
+      this.onFollowHandler(e);
     }
     // Bot-Counter updated
-    else if(this.expectsEventName("BotCounter")    && listener === "bot:counter")
+    else if(this.expectsEventName("BotCounter")    && l === "bot:counter")
     {
-      this.onBotCounterHandler(event);
+      this.onBotCounterHandler(e);
     }
     // Event skipped
-    else if(this.expectsEventName("EventSkip")     && listener === "event:skip")
+    else if(this.expectsEventName("EventSkip")     && l === "event:skip")
     {
-      this.onEventSkipHandler(event);
+      this.onEventSkipHandler(e);
     }
     // Widget-Button pressed
-    else if(this.expectsEventName("WidgetButton")  && listener === "event:test" && event.listener === "widget-button")
+    else if(this.expectsEventName("WidgetButton")  && l === "event:test" && e.listener === "widget-button")
     {
-      this.onWidgetButtonHandler(event);
+      this.onWidgetButtonHandler(e);
     }
     // Key-Value-Store updated
-    else if(this.expectsEventName("KVStoreUpdate") && listener === "kvstore:update")
+    else if(this.expectsEventName("KVStoreUpdate") && l === "kvstore:update")
     {
-      this.onKVStoreUpdateHandler(event);
+      this.onKVStoreUpdateHandler(e);
     }
     // Alerts were (un)muted by the user
-    else if(this.expectsEventName("ToggleSound")   && listener === "alertService:toggleSound")
+    else if(this.expectsEventName("ToggleSound")   && l === "alertService:toggleSound")
     {
-      this.onToggleSoundHandler(event);
+      this.onToggleSoundHandler(e);
     }
   }
 
   /**
    * Calls window.onSubscriber and gets triggered when someone subscribes for the first time (first month) on your channel.
-   * @param event {SubscriberEvent} - The event data object
+   * @param e {SubscriberEvent} - The event data object
    * @since 1.0.0
    */
-  onSubscriberHandler(event)
+  onSubscriberHandler(e)
   {
-    Utils.callFunc("onSubscriber", event);
+    Utils.callFunc("onSubscriber", e);
   }
 
   /**
    * Calls window.onResub and gets triggered when someone resubscribes on your channel.
-   * @param event {ResubEvent} - The event data object
+   * @param e {ResubEvent} - The event data object
    * @since 1.0.0
    */
-  onResubHandler(event)
+  onResubHandler(e)
   {
-    Utils.callFunc("onResub", event);
+    Utils.callFunc("onResub", e);
   }
 
   /**
    * Calls window.onSubGift and gets triggered when someone gifts a subscription to another user (targeted).
-   * @param event {SubGiftEvent} - The event data object
+   * @param e {SubGiftEvent} - The event data object
    * @since 1.0.0
    */
-  onSubGiftHandler(event)
+  onSubGiftHandler(e)
   {
-    Utils.callFunc("onSubGift", event);
+    Utils.callFunc("onSubGift", e);
   }
 
   /**
    * Calls window.onCommunityGift and gets triggered for each subgift in a SubBomb. Has the same data as onSubGift and a fixed recipient.
-   * @param event {CommunityGiftEvent} - The event data object
+   * @param e {CommunityGiftEvent} - The event data object
    * @since 1.0.0
    */
-  onCommunityGiftHandler(event)
+  onCommunityGiftHandler(e)
   {
-    Utils.callFunc("onCommunityGift", event);
+    Utils.callFunc("onCommunityGift", e);
   }
 
   /**
    * Calls window.onSubBomb and gets triggered when a SubBomb occurs.
    * This event will trigger on the initial SubBomb message and only contains the sender and amount.
    * Recipients are not known yet.
-   * @param event {SubBombEvent} - The event data object
+   * @param e {SubBombEvent} - The event data object
    * @since 1.0.0
    */
-  onSubBombHandler(event)
+  onSubBombHandler(e)
   {
-    Utils.callFunc("onSubBomb", event);
+    Utils.callFunc("onSubBomb", e);
   }
 
   /**
@@ -582,92 +582,92 @@ export default class Events
    * @param recipients {string[]} - An array of recipient names
    * @since 1.0.0
    */
-  onSubBombCompleteHandler(event, recipients)
+  onSubBombCompleteHandler(e, recipients)
   {
-    Utils.callFunc("onSubBombComplete", event, recipients);
+    Utils.callFunc("onSubBombComplete", e, recipients);
   }
 
   /**
    * Calls window.onTip and gets triggered when you receive a tip through StreamElements.
-   * @param event {TipEvent} - The event data object
+   * @param e {TipEvent} - The event data object
    * @since 1.0.0
    */
-  onTipHandler(event)
+  onTipHandler(e)
   {
-    Utils.callFunc("onTip", event);
+    Utils.callFunc("onTip", e);
   }
 
   /**
    * Calls window.onCheer and gets triggered when someone cheers (uses Bits) in your channel.
-   * @param event {CheerEvent} - The event data object
+   * @param e {CheerEvent} - The event data object
    * @since 1.0.0
    */
-  onCheerHandler(event)
+  onCheerHandler(e)
   {
-    Utils.callFunc("onCheer", event);
+    Utils.callFunc("onCheer", e);
   }
 
   /**
    * Calls window.onHost and gets triggered when someone hosts your channel.
-   * @param event {HostEvent} - The event data object
+   * @param e {HostEvent} - The event data object
    * @since 1.0.0
    */
-  onHostHandler(event)
+  onHostHandler(e)
   {
-    Utils.callFunc("onHost", event);
+    Utils.callFunc("onHost", e);
   }
 
   /**
    * Calls window.onCheer and gets triggered when someone raids your channel.
-   * @param event {RaidEvent} - The event data object
+   * @param e {RaidEvent} - The event data object
    * @since 1.0.0
    */
-  onRaidHandler(event)
+  onRaidHandler(e)
   {
-    Utils.callFunc("onRaid", event);
+    Utils.callFunc("onRaid", e);
   }
 
   /**
    * Calls window.onFollow and gets triggered when someone follows your channel.
-   * @param event {FollowEvent} - The event data object
+   * @param e {FollowEvent} - The event data object
    * @since 1.0.0
    */
-  onFollowHandler(event)
+  onFollowHandler(e)
   {
-    Utils.callFunc("onFollow", event);
+    Utils.callFunc("onFollow", e);
   }
 
   /**
    * Calls window.onMessage and gets triggered everytime someone sends a message in your chat.
-   * @param event {MessageEvent} - The event data object
+   * @param e {MessageEvent} - The event data object
    * @since 1.0.0
    */
-  onMessageHandler(event)
+  onMessageHandler(e)
   {
-    Utils.callFunc("onMessage", (new ChatMessage(event)));
+    Utils.callFunc("onMessage", (new ChatMessage(e)));
   }
 
   /**
    * Calls window.onDeleteMessage and gets triggered everytime a single message is deleted in your chat, by a moderator.
    * You can use the passed messageId to delete the message in your own chat widget.
-   * @param event {DeleteMessageEvent} - The event data object
+   * @param e {DeleteMessageEvent} - The event data object
    * @since 1.0.0
    */
-  onDeleteMessageHandler(event)
+  onDeleteMessageHandler(e)
   {
-    Utils.callFunc("onDeleteMessage", event);
+    Utils.callFunc("onDeleteMessage", e);
   }
 
   /**
    * Calls window.onMessage and gets triggered everytime multiple messages are deleted in your chat, by a moderator.
    * This could occur on timeouts and bans and affects every message the user sent in chat this session.
    * You can use the passed userId to delete all messages of that user in your own chat widget.
-   * @param event {DeleteMessagesEvent} - The event data object
+   * @param e {DeleteMessagesEvent} - The event data object
    * @since 1.0.0
    */
-  onDeleteMessagesHandler(event)
+  onDeleteMessagesHandler(e)
   {
-    Utils.callFunc("onDeleteMessages", event);
+    Utils.callFunc("onDeleteMessages", e);
   }
 
   /**
@@ -681,42 +681,42 @@ export default class Events
 
   /**
    * Calls window.onBotCounter and gets triggered everytime a bot-counter gets updated. (Through chat commands for example)
-   * @param event {BotCounterEvent} - The event data object
+   * @param e {BotCounterEvent} - The event data object
    * @since 1.0.0
    */
-  onBotCounterHandler(event)
+  onBotCounterHandler(e)
   {
-    Utils.callFunc("onBotCounter", event);
+    Utils.callFunc("onBotCounter", e);
   }
 
   /**
    * Calls window.onWidgetButton and gets triggered everytime you press a custom button (defined in your fields) via the overlay editor.
-   * @param event {WidgetButtonEvent} - The event data object
+   * @param e {WidgetButtonEvent} - The event data object
    * @since 1.0.0
    */
-  onWidgetButtonHandler(event)
+  onWidgetButtonHandler(e)
   {
-    Utils.callFunc("onWidgetButton", event);
+    Utils.callFunc("onWidgetButton", e);
   }
 
   /**
    * Calls window.onKVStoreUpdate and gets triggered everytime a value changes.
    * NOTE: This will also get triggered across widgets to communicate between them.
-   * @param event {KVStoreUpdateEvent} - The event data object
+   * @param e {KVStoreUpdateEvent} - The event data object
    * @since 1.0.0
    */
-  onKVStoreUpdateHandler(event)
+  onKVStoreUpdateHandler(e)
   {
-    Utils.callFunc("onKVStoreUpdate", event);
+    Utils.callFunc("onKVStoreUpdate", e);
   }
 
   /**
    * Calls window.onToggleSound and gets triggered everytime the user toggles the sound for alerts.
-   * @param event {ToggleSoundEvent} - The event data object
+   * @param e {ToggleSoundEvent} - The event data object
    * @since 1.0.0
    */
-  onToggleSoundHandler(event)
+  onToggleSoundHandler(e)
   {
-    Utils.callFunc("onToggleSound", event);
+    Utils.callFunc("onToggleSound", e);
   }
 }

@@ -1,8 +1,9 @@
-<img style="margin: auto; display: block; width: 700px;" src="https://reboot0-de.github.io/se-tools/images/logo_wide_purple.png" alt="StreamElements Logo" />
-<div style="text-align: center; font-size: 32px; font-weight: bold;">Widget Tools</div>
+<img style="margin: auto; display: block; width: 600px;" src="https://reboot0-de.github.io/se-tools/images/logo_wide_purple.png" alt="StreamElements Logo" />
+<div style="text-align: center; font-size: 32px; font-weight: bold;">Reboot0s Widget Tools</div>
 <hr />
 <p style="text-align: center; font-style: italic;">Supercharge your custom widgets and focus on the fun parts.</p>
-<p style="text-align: center; font-style: italic;"><a href="https://github.com/reboot0-de/se-tools">GitHub Repo</a> | <a href="https://reboot0-de.github.io/se-tools/">Documentation</a></p>
+<p style="text-align: center;"><a href="https://github.com/reboot0-de/se-tools">GitHub Repo</a> | <a href="https://reboot0-de.github.io/se-tools/">Documentation</a></p>
+<p style="text-align: center; font-size: 18px; font-weight: bold;">This is a community-driven resource and no official product by StreamElements. <sup style="font-size: 10px;">Yet. <sub><img style="height: 18px;" src="https://static-cdn.jtvnw.net/emoticons/v1/2868/1.0" alt="MiniK" /></sub></sup></p>
 <hr />
 
 ## Introduction
@@ -21,7 +22,7 @@ You can include this in your HTML-Tab just like any other library.
 
 Make sure to not forget the `defer` attribute on the script-tag or else the script may not work properly.
 
-**Also note:** This is currently in the beta testing phase. So please don't use this in production yet.
+**Also note:** This is currently in the beta testing phase. So use this with care and please report any issues you find.
 
 ## Usage
 Once the script is included, you'll have access to all the functions and classes.
@@ -59,11 +60,11 @@ A more in-depth explanation of all modules can also be found in the docs.
 ## Support
 If you want to report a bug or have technical questions regarding this library, you can create an Issue on [GitHub](https://github.com/reboot0-de/se-tools).
 
-For more general StreamElements development questions, you can join our [StreamElements Developers](https://strms.net/se_developers) server.
+For more general StreamElements development questions, you can join our [SE Developers](https://strms.net/se_developers) server.
 
-For non-development support questions, you can use the official [StreamElements Discord](https://discord.com/invite/se) server.
+For non-development support questions you can use the official [StreamElements Discord](https://discord.com/invite/se) server.
 
-However, we won't offer support via personal messages.
+However, none of these will offer support via personal messages.
 
 ## Building
 In most cases, you just want to include the already compiled file without needing to build anything.
