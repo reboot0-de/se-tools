@@ -25,13 +25,17 @@ Make sure to not forget the `defer` attribute on the script-tag or else the scri
 **Also note:** This is currently in the beta testing phase. So use this with care and please report any issues you find.
 
 ## Usage
+For a quick-start you can check out this preset example overlay with each event implemented:
+
+[https://streamelements.com/dashboard/overlays/share/6025327a79af692b94ee6f44](https://streamelements.com/dashboard/overlays/share/6025327a79af692b94ee6f44)
+
 Once the script is included, you'll have access to all the functions and classes.
 
 The script will register itself to the window instance and auto-initialize its components.
 
 The listener functions for events start with "on" followed by the event name in camel case syntax: `onEventName`
 
-A list of all available events and their properties can be found in the [docs](https://reboot0-de.github.io/se-tools/tutorial-Events.html).
+A list of all available events and their properties can be found [here](https://reboot0-de.github.io/se-tools/tutorial-Events.html).
 
 Handling new subscriptions would be shortened to just this:
 

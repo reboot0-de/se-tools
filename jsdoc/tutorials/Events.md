@@ -39,7 +39,7 @@ if(listener === 'subscriber-latest')
 }
 ```
 
-That is neither trivial to figure out nor easy to remember. (And this is just the subscriber-listener)
+This is neither trivial to figure out nor easy to remember. (And this is just for the subscriber-listener)
 
 We don't want this. We want an easier approach.
 
@@ -75,7 +75,7 @@ function onSubscriber(data)
 ## onResub
 This gets triggered everytime a viewer continues their subscription for (at least) another month.
 
-They do not have to be consecutive months.
+These do not have to be consecutive months.
 
 Even if some time passed since the user last subscribed to the channel, the next subscription will still be considered a resub.
 
