@@ -42,16 +42,16 @@ Handling new subscriptions would be shortened to just this:
 ```javascript
 function onSubscriber(event)
 {
-  DOM.setText("#myAlertText", `${event.username} has subscribed!`);
+  DOM.setText("#myAlertText", `${event.name} has subscribed!`);
 }
 ```
 
 You can even destruct parameters to limit the scope to only necessary properties:
 
 ```javascript
-function onResub({username, amount} = event)
+function onResub({name, amount} = event)
 {
-  DOM.setText("#myAlertText", `${username} has resubscribed for ${amount} months!`);
+  DOM.setText("#myAlertText", `${name} has resubscribed for ${amount} months!`);
 }
 ```
 

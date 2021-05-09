@@ -360,7 +360,7 @@ export default class Events
    */
   onWidgetLoadHandler(p)
   {
-    Utils.callFunc("onWidgetLoad", p?.detail);
+    Utils.callFunc("onWidgetLoad", p);
   }
 
   /**
@@ -370,7 +370,7 @@ export default class Events
    */
   onSessionUpdateHandler(p)
   {
-    Utils.callFunc("onSessionUpdate", p?.detail?.session);
+    Utils.callFunc("onSessionUpdate", p);
   }
 
   /**

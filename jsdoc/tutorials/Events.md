@@ -241,22 +241,22 @@ function onTip(data)
 }
 ```
 
-_Bonus Tipp_: `Utils.formatCurrency(amount, currencyCode, locale)` is an easy way of formatting amounts of money to your local/national notation.
+_Bonus Tip_: `Utils.formatCurrency(amount, currencyCode, locale)` is an easy way of formatting amounts of money to your local/national notation.
 
-The `currencyCode` parameter accepts any valid ISO 4217 currency code to format the amount in.
+The `currencyCode` parameter accepts any valid ISO 4217 currency code to format the amount to.
 
-The `locale` parameter is optional and will be set by the browser if you omit it.
+The `locale` parameter is optional and will be set by the browser if omitted.
 
-This will also remove trailing zeros, if the amount is not a decimal. An amount of $20,00 would become $20, while $4,20 would stay $4,20.
+This function will also remove trailing zeros if the amount is not a decimal. An amount of $20,00 would become $20, while $4,20 would stay $4,20.
 
 ## onWidgetLoad
 This gets triggered, when the widget and document finished loading and necessary pieces of information (like data about widget and user) is available.
 
-This only executes once. However, changing values of custom fields will cause the widget to reload and hence trigger this again when ready.
+This only executes once, but changing values of custom fields will cause the widget to reload and hence trigger this again when ready.
 
 For most widgets this is the main entry point for initialization logic.
 
-For more details: https://github.com/StreamElements/widgets/blob/master/CustomCode.md#on-widget-load
+For more details see: https://github.com/StreamElements/widgets/blob/master/CustomCode.md#on-widget-load
 
 ```javascript
 function onWidgetLoad(obj)
@@ -273,13 +273,13 @@ function onWidgetLoad(obj)
 ```
 
 ## onSessionUpdate
-This gets triggered, whenever an event updates your current session data.
+This gets triggered, whenever an event updates your current session-data.
 
 However, this should not be used as a one-for-all solution`to handle events.
 
-Use the corresponding listener functions for specific events instead and only use `onSessionUpdate`, when you need to update any top-* values in the current session.
+Use the corresponding listener functions for specific events instead and only use `onSessionUpdate`, when you need to update any top-* values of the current session.
 
-For more details: https://github.com/StreamElements/widgets/blob/master/CustomCode.md#on-session-update
+For more details see: https://github.com/StreamElements/widgets/blob/master/CustomCode.md#on-session-update
 
 `obj.detail.session` holds the same data as `obj.detail.session.data` in `onWidgetLoad(obj)` above.
 
@@ -359,12 +359,12 @@ If you try to destrcuture properties, that do not exist on the object, the value
 Keep in mind, that once you destructure a parameter, the original object will not be available in the scope anymore. Also, any non-destructured property will be lost as well.
 
 ```javascript
-function onResub({ username, amount, iDontExist } = data)
+function onResub({ name, amount, iDontExist } = data)
 {
     // This would for example just output "MyUsername just resubscribed for 42 months: undefined" without throwing an error
-    console.log(`${username} just resubscribed for ${amount} months: ${iDontExist}`);
+    console.log(`${name} just resubscribed for ${amount} months: ${iDontExist}`);
     // This won't work, since data is not available anymore.
-    console.log(data.username);
+    console.log(data.name);
 }
 ```
 
