@@ -2,6 +2,12 @@ The DOM class is static and needs to be called as `DOM.functionName(parameter)`.
 
 Its main purpose is to simplify changing elements and contents in the DOM without needing other 3rd-party libraries.
 
+The DOM (Document Object Model) is a very important part of your widget and dictates the general backbone of it.
+
+If you currently don't know how exactly the DOM is structured or what DOM-manipulation is, we recommend learning the basics for that first, so you can understand the following sections.
+
+[MDN Article - Introduction to the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
+
 # Querying selectors
 One of the most common and basic task in widgets, is querying the DOM to alter styles, classes, texts and media.
 
@@ -310,7 +316,7 @@ DOM.setDataAttr('div[data-color="red"]', "color", "green");
 DOM.getDataAttr('div[data-amount="4"]', "color");// returns "green"
 ```
 
-Keep in mind, that the returned type of data-atributes is always a string. Even if you stored an object or number.
+Keep in mind, that the returned type of data-attributes is always a string. Even if you stored an object or number.
 
 ```html
 <div id="example1" data-object="{ 'a': 1, 'b': 2, 'c': 3 }"></div>

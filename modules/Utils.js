@@ -174,22 +174,25 @@ export default class Utils
    */
   static getRandomNumber(min, max)
   {
-    return Math.floor((Math.random() + min) * (max + 1));
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   /**
    * Generates and returns a random decimal number in the range of the given numbers.
    *
-   * The parameter values are inclusive.
+   * You can also define how many decimal places you want to keep. (Defaults to 2)
+   *
+   * The parameter values are inclusive, but possibly very unlikely to hit depending on the range and number of decimal places.
    * @param min {number} - Minimum value of the range.
    * @param max {number} - Maximum value of the range.
+   * @param {number} [decimalPlaces=2] - The number of decimal places you want to keep in the result
    * @returns {number}
    * @static
    * @since 1.0.0
    */
-  static getRandomDecimal(min, max)
+  static getRandomDecimal(min, max, decimalPlaces = 2)
   {
-    return ((Math.random() + min) * (max + 1));
+    return parseFloat((Math.random() * (max - min) + min).toFixed(decimalPlaces));
   }
 
   /**
