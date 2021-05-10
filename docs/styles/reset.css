@@ -9,26 +9,32 @@ h2 { font-size: 32px; }
 h3 { font-size: 28px; }
 h4 { font-size: 24px; }
 
-a {
+a
+{
+    word-break: break-word;
     text-decoration: none;
 }
 
-a:hover {
+a:hover
+{
     text-decoration: underline;
 }
 
-article ul {
+article ul
+{
     list-style: none;
     padding-left: 16px;
 }
 
-article ul li::before {
+article ul li::before
+{
     content: '\2014\a0';
     margin-right: 8px;
 }
 
 article ul li,
-article ol li {
+article ol li
+{
     padding: 8px 0;
 }
 
@@ -151,10 +157,6 @@ ol.linenums li {
     margin: 30px 0;
     overflow: auto;
     padding-top: 5px;
-}
-
-.prettyprint.source {
-    width: inherit;
 }
 
 .prettyprint code {
@@ -302,7 +304,7 @@ body
     line-height: 1.5;
 }
 
-.getting-started
+#getting-started
 {
     font-size: 18px !important;
     font-weight: bold !important;

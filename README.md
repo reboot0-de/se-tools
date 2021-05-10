@@ -1,5 +1,5 @@
-<img style="margin: auto; display: block; width: 600px;" src="https://reboot0-de.github.io/se-tools/images/logo_wide_purple.png" alt="StreamElements Logo" />
-<div style="text-align: center; font-size: 32px; font-weight: bold;">Reboot0s Widget Tools</div>
+<img style="margin: auto; display: block; width: 100%; max-width: 600px;" src="https://reboot0-de.github.io/se-tools/images/logo_wide_purple.png" alt="StreamElements Logo" />
+<div style="text-align: center; font-size: 26px; font-weight: bold;">Reboot0s Widget Tools</div>
 <hr />
 <p style="text-align: center; font-style: italic;">Supercharge your custom widgets and focus on the fun parts.</p>
 <p style="text-align: center;"><a href="https://github.com/reboot0-de/se-tools">GitHub Repo</a> | <a href="https://reboot0-de.github.io/se-tools/">Documentation</a></p>
@@ -17,7 +17,7 @@ That's where this library comes in. Just include it and let it do the heavy lift
 You can include this in your HTML-Tab just like any other library.
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/reboot0-de/se-tools@main/dist/se-tools.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/gh/reboot0-de/se-tools/dist/se-tools.min.js"></script>
 ```
 
 Make sure to not forget the `defer` attribute on the script-tag or else the script may not work properly.

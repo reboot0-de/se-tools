@@ -77,21 +77,19 @@
     <script src="./scripts/fix-code-block.js"></script>
     <script src="./scripts/fix-navbar.js"></script>
     <script>
-      var list = [<?js= this.search.list ?>];
-      var options = <?js= this.search.options ?>
+      let list = [<?js= this.search.list ?>];
+      let options = <?js= this.search.options ?>
         setupSearch(list, options)
     </script>
 
-    <?js if(this.overlayScrollbar != undefined ) { ?>
     <script type="text/javascript">
-    var option = JSON.parse('<?js=this.overlayScrollbar ?>')
+      let option = JSON.parse('<?js=this.overlayScrollbar ?>')
       document.addEventListener("DOMContentLoaded", function()
       {
-        OverlayScrollbars(document.querySelector('body'), option.body || {});
+        OverlayScrollbars(document.querySelector('body'),    option.body    || {});
         OverlayScrollbars(document.getElementById('navbar'), option.sidebar || {});
       });
     </script>
-    <?js } ?>
 
   </body>
 </html>

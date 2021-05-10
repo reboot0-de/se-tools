@@ -41,26 +41,29 @@
       [
         {
           "title": "Getting Started",
-          "link": "./index.html",
-          "class": "getting-started"
+          "link":  "./index.html",
+          "id":    "getting-started"
         },
         {
-          "title": "Overlay Editor Docs",
-          "link": "https://github.com/StreamElements/widgets/blob/master/CustomCode.md",
+          "title":  "Overlay Editor Docs",
+          "link":   "https://github.com/StreamElements/widgets/blob/master/CustomCode.md",
           "target": "_blank",
-          "class": "external-link"
+          "class":  "external-link",
+          "id":     "editor-docs"
         },
         {
-          "title": "SE API Docs",
-          "link": "https://dev.streamelements.com/docs/kappa/api.yaml",
+          "title":  "SE API Docs",
+          "link":   "https://dev.streamelements.com/docs/kappa/api.yaml",
           "target": "_blank",
-          "class": "external-link"
+          "class":  "external-link",
+          "id":     "api-docs"
         },
         {
-          "title": "Connection Guides",
-          "link": "https://dev.streamelements.com/docs/kappa/docs/OAuth2.md",
+          "title":  "Connection Guides",
+          "link":   "https://dev.streamelements.com/docs/kappa/docs/OAuth2.md",
           "target": "_blank",
-          "class": "external-link"
+          "class":  "external-link",
+          "id":     "connection-guides"
         }
       ],
       "search":

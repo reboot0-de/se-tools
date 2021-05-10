@@ -152,6 +152,8 @@ samp {
 .prettyprint.source,
 .prettyprint code {
     background-color: #000;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .prettyprint.linenums li {

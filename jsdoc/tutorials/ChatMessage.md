@@ -67,8 +67,9 @@ message.contains("haha");
 // This will only return true for haHAA, but not for lower-case versions.
 message.contains("haHAA", true);
 
-// For more complex rules, like finding the first word with at least 2 letters, starting with f and is not part of any other word, could look like this
-message.containsRegex("\bf[a-z]+\b"); // this would match "funny" and hence return true
+// For more complex rules you could use regular expressions
+// Like, finding the first word with at least 2 letters, starting with an f and is not part of any other word:
+message.containsRegex("\bf[a-z]+\b"); // this would match "funny" and therefore return true
 
 // To match every case-sensitive LUL in a message you could use
 message.containsRegex("\bLUL\b", "g"); // LUL is not part of the message, so this returns false
@@ -78,7 +79,7 @@ Another frequent task for text operations is checking if the message starts with
 
 For that we have `isCommand(cmdName)` and `getCommand(withArgs)`.
 
-The `cmdName` parameter in `isCommand()` is optional and can be used to check for specific commands. If ommitted, this returns true for any command.
+The `cmdName` parameter in `isCommand()` is optional and can be used to check for specific commands. If omitted, this returns true for any command.
 
 `getCommand()` on the other hand, returns the used command (if any was used) and can even return the commands arguments. The `withArgs` parameter defaults to false though.
 
@@ -89,14 +90,14 @@ However, the result of `getCommand()` will always be the name without the leadin
 ```javascript
 message.text = "!test 1 2 @user";
 
-// returns true, since any command will match
+// Returns true, since any command will match
 message.isCommand();
-// returns false. it doesn't matter if you put "watchtime" or "!watchtime" here.
+// Returns false. Also, it doesn't matter if you put "watchtime" or "!watchtime" here.
 message.isCommand("watchtime");
 
-// returns "test". No leading ! here.
+// Returns "test". No leading ! will be included here.
 message.getCommand();
-// returns { "command": "test", "args": ["1", "2", "@user"] }
+// Returns { "command": "test", "args": ["1", "2", "@user"] }
 message.getCommand(true);
 ```
 
@@ -190,7 +191,8 @@ Whitespaces however, are not counted towards percentages. For example, a message
 ```javascript
 message.text = "PogChamp WOW PogChamp WOW";
 
-/* {wordCount: 4, emoteCount: 2, emotePercentage: 0.5, capsCount: 10, capsPercentage: 0.45, specialCharsCount: 0, specialCharsPercentage: 0} */
+/* { wordCount: 4,  emoteCount:     2,    emotePercentage:   0.5,
+     capsCount: 10, capsPercentage: 0.45, specialCharsCount: 0,   specialCharsPercentage: 0 } */
 let stats = message.getStats();
 
      if(stats.emotePercentage > 0.75) { console.log("Stop spamming emotes"); }
