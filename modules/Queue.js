@@ -143,7 +143,7 @@ export default class Queue
    * This function returns a `Promise` which resolves after the first element is cleared.
    * @param promiseFunc {function} - The function to execute with the first queue element as parameter. This HAS TO return a resolving promise
    * @param {number} [delayAfter=0] - Milliseconds to wait before this function resolves
-   * @param {boolean} [resumeSEQueue=false] - Determines, if `SE_API.resumeQueue()` should be called after processing the current element
+   * @param {boolean} [resumeSEQueue=false] - Determines if `SE_API.resumeQueue()` should be called after processing the current element
    * @returns {Promise}
    * @since 1.0.0
    */
@@ -159,11 +159,11 @@ export default class Queue
         promiseFunc(first)
         .then(() =>
         {
-          this.removeFirst();
-          this.#inUse = false;
-
           setTimeout(() =>
           {
+            this.removeFirst();
+            this.#inUse = false;
+
             if(resumeSEQueue) { Utils.resumeSEQueue(); }
             resolve();
           }, delayAfter);
@@ -179,7 +179,7 @@ export default class Queue
    * This gets repeated for each element, until the queue is empty.
    * @param promiseFunc {function} - The function to execute with the first queue element as parameter. This HAS TO return a resolving promise
    * @param {number} [delayBetween=0] - Milliseconds to wait between each processing cycle
-   * @param {boolean} [resumeSEQueue=false] - Determines, if `SE_API.resumeQueue()` should be called after processing each element
+   * @param {boolean} [resumeSEQueue=false] - Determines if `SE_API.resumeQueue()` should be called after processing each element
    * @since 1.0.0
    */
   processEach(promiseFunc, delayBetween = 0, resumeSEQueue = false)
