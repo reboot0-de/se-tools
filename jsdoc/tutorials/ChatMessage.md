@@ -131,7 +131,7 @@ Similar to roles are badges. They can be earned by supporting the channel moneta
 
 To check for the latter, we have `hasPrimeBadge()` and `hasTurboBadge()`, but probably more interesting is information about subscriptions, bits and given gifts.
 
-With `getTierBadge()` you can get the subscription-tier the user is currently subscibed as, as a number between 1-3. Prime subscriptions will also count as tier 1.
+With `getTierBadge()` you can get the subscription-tier the user is currently subscribed as, as a number between 1-3. Prime subscriptions will also count as tier 1.
 
 To get the total amount of months the user has been subscribed for, you can use `getMonthsSubscribed()`.
 
@@ -141,7 +141,7 @@ So, if you call `getBitsBadge()` and you cheered a total amount of 123 Bits, the
 
 The same goes for `getGiftsBadge()`.
 
-For a list of badge-levels, please refer to the offical Twitch [help article](https://help.twitch.tv/s/article/twitch-chat-badges-guide?language=en_US#Subscription)
+For a list of badge-levels, please refer to the official Twitch [help article](https://help.twitch.tv/s/article/twitch-chat-badges-guide?language=en_US#Subscription)
 
 Keep in mind that the user has to have these badges on display to get a result.
 

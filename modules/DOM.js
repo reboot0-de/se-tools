@@ -594,7 +594,7 @@ export default class DOM
   }
 
   /**
-   * Removes the specified data-attrbiute of matching elements.
+   * Removes the specified data-attribute of matching elements.
    * @param selector {string|Element} - The selector can either be a valid CSS-selector or a DOM-Element.
    * @param dataName {string} - Name of the data-attribute to remove.
    * @static

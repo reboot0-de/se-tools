@@ -261,7 +261,7 @@ The "old ways" here don't necessarily mean outdated. They are just a fallback to
 
 The concept behind `<source>` tags is to give browsers more options in dealing with supported media-files and is an optional best practice.
 
-So, in the context of widgets you probably won't need them, but for real-world websites you should definetely get used to the concept.
+So, in the context of widgets you probably won't need them, but for real-world websites you should definitely get used to the concept.
 
 That said `DOM.updateSrc` is designed to support both, so it doesn't matter which way you choose.
 

@@ -168,7 +168,7 @@ function onRaid(data)
 ```
 
 ## onCheer
-This gets triggered, when sombeody cheers (uses Bits) on your channel.
+This gets triggered, when somebody cheers (uses Bits) on your channel.
 
 Bits are a virtual currency on Twitch, that have to be bought with real money. 1 Bit is roughly equivalent to 1 cent.
 
@@ -218,7 +218,7 @@ function onDeleteMessage(data)
 ```
 
 ## onDeleteMessages
-This gets triggered, when a user in your chat gets banned or timeouted and hence their previous messages also get deleted.
+This gets triggered, when a user in your chat gets banned or timed out and hence their previous messages also get deleted.
 
 For more information, please take a look at the "Message Deletion" article in the [ChatMessage tutorial](./tutorial-ChatMessage.html).
 
@@ -354,7 +354,7 @@ Also in a real-world example, we should probably also check if the property even
 
 In JavaScript, we have the so-called "destructuring assignment syntax"[[MDN]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), which allows us to isolate specific properties from an object in its own variable.
 
-If you try to destrcuture properties, that do not exist on the object, the value of the variable will just be undefined (without throwing an error).
+If you try to destructure properties, that do not exist on the object, the value of the variable will just be undefined (without throwing an error).
 
 Keep in mind, that once you destructure a parameter, the original object will not be available in the scope anymore. Also, any non-destructured property will be lost as well.
 

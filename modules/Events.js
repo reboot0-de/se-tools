@@ -554,7 +554,7 @@ export default class Events
   }
 
   /**
-   * Calls window.onCommunityGift and gets triggered for each subgift in a SubBomb. Has the same data as onSubGift and a fixed recipient.
+   * Calls window.onCommunityGift and gets triggered for each gifted sub in a SubBomb. Has the same data as onSubGift and a fixed recipient.
    * @param e {CommunityGiftEvent} - The event data object
    * @since 1.0.0
    */

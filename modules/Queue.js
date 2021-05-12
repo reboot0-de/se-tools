@@ -142,7 +142,7 @@ export default class Queue
    *
    * This function returns a `Promise` which resolves after the first element is cleared.
    * @param promiseFunc {function} - The function to execute with the first queue element as parameter. This HAS TO return a resolving promise
-   * @param {number} [delayAfter=0] - Miliseconds to wait before this function resolves
+   * @param {number} [delayAfter=0] - Milliseconds to wait before this function resolves
    * @param {boolean} [resumeSEQueue=false] - Determines, if `SE_API.resumeQueue()` should be called after processing the current element
    * @returns {Promise}
    * @since 1.0.0
@@ -154,11 +154,14 @@ export default class Queue
       let first = this.first();
       if(first !== null && this.ready())
       {
+        this.#inUse = true;
+
         promiseFunc(first)
-        .then((resolve) =>
+        .then(() =>
         {
           this.removeFirst();
           this.#inUse = false;
+
           setTimeout(() =>
           {
             if(resumeSEQueue) { Utils.resumeSEQueue(); }
@@ -167,11 +170,6 @@ export default class Queue
         })
         .catch(reject);
       }
-      else
-      {
-        if(resumeSEQueue) { Utils.resumeSEQueue(); }
-        resolve();
-      }
     });
   }
 
@@ -179,19 +177,17 @@ export default class Queue
    * Passes the first queue element to the specified function and removes it from the queue after resolving the `Promise`.
    *
    * This gets repeated for each element, until the queue is empty.
-   *
-   * This function returns a `Promise` which resolves after the whole queue is cleared.
    * @param promiseFunc {function} - The function to execute with the first queue element as parameter. This HAS TO return a resolving promise
-   * @param {number} [delayBetween=0] - Miliseconds to wait between each processing cycle
+   * @param {number} [delayBetween=0] - Milliseconds to wait between each processing cycle
    * @param {boolean} [resumeSEQueue=false] - Determines, if `SE_API.resumeQueue()` should be called after processing each element
    * @since 1.0.0
    */
-  processAll(promiseFunc, delayBetween = 0, resumeSEQueue = false)
+  processEach(promiseFunc, delayBetween = 0, resumeSEQueue = false)
   {
     this.processFirst(promiseFunc, delayBetween, resumeSEQueue)
     .then(() =>
     {
-      this.processAll(promiseFunc, delayBetween, resumeSEQueue);
+      this.processEach(promiseFunc, delayBetween, resumeSEQueue);
     })
     .catch((err) => { console.error(err); });
   }

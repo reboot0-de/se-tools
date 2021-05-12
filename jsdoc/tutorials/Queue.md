@@ -79,17 +79,18 @@ Queue.add(10);
 Queue.add(["My", "Array"]);
 Queue.add({ "my": "object" });
 
-// returns false
+// Returns false
 Queue.empty();
 
-// removes "element"
+// Removes "element"
 Queue.removeFirst();
-// removes { "my": "object" }
+// Removes { "my": "object" }
 Queue.removeLast();
-// removes 2 elements starting at position 0. In this case 10 and ["My", "Array"], since they moved down after removeFirst() above.
+// Removes 2 elements starting at position 0.
+// In this case 10 and ["My", "Array"], since they moved down after removeFirst() above.
 Queue.remove(0, 2);
 
-// returns true after the removals
+// Returns true after the removals
 Queue.empty();
 ```
 
@@ -99,7 +100,7 @@ This internal queue is private and the only way to access its elements is throug
 
 # Calling functions on elements
 
-The most complex functions for the queue are `Queue.processFirst(promiseFunc, delayAfter, resumeSEQueue)` and `Queue.processAll(promiseFunc, delayBetween, resumeSEQueue)`.
+The most complex functions for the queue are `Queue.processFirst(promiseFunc, delayAfter, resumeSEQueue)` and `Queue.processEach(promiseFunc, delayBetween, resumeSEQueue)`.
 
 Both return a Promise[[MDN]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) and execute the passed `promiseFunc` with the first element in the queue as parameter.
 
@@ -107,13 +108,13 @@ After that, the first element in the queue will be removed.
 
 The function passed as `promiseFunc` also **has to** return a Promise to work.
 
-As the names suggest, `Queue.processFirst` only executes once on the first element, while `Queue.processAll` will execute for each element in the queue, after the element before that was sucessfully processed.
+As the names suggest, `Queue.processFirst` only executes once on the first element, while `Queue.processEach` will execute for each element in the queue, after the element before that was successfully processed.
 
 The other two parameters are optional.
 
-`delayAfter`/`delayBetween` can be used to set a delay in milliseconds between each Promise, wihtout having to use something like `setTimeout` externally. (Defaults to 0)
+`delayAfter`/`delayBetween` can be used to set a delay in milliseconds between each Promise, without having to use something like `setTimeout` externally. (Defaults to 0)
 
-`resumeSEQueue` can be set to true to automatically call `SE_API.resumeQueue()`, after the current element was succesfully processed. (Defaults to false)
+`resumeSEQueue` can be set to true to automatically call `SE_API.resumeQueue()`, after the current element was successfully processed. (Defaults to false)
 
 This can be useful, if you need to sync your queue to the StreamElements queue.
 
@@ -124,9 +125,9 @@ Let's say we wanted to enqueue and animate every resub event in a custom widget:
 function onResub(data)
 {
   Queue.add(data);
-  // Call myCoolAnimation with data as parameter and set a timeout of 1 second between each call.
+  // Call myCoolAnimation with `data` as parameter and set a timeout of 1 second between each call.
   // Also execute SE_API.resumeQueue() after each.
-  Queue.processAll(myCoolAnimation, 1000, true);
+  Queue.processEach(myCoolAnimation, 1000, true);
 }
 
 function myCoolAnimation(data)
