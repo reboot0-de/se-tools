@@ -22,9 +22,9 @@ export default class Utils
   /**
    * Returns whether each parameter is neither undefined nor null.
    *
-   * NOTE: This function does not allow for the noEmptyString parameter and will always check for empty strings.
+   * NOTE: This function does not have the `noEmptyString` parameter and will always disallow empty strings.
    *
-   * If you need to allow those, please chain the {@link Utils.isset} function in your code and use the parameter there.
+   * If you need to allow those, please chain the {@link Utils.isset} function in your code and use the `noEmptyString` parameter there.
    * @param fields {...any} - Various amount of parameters you want to check.
    * @returns {boolean}
    * @static
@@ -94,6 +94,18 @@ export default class Utils
   }
 
   /**
+   * Returns whether the passed value is of type string.
+   * @param {*} value - The value you want to check
+   * @returns {boolean}
+   * @static
+   * @since 1.0.0
+   */
+  static isString(value)
+  {
+    return (typeof value === "string");
+  }
+
+  /**
    * Removes spaces at the end & start of the string and replaces multiple consecutive spaces with only one.
    * @param text {string} - The string you want to remove whitespaces from.
    * @returns {string}
@@ -103,14 +115,15 @@ export default class Utils
   static trimSpaces(text)
   {
     if(!Utils.isset(text)) { return ""; }
-    if(typeof text !== string) { text = text.toString(); }
-    return text.replace(/\s{2,}/g, ' ').trim();
+    return (Utils.isString(text)) ? text.replace(/\s{2,}/g, ' ').trim() : text.toString();
   }
 
   /**
    * Creates and returns a list (Array) from a comma-separated string, after removing whitespaces with {@link Utils.trimSpaces}.
    *
    * The splitter character can be changed for more flexibility. Defaults to a comma.
+   *
+   * If the passed baseText is not of type string, this function just returns an empty array.
    * @param baseText {string} - The string you want to create a list from.
    * @param splitter {string} - The character you want to use as a separator for each entry.
    * @returns {string[]}
@@ -119,8 +132,13 @@ export default class Utils
    */
   static createList(baseText, splitter = ',')
   {
-    baseText = Utils.trimSpaces(baseText);
-    return baseText.split(splitter)
+    if(!Utils.isString(baseText)) { return []; }
+    let list = baseText.split(splitter);
+    for(let i = 0; i < list.length; i++)
+    {
+      list[i] = Utils.trimSpaces(list[i]);
+    }
+    return list;
   }
 
   /**
@@ -148,7 +166,7 @@ export default class Utils
   /**
    * Generates and returns a random color as RGBA-string.
    *
-   * You can pass the alpha value as parameter.
+   * You can pass the alpha value as parameter. (Defaults to 1)
    * @param {number} [alpha=1] - The decimal value for the alpha-channel (transparency) between 0 and 1.
    * @returns {string}
    * @static
@@ -198,7 +216,7 @@ export default class Utils
   /**
    * Returns what percentage the first parameter is of the second.
    *
-   * If you pass 10 and 50 you would get 0.2, since 10 is 20% of 50.
+   * If you pass 10 and 50 you would get 20, since 10 is 20% of 50.
    * @param value {number}
    * @param percentageOf {number}
    * @returns {number}
@@ -242,18 +260,17 @@ export default class Utils
   }
 
   /**
-   * Returns the next iterator (`i+1`) or `0` if `i >= max`. Both i and max have to be positive numbers.
-   *
-   * Useful if you want to start over after iterating over an array via index.
+   * Returns either the counter value incremented by the given step value or starts over at 0 if the counter reached the max value.
    * @param i {number} - Current iterator value
-   * @param max {number} - Max value the iterator value should not exceed
+   * @param max {number} - Maximum value the iterator should not exceed.
+   * @param {number} [step=1] - The value you want to increment the counter by in each iteration.
    * @returns {number}
    * @static
    * @since 1.0.0
    */
-  static nextIterator(i, max)
+  static nextIterator(i, max, step = 1)
   {
-    return (i < 0 || max <= 0) ? 0 : (i % max);
+    return (Math.abs(i) >= Math.abs(max)) ? 0 : (i + step);
   }
 
   /**
@@ -281,16 +298,16 @@ export default class Utils
 
   /**
    * Returns the Chrome version as numeric value or 0, if either no version was found or the browser is not Chromium-based.
-   * @param {boolean} [asString=false] - If set to true, the version will be returned as string instead.
+   * @param {boolean} [fullVersion=false] - If set to true, the full version will be returned as string instead.
    * @returns {number}
    * @static
    * @since 1.0.0
    */
-  static getChromeVersion(asString = false)
+  static getChromeVersion(fullVersion = false)
   {
-    const match = Utils.matchRegexGroups(window.navigator.userAgent, "Chrom(e|ium)\\/?<version>([0-9]+)", "i");
-    const value = (match) ? match[2] : 0;
-    return (asString) ? value.toString() : parseFloat(value);
+    const match = Utils.matchRegexGroups(window.navigator.userAgent, "Chrom(e|ium)\\/(?<version>([0-9]+.?[0-9]+.?[0-9]+.?[0-9]+))", "i");
+    const value = (match?.version) ? match.version : 0;
+    return (fullVersion) ? value : parseInt(value);
   }
 
   /**
@@ -307,7 +324,7 @@ export default class Utils
   /**
    * Converts a camel case string to kebab case. If no uppercase letter was found, this will just return the original string.
    *
-   * E.g. the string "helloWorld" becomes "hello-world", but "helloworld" remains unchanged.
+   * E.g. the string "HelloWorld" becomes "hello-world", but "helloworld" remains unchanged.
    * @param camelCase {string} - The camel case string you want to convert.
    * @returns {string}
    * @static
@@ -329,7 +346,7 @@ export default class Utils
    */
   static kebabCaseToCamelCase(kebabCase)
   {
-    return kebabCase.split('-').map((l, index) => (index) ? (l.charAt(0).toUpperCase() + item.slice(1).toLowerCase()) : l).join('');
+    return kebabCase.split('-').map((l, index) => (index) ? (l.charAt(0).toUpperCase() + l.slice(1).toLowerCase()) : l).join('');
   }
 
   /**
@@ -353,30 +370,32 @@ export default class Utils
 
   /**
    * Returns whether the text contains the given snippet.
+   *
+   * If either text or snippet is not of type string, this will return null.
    * @param text {string} - The text to check.
    * @param snippet {string} - The snippet to search for.
    * @param {boolean} [caseSensitive=false] - Determines if the check should be case-sensitive.
-   * @return {boolean}
+   * @return {boolean|null}
    * @static
    * @since 1.0.0
    */
   static containsText(text, snippet, caseSensitive = false)
   {
-    return (Utils.allset(text, snippet)) ? ((caseSensitive && text.includes(snippet)) || text.includes(snippet?.toLowerCase())) : false;
+    if(!Utils.isString(text) || !Utils.isString(snippet)) { return null; }
+    return (Utils.allset(text, snippet)) ? ((caseSensitive && text.includes(snippet)) || text.toLocaleLowerCase().includes(snippet?.toLocaleLowerCase())) : false;
   }
 
   /**
-   * Returns whether the text matches the given regular expression and flags.
-   * @param text {string} - The text to perform the RegExp on.
-   * @param regexString {string} - The regular expression to check for.
-   * @param {string} [flags="i"] - The flags to use. Defaults to case-insensitive (i).
+   * Returns whether the text matches the given regular expression.
+   * @param text {string} - The text to perform the regular expression test on.
+   * @param regex {RegExp} - The regular expression to check for. Can either be an instance of RexExp or in literal notation.
    * @return {boolean}
    * @static
    * @since 1.0.0
    */
-  static matchesRegex(text, regexString, flags = "i")
+  static matchesRegex(text, regex)
   {
-    return (Utils.allset(text, regexString)) ? (new RegExp(regexString, flags)).test(text) : false;
+    return (Utils.allset(text, regex)) ? regex.test(text) : false;
   }
 
   /**
@@ -384,15 +403,14 @@ export default class Utils
    *
    * If no matches were found, this returns null.
    * @param text {string} - The text to perform the RegExp on.
-   * @param regexString {string} - The regular expression to check for.
-   * @param {string} [flags="i"] - The flags to use. Defaults to case-insensitive (i).
+   * @param regex {RegExp} - The regular expression to check for. Can either be an instance of RexExp or in literal notation.
    * @return {object|null}
    * @static
    * @since 1.0.0
    */
-  static matchRegexGroups(text, regexString, flags = "i")
+  static matchRegexGroups(text, regex)
   {
-    const match = new RegExp(regexString).exec(this.badgeInfo);
+    const match = regex.exec(text);
     return (match?.groups) ? match.groups : null;
   }
 
@@ -405,6 +423,6 @@ export default class Utils
    */
   static resumeSEQueue()
   {
-    window.SE_API?.resumeQueue();
+    SE_API?.resumeQueue();
   }
 }

@@ -14,15 +14,15 @@ Or maybe you come from a more artistic background and feel overwhelmed by the re
 That's where this library comes in. Just include it and let it do the heavy lifting, while you focus on the fun parts.
 
 ## Installation
-You can include this in your HTML-Tab just like any other library.
+You can include this in your HTML-markup just like any other library.
 
 ```html
-<script defer src="https://cdn.jsdelivr.net/gh/reboot0-de/se-tools/dist/se-tools.min.js"></script>
+<script defer src="https://reboot0.de/hosted/js/se-tools.min.js"></script>
 ```
 
 Make sure to not forget the `defer` attribute on the script-tag or else the script may not work properly.
 
-**Also note:** This is currently in the beta testing phase. So use this with care and please report any issues you find.
+**Also note:** This is currently in the beta testing phase. So use this with that in mind and please report any issues you find.
 
 ## Usage
 For a quick-start you can check out this preset example overlay with each event implemented:

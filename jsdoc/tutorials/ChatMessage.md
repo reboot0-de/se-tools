@@ -48,13 +48,21 @@ In short: If you need the plain-text content of a message use `text` and if you 
 
 In addition to that, we also offer a few functions to perform various text operations on the messages content.
 
-For example, if you need to check if the message contains any specific words or phrases, you can either use `contains(text, caseSensitive)` for simple text searches or `containsRegex(regex, flags)` for more complex regular expression searches.
+For example, if you need to check if the message contains any specific words or phrases, you can either use `contains(text, caseSensitive)` for simple text searches or `containsRegex(regex)` for more complex regular expression searches.
 
-The `regex` parameter has to be a string and can not be an inline expression. The default value for the `flags` parameter is `"i"`.
+Keep in mind that `contains(text, caseSensitive)` also returns true for matches inside of words. For word boundaries you'll need regular expressions.
 
-By default, both functions use case-insensitive flags for their searches to deliver more reliable results.
+The `regex` parameter can either be an inline expression or an instance of [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp]).
 
-Also keep in mind that `contains(text, caseSensitive)` also returns true for matches inside of words. For word boundaries you'll need regular expressions.
+So, `containsRegex(/\sabc/i)` and `containsRegex(new RegExp("\\sabc", "i"))` would match the same expression.
+
+Make sure to use the double backslashes `\\` when you want to escape special limiters in the RegExp constructor.
+
+The inline expression is encapsulated by normal slashes and an optional flag at the end, but is **not** written as a string.
+
+Right: `/abc123/i`
+
+Wrong: `"/abc123/i"`
 
 ```javascript
 // Let's say the message looks like this
@@ -69,10 +77,10 @@ message.contains("haHAA", true);
 
 // For more complex rules you could use regular expressions
 // Like, finding the first word with at least 2 letters, starting with an f and is not part of any other word:
-message.containsRegex("\bf[a-z]+\b"); // this would match "funny" and therefore return true
+message.containsRegex(/\bf[a-z]+\b/i); // this would match "funny" and therefore return true
 
 // To match every case-sensitive LUL in a message you could use
-message.containsRegex("\bLUL\b", "g"); // LUL is not part of the message, so this returns false
+message.containsRegex(/\bLUL\b/gi); // LUL is not part of the message, so this returns false
 ```
 
 Another frequent task for text operations is checking if the message starts with a command and if so, which one.
@@ -241,7 +249,7 @@ We strongly advise you to only use this to filter out bot messages and not to st
 
 However, if (for some reason) you ever need moderation on a username-level, we offer functions similar to message moderation.
 
-Namely `usernameContains(text, caseSensitive)` and `usernameContainsRegex(regexString, flags)`.
+Namely `usernameContains(text, caseSensitive)` and `usernameContainsRegex(regex)`.
 
 They work exactly as their previously mentioned counterparts, but will of course check the username instead of the text.
 
@@ -250,7 +258,7 @@ They work exactly as their previously mentioned counterparts, but will of course
 message.usernameContains("inappropriate");
 
 // This would return true on every username with more than 5 numbers in it.
-message.usernameContainsRegex("[0-9]{5,}");
+message.usernameContainsRegex(/[0-9]{5,}/);
 ```
 
 For more basic checks, you can also use `hasUsername(name)` or `hasUserId(id)` if you need to exactly match names or IDs.

@@ -194,7 +194,7 @@ export default class ChatMessage
    */
   getTierBadge()
   {
-    const groups = Utils.matchRegexGroups(this.raw.tags.badges, "subscriber\\/(?<tier>[20|30])[1-9][0-9]*", "");
+    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /subscriber\/(?<tier>[20|30])[1-9][0-9]*/i);
     if(!groups?.tier)        return 1;
     if(groups.tier === "20") return 2;
     if(groups.tier === "30") return 3;
@@ -207,7 +207,7 @@ export default class ChatMessage
    */
   getMonthsSubscribed()
   {
-    const groups = Utils.matchRegexGroups(this.badgeInfo, "subscriber\\/(?<months>[1-9][0-9]*)", "");
+    const groups = Utils.matchRegexGroups(this.badgeInfo, /subscriber\/(?<months>[1-9][0-9]*)/i);
     return (groups?.months) ? parseInt(groups.months) : 0;
   }
 
@@ -220,7 +220,7 @@ export default class ChatMessage
    */
   getBitsBadge()
   {
-    const groups = Utils.matchRegexGroups(this.raw.tags.badges, "bits\\/(?<bits>[1-9][0-9]*)", "");
+    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /bits\/(?<bits>[1-9][0-9]*)/i);
     return (groups?.bits) ? parseInt(groups.bits) : 0;
   }
 
@@ -233,7 +233,7 @@ export default class ChatMessage
    */
   getGiftsBadge()
   {
-    const groups = Utils.matchRegexGroups(this.raw.tags.badges, "sub-gifter\\/(?<gifts>[1-9][0-9]*)", "");
+    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /sub-gifter\/(?<gifts>[1-9][0-9]*)/i);
     return (groups?.gifts) ? parseInt(groups.gifts) : 0;
   }
 
@@ -282,7 +282,7 @@ export default class ChatMessage
   {
     if(!this.isCommand()) return null;
 
-    const groups = Utils.matchRegexGroups(this.text, "!(?<cmd>\\w+)(?<args>[\\s\\w*]*)", "i");
+    const groups = Utils.matchRegexGroups(this.text, /!(?<cmd>\w+)(?<args>[\s\w*]*)/i);
     if(groups === null) return null;
 
     return (withArgs) ? { command: groups.cmd, args: groups.args.trim().split(" ") } : groups.cmd;
@@ -311,15 +311,14 @@ export default class ChatMessage
   }
 
   /**
-   * Returns whether the given regular expression was found in the message.
-   * @param regexString {string} - The regular expression to check for.
-   * @param {string} [flags="i"] - The flags to use. Defaults to case-insensitive (`i`).
+   * Returns whether the given regular expression matches the text of the message.
+   * @param regex {RegExp} - The regular expression to check for. Can either be an instance of RexExp or in literal notation.
    * @returns {boolean}
    * @since 1.0.0
    */
-  containsRegex(regexString, flags = "i")
+  containsRegex(regex)
   {
-    return Utils.matchesRegex(this.text, regexString, flags);
+    return Utils.matchesRegex(this.text, regex);
   }
 
   /**
@@ -371,13 +370,12 @@ export default class ChatMessage
 
   /**
    * Returns whether the messages sender matches the given regular expression.
-   * @param regexString {string} - The regular expression to check for.
-   * @param {string} [flags="i"] - The flags to use. Defaults to case-insensitive (`i`).
+   * @param regex {RegExp} - The regular expression to check for. Can either be an instance of RexExp or in literal notation.
    * @return {boolean}
    * @since 1.0.0
    */
-  usernameContainsRegex(regexString, flags = "i")
+  usernameContainsRegex(regex)
   {
-    return Utils.matchesRegex(this.username, regexString, flags);
+    return Utils.matchesRegex(this.username, regex);
   }
 }
