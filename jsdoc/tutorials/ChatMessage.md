@@ -243,7 +243,7 @@ function onDeleteMessages({userId} = data)
 # Usernames
 Many chat-widgets use a username filter-list to hide bot messages or maybe even certain people.
 
-To make this easier, we implemented `notOnList(list)` which checks if the username is not on the given list.
+To make this easier, we implemented `usernameOnList(list)` which checks if the username is on a given list.
 
 We strongly advise you to only use this to filter out bot messages and not to strictly exclude people from your chat though.
 

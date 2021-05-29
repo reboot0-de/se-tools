@@ -50,7 +50,7 @@ export default class Utils
    * So, if you want to check if a.b.c would resolve, you would have to call resolve("b.c", a) instead of resolve("a.b.c", a).
    * @param path {string} - The path you want to check.
    * @param item {object} - The base object you want to run the check on.
-   * @return {boolean}
+   * @returns {boolean}
    * @static
    * @since 1.0.0
    */
@@ -115,7 +115,9 @@ export default class Utils
   static trimSpaces(text)
   {
     if(!Utils.isset(text)) { return ""; }
-    return (Utils.isString(text)) ? text.replace(/\s{2,}/g, ' ').trim() : text.toString();
+    if(!Utils.isString(text)) { return text.toString(); }
+    const trimmed = text.replace(/\s{2,}/g, ' ').trim();
+    return (trimmed === " ") ? "" : trimmed;
   }
 
   /**
@@ -125,18 +127,21 @@ export default class Utils
    *
    * If the passed baseText is not of type string, this function just returns an empty array.
    * @param baseText {string} - The string you want to create a list from.
-   * @param splitter {string} - The character you want to use as a separator for each entry.
+   * @param {string} [splitter=','] - The character you want to use as a separator for each entry.
+   * @param {boolean} [deleteEmptyStrings=false] - If set to true, the returned list will not contain empty strings (``""``)
    * @returns {string[]}
    * @static
    * @since 1.0.0
    */
-  static createList(baseText, splitter = ',')
+  static createList(baseText, splitter = ',', deleteEmptyStrings = false)
   {
     if(!Utils.isString(baseText)) { return []; }
     let list = baseText.split(splitter);
     for(let i = 0; i < list.length; i++)
     {
-      list[i] = Utils.trimSpaces(list[i]);
+      const trimmed = Utils.trimSpaces(list[i]);
+      if(deleteEmptyStrings && trimmed === "") { list.splice(i, 1); }
+      else { list[i] = trimmed; }
     }
     return list;
   }
@@ -278,7 +283,7 @@ export default class Utils
    *
    * NOTE: This returns the new value as string and not as a number.
    * @param number {number} -
-   * @return {string}
+   * @returns {string}
    */
   static formatTimerValue(number)
   {
@@ -340,7 +345,7 @@ export default class Utils
    *
    * E.g. the string "hello-world" becomes "helloWorld", but "helloworld" remains unchanged.
    * @param kebabCase {string} - The kebab case string you want to convert.
-   * @return {string}
+   * @returns {string}
    * @static
    * @since 1.0.0
    */
@@ -375,7 +380,7 @@ export default class Utils
    * @param text {string} - The text to check.
    * @param snippet {string} - The snippet to search for.
    * @param {boolean} [caseSensitive=false] - Determines if the check should be case-sensitive.
-   * @return {boolean|null}
+   * @returns {boolean|null}
    * @static
    * @since 1.0.0
    */
@@ -389,7 +394,7 @@ export default class Utils
    * Returns whether the text matches the given regular expression.
    * @param text {string} - The text to perform the regular expression test on.
    * @param regex {RegExp} - The regular expression to check for. Can either be an instance of RexExp or in literal notation.
-   * @return {boolean}
+   * @returns {boolean}
    * @static
    * @since 1.0.0
    */
@@ -404,7 +409,7 @@ export default class Utils
    * If no matches were found, this returns null.
    * @param text {string} - The text to perform the RegExp on.
    * @param regex {RegExp} - The regular expression to check for. Can either be an instance of RexExp or in literal notation.
-   * @return {object|null}
+   * @returns {object|null}
    * @static
    * @since 1.0.0
    */
@@ -412,6 +417,37 @@ export default class Utils
   {
     const match = regex.exec(text);
     return (match?.groups) ? match.groups : null;
+  }
+
+  /**
+   * Parses the given tier value and returns it either as a number between 1 and 3 or as the string ``"prime"``.
+   *
+   * Invalid inputs will return 0.
+   * @param {string|number} value - The tier value you want to parse.
+   * @param {boolean} [primeAsTier1=false] - If set to true, this will return prime tiers as tier 1 regardless.
+   * @returns {number|string}
+   */
+  static parseTier(value, primeAsTier1 = false)
+  {
+    if(typeof value === "string")
+    {
+      if(value === "prime") { return (primeAsTier1) ? 1 : "prime"; }
+      value = Number(value);
+    }
+    switch(value)
+    {
+      case 1000:
+      case 1:
+        return 1;
+      case 2000:
+      case 2:
+        return 2;
+      case 3000:
+      case 3:
+        return 3;
+      default:
+        return 0;
+    }
   }
 
   /**

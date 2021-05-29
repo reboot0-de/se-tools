@@ -285,7 +285,7 @@ export default class ChatMessage
     const groups = Utils.matchRegexGroups(this.text, /!(?<cmd>\w+)(?<args>[\s\w*]*)/i);
     if(groups === null) return null;
 
-    return (withArgs) ? { command: groups.cmd, args: groups.args.trim().split(" ") } : groups.cmd;
+    return (withArgs) ? { command: groups.cmd, args: Utils.createList(groups.args, " ", true) } : groups.cmd;
   }
 
   /**
@@ -295,7 +295,7 @@ export default class ChatMessage
    */
   getWordList()
   {
-    return this.text.split(" ");
+    return Utils.createList(this.text, " ");
   }
 
   /**
@@ -322,16 +322,23 @@ export default class ChatMessage
   }
 
   /**
-   * Returns whether the `username` is not on a given list to filter out messages.
+   * Returns whether the `username` is on a given list.
    *
-   * This check is always case-insensitive.
-   * @param list {Array<string>} - An array of blocked names to look up the username in.
+   * This check is case-insensitive.
+   * @param list {Array<string>} - An array of names to look up the username in.
    * @return {boolean}
    * @since 1.0.0
    */
-  notOnList(list)
+  usernameOnList(list)
   {
-    return (list.includes(this.username.toLowerCase()) === false);
+    if(Array.isArray(list) && list.length > 0)
+    {
+      for(let entry of list)
+      {
+        if(entry.toLocaleLowerCase?.() === this.username.toLocaleLowerCase()) { return true; }
+      }
+    }
+    return false;
   }
 
   /**
@@ -342,7 +349,7 @@ export default class ChatMessage
    */
   hasUsername(name)
   {
-    return (this.username.toLowerCase() === name);
+    return (this.username.toLocaleLowerCase() === name.toLocaleLowerCase?.());
   }
 
   /**
