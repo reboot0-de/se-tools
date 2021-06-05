@@ -382,7 +382,7 @@ export default class Events
   onEventReceivedHandler(p)
   {
     const l = p?.detail?.listener;
-    const e    = p?.detail?.event;
+    const e = p?.detail?.event;
 
     if(l === undefined || e === undefined || !this.expectsEventListener(l))
     {
@@ -514,7 +514,7 @@ export default class Events
     // Key-Value-Store updated
     else if(this.expectsEventName("KVStoreUpdate") && l === "kvstore:update")
     {
-      this.onKVStoreUpdateHandler(e);
+      this.onKVStoreUpdateHandler(e.data);
     }
     // Alerts were (un)muted by the user
     else if(this.expectsEventName("ToggleSound")   && l === "alertService:toggleSound")

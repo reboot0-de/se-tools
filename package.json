@@ -14,18 +14,18 @@
   "repository": "https://github.com/reboot0-de/se-tools",
   "description": "A toolset designed to make the life of StreamElements widget developers easier.",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "generate docs": "jsdoc modules -c jsdoc/jsdoc.config.json -u jsdoc/tutorials -d docs -t jsdoc/template --readme README.md"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.0",
+    "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.13.12",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.2",
     "@babel/plugin-proposal-private-methods": "^7.13.0",
-    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-env": "^7.14.4",
     "babel-loader": "^8.2.2",
-    "jsdoc": "^3.6.6",
-    "webpack": "^5.36.2",
+    "jsdoc": "^3.6.7",
+    "webpack": "^5.38.1",
     "webpack-cli": "^4.7.0"
   }
 }
