@@ -9,29 +9,29 @@ export default class ChatMessage
   constructor(event)
   {
     this.badges         = event.data.badges;
-    this.badgeInfo      = event.data.tags["badge-info"];
+    this.badgeInfo      = event.data.tags["badge-info"] || "";
     this.channel        = event.data.channel;
-    this.customRewardId = (Utils.isset(event.data.tags["custom-reward-id"])) ? event.data.tags["custom-reward-id"] : null;
+    this.customRewardId = event.data.tags["custom-reward-id"] || null;
     this.emotes         = event.data.emotes;
     this.msgId          = event.data.msgId;
-    this.raw            = event;
-    this.renderedText   = event.renderedText;
-    this.roles          = this.#getRoles();
-    this.text           = event.data.text;
-    this.time           = new Date(event.data.time);
     this.userId         = event.data.userId;
     this.username       = event.data.displayName;
+    this.raw            = event.data;
+    this.renderedText   = event.renderedText;
+    this.text           = Utils.trimSpaces(event.data.text);
+    this.roles          = this.getRoles();
+    this.stats          = this.getStats();
+    this.time           = new Date(event.data.time);
   }
 
   /**
-   * Returns an object with a boolean value for every role.
+   * This is the initial function to construct the roles object internally. Use the `roles` property in your code instead.
    *
-   * This is a private function to construct the roles object initially. Use the `roles` property in your code instead.
+   * Returns an object with a boolean value for every role.
    * @returns {{subscriber: boolean, broadcaster: boolean, moderator: boolean, staff: boolean, vip: boolean}}
-   * @private
    * @since 1.0.0
    */
-  #getRoles()
+  getRoles()
   {
     let roles = { staff: false, broadcaster: false, moderator: false, vip: false, subscriber: false  }
 
@@ -56,7 +56,9 @@ export default class ChatMessage
   }
 
   /**
-   * Returns a stats object for the message. Can be used to filter out spam or special chars.
+   * This is the initial function to construct the stats object internally. Use the `stats` property in your code instead.
+   *
+   * Returns the stats object for the message. Can be used to filter out spam or special chars.
    *
    * Percentages range from 0 (0%) to 1 (100%). So 50% would be noted as 0.5.
    * @returns {{wordCount: number, emoteCount: number, emotePercentage: number, capsCount: number, capsPercentage: number, specialCharsCount: number, specialCharsPercentage: number}}
@@ -64,7 +66,7 @@ export default class ChatMessage
    */
   getStats()
   {
-    let textLen                  = this.text.replace(/\s+/, '').length;
+    const textLen                = this.text.length;
     let stats                    = {};
     stats.wordCount              = this.getWordList().length;
     stats.emoteCount             = this.emotes.length;
@@ -186,7 +188,7 @@ export default class ChatMessage
   }
 
   /**
-   * Returns the users current subscription-tier as number. (1 = Tier 1, 2 = Tier 2, 3 = Tier 3)
+   * Returns the users current subscription-tier as number. (1 = tier 1, 2 = tier 2, 3 = tier 3)
    *
    * Prime subs still count as tier 1.
    * @return {number}
@@ -194,7 +196,7 @@ export default class ChatMessage
    */
   getTierBadge()
   {
-    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /subscriber\/(?<tier>[20|30])[1-9][0-9]*/i);
+    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /subscriber\/(?<tier>[2|3]0)[1-9][0-9]*/i);
     if(!groups?.tier)        return 1;
     if(groups.tier === "20") return 2;
     if(groups.tier === "30") return 3;

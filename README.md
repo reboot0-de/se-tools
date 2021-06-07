@@ -29,7 +29,7 @@ For a quick-start you can check out this preset example overlay with each event 
 
 [https://streamelements.com/dashboard/overlays/share/6025327a79af692b94ee6f44](https://streamelements.com/dashboard/overlays/share/6025327a79af692b94ee6f44)
 
-Once the script is included, you'll have access to all the functions and classes.
+Just include the script and you'll have access to all the functions and classes.
 
 The script will register itself to the window instance and auto-initialize its components.
 
@@ -62,13 +62,15 @@ Yes, this lib also comes with some extra modules to (hopefully) make working wit
 A more in-depth explanation of all modules can also be found in the docs.
 
 ## Support
-If you want to report a bug or have technical questions regarding this library, you can create an Issue on [GitHub](https://github.com/reboot0-de/se-tools).
+If you want to report a bug or have technical questions regarding this library, you can open a new issue on [GitHub](https://github.com/reboot0-de/se-tools/issues).
 
-For more general StreamElements development questions, you can join our [SE Developers](https://strms.net/se_developers) server.
+For more general StreamElements development questions, you can join the [SE Developers](https://strms.net/se_developers) server.
 
 For non-development support questions you can use the official [StreamElements Discord](https://discord.com/invite/se) server.
 
-However, none of these will offer support via personal messages.
+However, none of these will offer support via personal/direct messages.
+
+Not for support questions, but you could also follow me on my socials ([Twitter](https://twitter.com/reboot0), [Twitch](https://twitch.tv/reboot0) to stay up-to-date.
 
 ## Building
 In most cases, you just want to include the already compiled file without needing to build anything.

@@ -114,7 +114,7 @@ export default class Utils
    */
   static trimSpaces(text)
   {
-    if(!Utils.isset(text)) { return ""; }
+    if(!Utils.isset(text))    { return "";              }
     if(!Utils.isString(text)) { return text.toString(); }
     const trimmed = text.replace(/\s{2,}/g, ' ').trim();
     return (trimmed === " ") ? "" : trimmed;
@@ -298,7 +298,7 @@ export default class Utils
    */
   static isChrome()
   {
-    return Utils.matchesRegex(window.navigator.userAgent, "Chrom(e|ium)", "i");
+    return Utils.matchesRegex(window.navigator.userAgent, /Chrom(e|ium)/i);
   }
 
   /**
@@ -310,7 +310,7 @@ export default class Utils
    */
   static getChromeVersion(fullVersion = false)
   {
-    const match = Utils.matchRegexGroups(window.navigator.userAgent, "Chrom(e|ium)\\/(?<version>([0-9]+.?[0-9]+.?[0-9]+.?[0-9]+))", "i");
+    const match = Utils.matchRegexGroups(window.navigator.userAgent, /Chrom(e|ium)\/(?<version>([0-9]+.?[0-9]+.?[0-9]+.?[0-9]+))/i);
     const value = (match?.version) ? match.version : 0;
     return (fullVersion) ? value : parseInt(value);
   }

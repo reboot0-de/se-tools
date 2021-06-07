@@ -180,9 +180,9 @@ You can use `message.isAction()` to check for actions and handle them how you se
 # Stats
 We also offer a special stats object which can be used for moderation purposes.
 
-This can be generated via `getStats()` and has a structure of `{wordCount: number, emoteCount: number, emotePercentage: number, capsCount: number, capsPercentage: number, specialCharsCount: number, specialCharsPercentage: number}`.
+This can be accessed via the `message.stats` attribute and has a structure of `{wordCount: number, emoteCount: number, emotePercentage: number, capsCount: number, capsPercentage: number, specialCharsCount: number, specialCharsPercentage: number}`.
 
-The percentage values range between 0 (0%) and 1 (100%).
+The percentage values range between 0 for 0% and 1 for 100%. (50% would be 0.5 for example)
 
 Emotes are also counted as words and might give some unexpected results for `capsPercentage`, since the lowercase letters in emotes might "neutralize" the uppercase letters in normal words.
 
@@ -192,7 +192,9 @@ BTTV & FFZ emotes will just be treated as normal text and might cause some false
 
 Special chars contain every character that is not a number, a whitespace or a letter in the range of a-z (and uppercase).
 
-Keep in mind, that emotes are treated as normal text and still count for special chars and uppercase letters. So a message with just `Kappa` would have a `capsPercentage` of 0.2, but an `emotePercentage` of 1.
+Keep in mind, that emotes are treated as normal text and still count for special chars and uppercase letters.
+
+So a message with just `Kappa` would have a `capsPercentage` of 0.2, but an `emotePercentage` of 1.
 
 Whitespaces however, are not counted towards percentages. For example, a message of `A  B  C` still has a `capsPercentage` of 1.
 
@@ -207,7 +209,7 @@ let stats = message.getStats();
 else if(stats.capsPercentage  > 0.75) { console.log("Stop spamming caps");   }
 ```
 
-These are just helper functions for a pretty strict moderation. Be careful with this, since this can easily flag legit messages.
+These are just helpers for a pretty strict moderation. Be careful with this, since this can easily flag legit messages.
 
 # Message Deletion
 When building your own chat-widget, you'll probably come across the problem of removing messages, that were deleted in your chat, from your screen.
