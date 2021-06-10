@@ -38,13 +38,13 @@ The class object has the following properties available:
 # Text Operations
 The most basic action for chat-widgets is to "just" display the text of the message.
 
-Now, one could assume to just set the `text` property as content and be done with it, but that is just the plain-text. No emotes, bits or other special characters are parsed there.
+Now, one could assume to just set the `text` property as content and be done with it, but that is just the plain-text. No emotes, bits or other special characters will be parsed there.
 
 That's what the `renderedText` property is for. This already contains the parsed HTML-markup for the messages body.
 
-(`renderedText` is actually not new and already part of the current StreamElements message data-object. A lot of people just didn't know about it and now it's placed a little more prominently.)
+(`renderedText` is actually not new and already part of the current StreamElements message-data object. A lot of people just didn't know about it.)
 
-In short: If you need the plain-text content of a message use `text` and if you need the HTML content use `renderedText` instead.
+In short: If you just need the plain-text content of a message use `text`. If you need the parsed HTML content use `renderedText` instead.
 
 In addition to that, we also offer a few functions to perform various text operations on the messages content.
 
@@ -60,9 +60,9 @@ Make sure to use the double backslashes `\\` when you want to escape special lim
 
 The inline expression is encapsulated by normal slashes and an optional flag at the end, but is **not** written as a string.
 
-Right: `/abc123/i`
+Correct: `/abc123/i`
 
-Wrong: `"/abc123/i"`
+Incorrect: `"/abc123/i"`
 
 ```javascript
 // Let's say the message looks like this
@@ -139,7 +139,7 @@ Similar to roles are badges. They can be earned by supporting the channel moneta
 
 To check for the latter, we have `hasPrimeBadge()` and `hasTurboBadge()`, but probably more interesting is information about subscriptions, bits and given gifts.
 
-With `getTierBadge()` you can get the subscription-tier the user is currently subscribed as, as a number between 1-3. Prime subscriptions will also count as tier 1.
+With `getTierBadge()` you can get the subscription tier the user is currently subscribed as, as a number between 1-3. Prime subscriptions will also count as tier 1.
 
 To get the total amount of months the user has been subscribed for, you can use `getMonthsSubscribed()`.
 

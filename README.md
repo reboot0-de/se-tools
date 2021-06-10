@@ -20,7 +20,7 @@ You can include this in your HTML-markup just like any other library.
 <script defer src="https://reboot0.de/hosted/js/se-tools.min.js"></script>
 ```
 
-Make sure to not forget the `defer` attribute on the script-tag or else the script may not work properly.
+Make sure not to forget the `defer` attribute on the script-tag or the script may not work properly.
 
 **Also note:** This is currently in the beta testing phase. So use this with that in mind and please report any issues you find.
 
@@ -70,7 +70,7 @@ For non-development support questions you can use the official [StreamElements D
 
 However, none of these will offer support via personal/direct messages.
 
-Not for support questions, but you could also follow me on my socials ([Twitter](https://twitter.com/reboot0), [Twitch](https://twitch.tv/reboot0) to stay up-to-date.
+Not for support questions, but you could also follow me on my socials ([Twitter](https://twitter.com/reboot0), [Twitch](https://twitch.tv/reboot0)) to stay up-to-date.
 
 ## Building
 In most cases, you just want to include the already compiled file without needing to build anything.

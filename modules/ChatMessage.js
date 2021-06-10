@@ -16,7 +16,7 @@ export default class ChatMessage
     this.msgId          = event.data.msgId;
     this.userId         = event.data.userId;
     this.username       = event.data.displayName;
-    this.raw            = event.data;
+    this.raw            = event;
     this.renderedText   = event.renderedText;
     this.text           = Utils.trimSpaces(event.data.text);
     this.roles          = this.getRoles();
