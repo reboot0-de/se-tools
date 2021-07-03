@@ -429,7 +429,7 @@ export default class Events
         this.onResubHandler(e);
       }
       // SubBomb - Main
-      else if(this.expectsEventName("SubBomb") && e.bulkGifted)
+      else if(e.bulkGifted)
       {
         const g = e?.sender?.toLowerCase();
 
@@ -438,15 +438,12 @@ export default class Events
           this.#giftCollection[g] = { amount: e.amount, recipients: [] };
         }
 
-        this.onSubBombHandler(e);
+        if(this.expectsEventName("SubBomb")) { this.onSubBombHandler(e); }
       }
       // SubBomb - Gift
       else if(e.gifted && e.isCommunityGift)
       {
-        if(this.expectsEventName("CommunityGift"))
-        {
-          this.onCommunityGiftHandler(e);
-        }
+        if(this.expectsEventName("CommunityGift")) { this.onCommunityGiftHandler(e); }
 
         if(this.expectsEventName("SubBombComplete"))
         {
@@ -456,7 +453,7 @@ export default class Events
           {
             this.#giftCollection[g].recipients.push(e.name);
 
-            if(this.#giftCollection[g].amount === this.#giftCollection[g].recipients.length)
+            if(this.#giftCollection[g].amount === this.#giftCollection[g].recipients?.length)
             {
               e.amount = this.#giftCollection[g].amount;
               this.onSubBombCompleteHandler(e, this.#giftCollection[g].recipients);
