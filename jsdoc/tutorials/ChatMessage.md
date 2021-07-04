@@ -1,6 +1,8 @@
-The ChatMessage class will be automatically instanciated for every message you receive via `onMessage` and will be injected as first parameter.
+The ChatMessage class will only be automatically instanciated for chat-messages sent via **Twitch**. 
 
-It's a helper class to make dealing with commonly needed chat-message validations and actions easier.
+**Other providers will just return the default [message object](./module-Events.html#~MessageEvent).**
+
+This is a helper class designed to make dealing with commonly needed Twitch-chat validations and actions easier.
 
 Example usage:
 ```javascript
@@ -34,6 +36,7 @@ The class object has the following properties available:
 |time           | Date   | A Date object referring to the time the message was sent                  | A [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) instance                                                                                                                                                                                                         |
 |userId         | string | The unique ID of the message's sender                                     | `"123456789"`                                                                                                                                                                                                                                                                                                    |
 |username       | string | The username of the message's sender. Capitalization may vary             | `"SenderName"`                                                                                                                                                                                                                                                                                                   |
+
 
 # Text Operations
 The most basic action for chat-widgets is to "just" display the text of the message.
@@ -83,6 +86,8 @@ message.containsRegex(/\bf[a-z]+\b/i); // this would match "funny" and therefore
 message.containsRegex(/\bLUL\b/gi); // LUL is not part of the message, so this returns false
 ```
 
+
+# Chat Commands
 Another frequent task for text operations is checking if the message starts with a command and if so, which one.
 
 For that we have `isCommand(cmdName)` and `getCommand(withArgs)`.

@@ -207,21 +207,15 @@ import ChatMessage from "./ChatMessage";
 
 export default class Events
 {
-  #skippable;
-  #giftCollection;
-  #expectedEventListeners;
-  #expectedEventNames;
-  #expectsOnWidgetLoad;
-  #expectsOnSessionUpdate;
-
   constructor()
   {
-    this.#skippable              = ["bot:counter", "event:test", "event:skip", "message", "kvstore:update", "alertService:toggleSound"];
-    this.#giftCollection         = {}; /* { "Username1": { amount: 5, recipients: ["a", "b", "c", "d", "e"] }, ... } */
-    this.#expectedEventListeners = [];
-    this.#expectedEventNames     = [];
-    this.#expectsOnWidgetLoad    = Utils.funcExists('onWidgetLoad');
-    this.#expectsOnSessionUpdate = Utils.funcExists('onSessionUpdate');
+    this.skippable              = ["bot:counter", "event:test", "event:skip", "message", "kvstore:update", "alertService:toggleSound"];
+    this.giftCollection         = {}; /* { "Username1": { amount: 5, recipients: ["a", "b", "c", "d", "e"] }, ... } */
+    this.expectedEventListeners = [];
+    this.expectedEventNames     = [];
+    this.expectsOnWidgetLoad    = Utils.funcExists('onWidgetLoad');
+    this.expectsOnSessionUpdate = Utils.funcExists('onSessionUpdate');
+    this.useCorrection          = true;
 
     this.preflightEventListeners()
     this.registerOnWidgetLoad();
@@ -235,13 +229,13 @@ export default class Events
    */
   preflightEventListeners()
   {
-    const events = [{ name: "Subscriber",    listener: "subscriber-latest"        }, { name: "Resub",          listener: "subscriber-latest" }, { name: "SubGift",         listener: "subscriber-latest" },
-                    { name: "CommunityGift", listener: "subscriber-latest"        }, { name: "SubBomb",        listener: "subscriber-latest" }, { name: "SubBombComplete", listener: "subscriber-latest" },
-                    { name: "Tip",           listener: "tip-latest"               }, { name: "Cheer",          listener: "cheer-latest"      }, { name: "Host",            listener: "host-latest"       },
-                    { name: "Raid",          listener: "raid-latest"              }, { name: "Follow",         listener: "follower-latest"   }, { name: "Message",         listener: "message"           },
-                    { name: "DeleteMessage", listener: "delete-message"           }, { name: "DeleteMessages", listener: "delete-messages"   }, { name: "EventSkip",       listener: "event:skip"        },
-                    { name: "BotCounter",    listener: "bot:counter"              }, { name: "WidgetButton",   listener: "event:test"        }, { name: "KVStoreUpdate",   listener: "kvstore:update"    },
-                    { name: "ToggleSound",   listener: "alertService:toggleSound" }];
+    const events = [{ name: "Subscriber",     listener: "subscriber-latest"        }, { name: "Resub",          listener: "subscriber-latest"  }, { name: "SubGift",         listener: "subscriber-latest" },
+                    { name: "CommunityGift",  listener: "subscriber-latest"        }, { name: "SubBomb",        listener: "subscriber-latest"  }, { name: "SubBombComplete", listener: "subscriber-latest" },
+                    { name: "Tip",            listener: "tip-latest"               }, { name: "Cheer",          listener: "cheer-latest"       }, { name: "Host",            listener: "host-latest"       },
+                    { name: "Raid",           listener: "raid-latest"              }, { name: "Follow",         listener: "follower-latest"    }, { name: "Message",         listener: "message"           },
+                    { name: "DeleteMessage",  listener: "delete-message"           }, { name: "DeleteMessages", listener: "delete-messages"    }, { name: "EventSkip",       listener: "event:skip"        },
+                    { name: "BotCounter",     listener: "bot:counter"              }, { name: "WidgetButton",   listener: "event:test"        }, { name: "KVStoreUpdate",    listener: "kvstore:update"    },
+                    { name: "ToggleSound",    listener: "alertService:toggleSound" }];
 
     for(let event of events)
     {
@@ -249,9 +243,9 @@ export default class Events
       {
         if(!this.expectsEventListener(event.listener))
         {
-          this.#expectedEventListeners.push(event.listener);
+          this.expectedEventListeners.push(event.listener);
         }
-        this.#expectedEventNames.push(event.name);
+        this.expectedEventNames.push(event.name);
       }
     }
   }
@@ -263,7 +257,7 @@ export default class Events
    */
   expectsEvents()
   {
-    return (this.#expectedEventNames.length > 0);
+    return (this.expectedEventNames.length > 0);
   }
 
   /**
@@ -274,7 +268,7 @@ export default class Events
    */
   expectsEventListener(listener)
   {
-    return (this.#expectedEventListeners.includes(listener));
+    return (this.expectedEventListeners.includes(listener));
   }
 
   /**
@@ -285,7 +279,7 @@ export default class Events
    */
   expectsEventName(name)
   {
-    return (this.#expectedEventNames.includes(name));
+    return (this.expectedEventNames.includes(name));
   }
 
   /**
@@ -296,7 +290,7 @@ export default class Events
    */
   isSkippable(event)
   {
-    return this.#skippable.includes(event);
+    return this.skippable.includes(event);
   }
 
   /**
@@ -305,7 +299,7 @@ export default class Events
    */
   registerOnWidgetLoad()
   {
-    if(this.#expectsOnWidgetLoad) { window.addEventListener('onWidgetLoad', this.onWidgetLoadHandler.bind(this)); }
+    if(this.expectsOnWidgetLoad) { window.addEventListener('onWidgetLoad', this.onWidgetLoadHandler.bind(this)); }
   }
 
   /**
@@ -323,7 +317,7 @@ export default class Events
    */
   registerOnSessionUpdate()
   {
-    if(this.#expectsOnSessionUpdate) { window.addEventListener('onSessionUpdate', this.onSessionUpdateHandler.bind(this)); }
+    if(this.expectsOnSessionUpdate) { window.addEventListener('onSessionUpdate', this.onSessionUpdateHandler.bind(this)); }
   }
 
   /**
@@ -429,16 +423,16 @@ export default class Events
         this.onResubHandler(e);
       }
       // SubBomb - Main
-      else if(e.bulkGifted)
+      else if(e.bulkGifted && (this.expectsEventName("SubBomb") || this.expectsEventName("SubBombComplete")))
       {
         const g = e?.sender?.toLowerCase();
 
-        if(g && this.#giftCollection[g] === undefined)
+        if(g && this.giftCollection[g] === undefined)
         {
-          this.#giftCollection[g] = { amount: e.amount, recipients: [] };
+          this.giftCollection[g] = { amount: e.amount, recipients: [] };
         }
 
-        if(this.expectsEventName("SubBomb")) { this.onSubBombHandler(e); }
+        this.onSubBombHandler(e);
       }
       // SubBomb - Gift
       else if(e.gifted && e.isCommunityGift)
@@ -449,16 +443,16 @@ export default class Events
         {
           const g = e?.sender?.toLowerCase();
 
-          if(g && this.#giftCollection[g] !== undefined)
+          if(g && this.giftCollection[g] !== undefined)
           {
-            this.#giftCollection[g].recipients.push(e.name);
+            this.giftCollection[g].recipients.push(e.name);
 
-            if(this.#giftCollection[g].amount === this.#giftCollection[g].recipients?.length)
+            if(this.giftCollection[g].amount === this.giftCollection[g].recipients?.length)
             {
-              e.amount = this.#giftCollection[g].amount;
-              this.onSubBombCompleteHandler(e, this.#giftCollection[g].recipients);
+              e.amount = this.giftCollection[g].amount;
+              this.onSubBombCompleteHandler(e, this.giftCollection[g].recipients);
 
-              delete this.#giftCollection[g];
+              delete this.giftCollection[g];
             }
             else
             {
@@ -636,12 +630,14 @@ export default class Events
 
   /**
    * Calls window.onMessage and gets triggered everytime someone sends a message in your chat.
+   * If the message originates from Twitch chat, it will get transformed to a {@see ChatMessage} object.
    * @param e {MessageEvent} - The event data object
    * @since 1.0.0
    */
   onMessageHandler(e)
   {
-    Utils.callFunc("onMessage", (new ChatMessage(e)));
+    const data = (e.service.toLowerCase() === "twitch") ? (new ChatMessage(e)) : e;
+    Utils.callFunc("onMessage", data);
   }
 
   /**

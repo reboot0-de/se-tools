@@ -7,11 +7,11 @@
 <hr />
 
 ## Introduction
-Nobody likes to copy & paste the same boilerplate code over and over, everytime they just want to test around in StreamElements custom widgets.
+Nobody likes to copy & paste the same boilerplate code over and over, everytime they just want to test around with StreamElements custom widgets.
 
-Or maybe you come from a more artistic background and feel overwhelmed by the required JavaScript knowledge to start building widgets.
+Or maybe you come from a more artistic background and feel overwhelmed by the required coding knowledge to start building widgets.
 
-That's where this library comes in. Just include it and let it do the heavy lifting, while you focus on the fun parts.
+That's where this library comes in handy. Just include it and let it do the heavy lifting, while you focus on the fun parts.
 
 ## Installation
 You can include this in your HTML-markup just like any other library.
@@ -22,7 +22,7 @@ You can include this in your HTML-markup just like any other library.
 
 Make sure not to forget the `defer` attribute on the script-tag or the script may not work properly.
 
-**Also note:** This is currently in the beta testing phase. So use this with that in mind and please report any issues you find.
+If you find any bugs or have general improvements, feel free to contribute or report those.
 
 ## Usage
 For a quick-start you can check out this preset example overlay with each event implemented:
@@ -57,7 +57,7 @@ function onResub({name, amount} = event)
 
 You may have noticed the `DOM.setText()` function in the examples above.
 
-Yes, this lib also comes with some extra modules to (hopefully) make working with the StreamElements ecosystem as easy as possible.
+Yes, this library also comes with some extra modules to (hopefully) make working with the StreamElements ecosystem as easy as possible.
 
 A more in-depth explanation of all modules can also be found in the docs.
 
@@ -83,12 +83,6 @@ If you modified or added some code and want to recompile the output, you can use
 ## 3rd-Party Libraries
 We use a modified version of the [clean-jsdoc-theme](https://github.com/ankitskvmdam/clean-jsdoc-theme) to generate and style the documentation.
 
-It can be found under ``jsdoc/template`` and is not installed as npm package. (But 'jsdoc' is)
+It's located under ``jsdoc/template`` and is not installed as npm package. (But 'jsdoc' is)
 
-The template is a good starting point, but far from perfect. We'll update that as well over time.
-
-We also use Babel and Webpack to compile the final script with these plugins:
-
-- [babel-plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties)
-- [babel-plugin-proposal-private-methods](https://babeljs.io/docs/en/babel-plugin-proposal-private-methods)
-- [babel-plugin-proposal-optional-chaining](https://babeljs.io/docs/en/babel-plugin-proposal-optional-chaining)
+The template is a good starting point, but far from perfect. I'll update that as well over time.

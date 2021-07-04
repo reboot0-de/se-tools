@@ -307,7 +307,7 @@ This gets triggered, when a custom button (defined in the fields of a custom wid
 ```javascript
 function onWidgetButton(data)
 {
-    console.log(`Your button with the fieldName ${data.fieldName} and value ${data.value} just got clicked in the Overlay-Editor!`);
+    console.log(`Your button with the field ${data.field} and value ${data.value} just got clicked in the Overlay Editor!`);
 }
 ```
 

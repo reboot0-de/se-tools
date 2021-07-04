@@ -115,8 +115,9 @@
 </header>
 
 <article>
-    <p>The ChatMessage class will be automatically instanciated for every message you receive via <code>onMessage</code> and will be injected as first parameter.</p>
-<p>It's a helper class to make dealing with commonly needed chat-message validations and actions easier.</p>
+    <p>The ChatMessage class will only be automatically instanciated for chat-messages sent via <strong>Twitch</strong>.</p>
+<p><strong>Other providers will just return the default <a href="./module-Events.html#~MessageEvent">message object</a>.</strong></p>
+<p>This is a helper class designed to make dealing with commonly needed Twitch-chat validations and actions easier.</p>
 <p>Example usage:</p>
 <pre class="prettyprint source lang-javascript"><code>function onMessage(chatMessage)
 {
@@ -252,6 +253,7 @@ message.containsRegex(/\bf[a-z]+\b/i); // this would match &quot;funny&quot; and
 // To match every case-sensitive LUL in a message you could use
 message.containsRegex(/\bLUL\b/gi); // LUL is not part of the message, so this returns false
 </code></pre>
+<h1>Chat Commands</h1>
 <p>Another frequent task for text operations is checking if the message starts with a command and if so, which one.</p>
 <p>For that we have <code>isCommand(cmdName)</code> and <code>getCommand(withArgs)</code>.</p>
 <p>The <code>cmdName</code> parameter in <code>isCommand()</code> is optional and can be used to check for specific commands. If omitted, this returns true for any command.</p>
