@@ -150,7 +150,7 @@ Getting CSS-properties is a little trickier depending on what you want to achiev
 
 Let's say, you gave `#myElement` a relative width of 75% and the parents all have relative widths too.
 
-Just returning the value of 75% won't tell you how wide the element actually is, since that width also depends on the widths of the parent elements (which also depend on other widths).
+Just returning the value of 75% won't tell you how wide the element actually is, since that width also depends on the widths of the parent elements (which may also depend on other widths).
 
 That's what we have computed values in JavaScript for. Those hold the calculated absolute values for elements with their according units.
 

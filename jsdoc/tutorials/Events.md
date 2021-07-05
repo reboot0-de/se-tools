@@ -1,4 +1,4 @@
-The Events class is designed to make working with StreamElements events easier and eliminate a lot of boilerplate code.
+The Events class was designed to make working with StreamElements events easier and eliminate a lot of boilerplate code.
 
 **Currently only Twitch and StreamElements events are supported.**
 
@@ -7,7 +7,7 @@ This class will check if certain functions exist on the window and if so, execut
 # Listening For Events
 Usually the listener nesting can get quite tricky, since one listener can account for multiple different events.
 
-For example the `subscriber-latest` listener is triggered either for a new subscription, a resub, a targeted gifted sub or community gifts with random receivers.
+For example the `subscriber-latest` listener triggers either for a new subscription, a resub, a targeted gifted sub or community gifts with random receivers.
 
 What the actual event was, is on you to determine.
 
@@ -170,7 +170,7 @@ function onRaid(data)
 ## onCheer
 This gets triggered, when somebody cheers (uses Bits) on your channel.
 
-Bits are a virtual currency on Twitch, that have to be bought with real money. 1 Bit is roughly equivalent to 1 cent.
+Bits are a virtual currency by Twitch, which have to be bought with real money. One Bit is (roughly) equivalent to one cent.
 
 ```javascript
 function onCheer(data)
@@ -383,3 +383,13 @@ function onSubBombComplete({ sender, amount } = data, [first] = recipients)
 Again, this would discard all other recipients besides the first one.
 
 So only use this feature, when you really just need specific values and don't care about the rest.
+
+
+# Sender Correction
+When you emulate events in the Overlay Editor, the provided values will most likely differ from the real (production) data.
+
+To mitigate this, the Events class will automatically adjust the ``sender`` attribute for specific subscription events.
+
+If you ever run into bugs or unintended behavior because of this, you can always disable the correction by calling ``window.Events.disableSenderCorrection()`` in your ``onWidgetLoad`` function.
+
+NOTE: This only affects emulated events, not real data!

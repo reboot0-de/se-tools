@@ -215,7 +215,7 @@ export default class Events
     this.expectedEventNames     = [];
     this.expectsOnWidgetLoad    = Utils.funcExists('onWidgetLoad');
     this.expectsOnSessionUpdate = Utils.funcExists('onSessionUpdate');
-    this.useCorrection          = true;
+    this.useSenderCorrection    = true;
 
     this.preflightEventListeners()
     this.registerOnWidgetLoad();
@@ -229,12 +229,12 @@ export default class Events
    */
   preflightEventListeners()
   {
-    const events = [{ name: "Subscriber",     listener: "subscriber-latest"        }, { name: "Resub",          listener: "subscriber-latest"  }, { name: "SubGift",         listener: "subscriber-latest" },
-                    { name: "CommunityGift",  listener: "subscriber-latest"        }, { name: "SubBomb",        listener: "subscriber-latest"  }, { name: "SubBombComplete", listener: "subscriber-latest" },
-                    { name: "Tip",            listener: "tip-latest"               }, { name: "Cheer",          listener: "cheer-latest"       }, { name: "Host",            listener: "host-latest"       },
-                    { name: "Raid",           listener: "raid-latest"              }, { name: "Follow",         listener: "follower-latest"    }, { name: "Message",         listener: "message"           },
-                    { name: "DeleteMessage",  listener: "delete-message"           }, { name: "DeleteMessages", listener: "delete-messages"    }, { name: "EventSkip",       listener: "event:skip"        },
-                    { name: "BotCounter",     listener: "bot:counter"              }, { name: "WidgetButton",   listener: "event:test"        }, { name: "KVStoreUpdate",    listener: "kvstore:update"    },
+    const events = [{ name: "Subscriber",     listener: "subscriber-latest"        }, { name: "Resub",          listener: "subscriber-latest" }, { name: "SubGift",         listener: "subscriber-latest" },
+                    { name: "CommunityGift",  listener: "subscriber-latest"        }, { name: "SubBomb",        listener: "subscriber-latest" }, { name: "SubBombComplete", listener: "subscriber-latest" },
+                    { name: "Tip",            listener: "tip-latest"               }, { name: "Cheer",          listener: "cheer-latest"      }, { name: "Host",            listener: "host-latest"       },
+                    { name: "Raid",           listener: "raid-latest"              }, { name: "Follow",         listener: "follower-latest"   }, { name: "Message",         listener: "message"           },
+                    { name: "DeleteMessage",  listener: "delete-message"           }, { name: "DeleteMessages", listener: "delete-messages"   }, { name: "EventSkip",       listener: "event:skip"        },
+                    { name: "BotCounter",     listener: "bot:counter"              }, { name: "WidgetButton",   listener: "event:test"        }, { name: "KVStoreUpdate",   listener: "kvstore:update"    },
                     { name: "ToggleSound",    listener: "alertService:toggleSound" }];
 
     for(let event of events)
@@ -291,6 +291,17 @@ export default class Events
   isSkippable(event)
   {
     return this.skippable.includes(event);
+  }
+
+  /**
+   * Disables the sender correction for emulated events. Only useful for specific cases.
+   *
+   * You can call this via `window.Events.disableSenderCorrection()`
+   * @since 1.0.0
+   */
+  disableSenderCorrection()
+  {
+    this.useSenderCorrection = false;
   }
 
   /**
@@ -403,7 +414,7 @@ export default class Events
     else if(l === 'subscriber-latest')
     {
       // Correct sender on test alerts
-      if(e.isTest && !(e.gifted && e.isCommunityGift) && !e.bulkGifted)
+      if(this.useSenderCorrection && e.isTest && !(e.gifted && e.isCommunityGift) && !e.bulkGifted)
       {
         e.sender = undefined;
       }
@@ -423,16 +434,18 @@ export default class Events
         this.onResubHandler(e);
       }
       // SubBomb - Main
-      else if(e.bulkGifted && (this.expectsEventName("SubBomb") || this.expectsEventName("SubBombComplete")))
+      else if(e.bulkGifted)
       {
-        const g = e?.sender?.toLowerCase();
-
-        if(g && this.giftCollection[g] === undefined)
+        if(this.expectsEventName("SubBombComplete"))
         {
-          this.giftCollection[g] = { amount: e.amount, recipients: [] };
+          const g = e?.sender?.toLowerCase();
+          if(g && this.giftCollection[g] === undefined)
+          {
+            this.giftCollection[g] = { amount: e.amount, recipients: [] };
+          }
         }
 
-        this.onSubBombHandler(e);
+        if(this.expectsEventName("SubBomb")) { this.onSubBombHandler(e); }
       }
       // SubBomb - Gift
       else if(e.gifted && e.isCommunityGift)
