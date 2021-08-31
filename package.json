@@ -18,11 +18,11 @@
     "generate docs": "jsdoc modules -c jsdoc/jsdoc.config.json -u jsdoc/tutorials -d docs -t jsdoc/template --readme README.md"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.7",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "babel-loader": "^8.2.2",
     "jsdoc": "^3.6.7",
-    "webpack": "^5.42.1",
-    "webpack-cli": "^4.7.2"
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
   }
 }

@@ -294,7 +294,7 @@ export default class Events
   }
 
   /**
-   * Disables the sender correction for emulated events. Only useful for specific cases.
+   * Disables the sender correction for emulated events. Only useful for specific test-cases.
    *
    * You can call this via `window.Events.disableSenderCorrection()`
    * @since 1.0.0
@@ -419,7 +419,7 @@ export default class Events
         e.sender = undefined;
       }
       // New Sub
-      if(this.expectsEventName("Subscriber") && e.amount === 1 && e.sender === undefined)
+      if(this.expectsEventName("Subscriber") && !e.gifted && e.amount === 1 && e.sender === undefined)
       {
         this.onSubscriberHandler(e);
       }
