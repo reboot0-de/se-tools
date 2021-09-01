@@ -467,12 +467,10 @@ export default class Events
 
               delete this.giftCollection[g];
             }
-            else
-            {
-              Utils.resumeSEQueue();
-            }
           }
         }
+
+        Utils.resumeSEQueue();
       }
     }
     // Tip
@@ -524,6 +522,11 @@ export default class Events
     else if(this.expectsEventName("ToggleSound")   && l === "alertService:toggleSound")
     {
       this.onToggleSoundHandler(e);
+    }
+    // Safety Fallback
+    else
+    {
+      Utils.resumeSEQueue();
     }
   }
 
@@ -582,7 +585,7 @@ export default class Events
   /**
    * Calls window.onSubBombComplete and gets triggered after a SubBomb completes and all recipients are known.
    * Passes an array of recipient names as second parameter.
-   * @param event {SubBombEvent} - The event data object
+   * @param e {SubBombEvent} - The event data object
    * @param recipients {string[]} - An array of recipient names
    * @since 1.0.0
    */
