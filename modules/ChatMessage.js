@@ -188,18 +188,19 @@ export default class ChatMessage
   }
 
   /**
-   * Returns the users current subscription-tier as number. (1 = tier 1, 2 = tier 2, 3 = tier 3)
+   * Returns the users current subscription-tier as number. (1 = tier 1, 2 = tier 2, 3 = tier 3, 0 = no sub)
    *
-   * Prime subs still count as tier 1.
+   * Prime subs still count as tier 1 and non-subs return 0
    * @return {number}
    * @since 1.0.0
    */
   getTierBadge()
   {
-    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /subscriber\/(?<tier>[2|3]0)[1-9][0-9]*/i);
-    if(!groups?.tier)        return 1;
-    if(groups.tier === "20") return 2;
-    if(groups.tier === "30") return 3;
+    const match = new RegExp("subscriber\\/(?<tier>[2|3]0)?[0-9]+", "i").exec(this.raw.data.tags.badges);
+    if(match === null) { return 0; }
+    if(match?.groups?.tier === '20') return 2;
+    if(match?.groups?.tier === '30') return 3;
+    return 1;
   }
 
   /**
@@ -222,7 +223,7 @@ export default class ChatMessage
    */
   getBitsBadge()
   {
-    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /bits\/(?<bits>[1-9][0-9]*)/i);
+    const groups = Utils.matchRegexGroups(this.raw.data.tags.badges, /bits\/(?<bits>[1-9][0-9]*)/i);
     return (groups?.bits) ? parseInt(groups.bits) : 0;
   }
 
@@ -235,7 +236,7 @@ export default class ChatMessage
    */
   getGiftsBadge()
   {
-    const groups = Utils.matchRegexGroups(this.raw.tags.badges, /sub-gifter\/(?<gifts>[1-9][0-9]*)/i);
+    const groups = Utils.matchRegexGroups(this.raw.data.tags.badges, /sub-gifter\/(?<gifts>[1-9][0-9]*)/i);
     return (groups?.gifts) ? parseInt(groups.gifts) : 0;
   }
 
