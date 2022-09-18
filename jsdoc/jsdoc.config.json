@@ -46,21 +46,21 @@
         },
         {
           "title":  "Overlay Editor Docs",
-          "link":   "https://github.com/StreamElements/widgets/blob/master/CustomCode.md",
+          "link":   "https://github.com/StreamElements/widgets/tree/master/docs",
           "target": "_blank",
           "class":  "external-link",
           "id":     "editor-docs"
         },
         {
           "title":  "SE API Docs",
-          "link":   "https://dev.streamelements.com/docs/kappa/api.yaml",
+          "link":   "https://dev.streamelements.com/docs/api-docs/bcd899e16ac9a-se-api-docs",
           "target": "_blank",
           "class":  "external-link",
           "id":     "api-docs"
         },
         {
           "title":  "Connection Guides",
-          "link":   "https://dev.streamelements.com/docs/kappa/docs/OAuth2.md",
+          "link":   "https://dev.streamelements.com/docs/api-docs/ZG9jOjE4MDk3Njc-o-auth2",
           "target": "_blank",
           "class":  "external-link",
           "id":     "connection-guides"
