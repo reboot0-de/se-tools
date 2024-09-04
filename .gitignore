@@ -104,3 +104,10 @@ typings/
 
 # package.lock
 package-lock.json
+.idea/.gitignore
+.idea/markdown.xml
+.idea/modules.xml
+.idea/se-tools.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/Project_Default.xml
+yarn.lock

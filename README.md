@@ -7,7 +7,7 @@
 <hr />
 
 ## Introduction
-Nobody likes to copy & paste the same boilerplate code over and over, everytime they just want to test around with StreamElements custom widgets.
+Nobody likes to copy & paste the same boilerplate code over and over everytime they just want to test around with StreamElements custom widgets.
 
 Or maybe you come from a more artistic background and feel overwhelmed by the required coding knowledge to start building widgets.
 
@@ -20,7 +20,7 @@ You can include this in your HTML-markup just like any other library.
 <script defer src="https://reboot0.de/hosted/js/se-tools.min.js"></script>
 ```
 
-Make sure not to forget the `defer` attribute on the script-tag or the script may not work properly.
+Make sure to set the `defer` attribute on the script-tag or the script may not work properly.
 
 If you find any bugs or have general improvements, feel free to contribute or report those.
 
@@ -70,19 +70,12 @@ For non-development support questions you can use the official [StreamElements D
 
 However, none of these will offer support via personal/direct messages.
 
-Not for support questions, but you could also follow me on my socials ([Twitter](https://twitter.com/reboot0), [Twitch](https://twitch.tv/reboot0)) to stay up-to-date.
+If you found a more critical or urgent bug you can also add me on Discord under @reboot0
 
 ## Building
 In most cases, you just want to include the already compiled file without needing to build anything.
 
 If you modified or added some code and want to recompile the output, you can use the following npm scripts:
 
-- `npm run "generate docs"` - Generates & updates the documentation pages (locally).
-- `npm run "build"` - Recompiles and minifies the modules to the final `dist/se-tools.min.js` JavaScript file.
-
-## 3rd-Party Libraries
-We use a modified version of the [clean-jsdoc-theme](https://github.com/ankitskvmdam/clean-jsdoc-theme) to generate and style the documentation.
-
-It's located under ``jsdoc/template`` and is not installed as npm package. (But 'jsdoc' is)
-
-The template is a good starting point, but far from perfect. I'll update that as well over time.
+- `yarn jsdoc` or `npm run "jsdoc"` - Generates & updates the documentation pages (locally).
+- `yarn build` or `npm run "build"` - Recompiles and minifies the modules to the final `dist/se-tools.min.js` JavaScript file.

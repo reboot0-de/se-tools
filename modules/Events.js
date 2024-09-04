@@ -117,16 +117,6 @@ import ChatMessage from "./ChatMessage";
  */
 
 /**
- * @typedef {object} HostEvent
- * @property {string} _id
- * @property {string} name
- * @property {number} amount
- * @property {boolean} sessionTop
- * @property {string} type
- * @property {string} originalEventName
- */
-
-/**
 * @typedef {object} MessageEvent
 * @property {string} service
 * @property {string} renderedText
@@ -216,6 +206,7 @@ export default class Events
     this.expectsOnWidgetLoad    = Utils.funcExists('onWidgetLoad');
     this.expectsOnSessionUpdate = Utils.funcExists('onSessionUpdate');
     this.useSenderCorrection    = true;
+    this.debugEvents            = false;
 
     this.preflightEventListeners()
     this.registerOnWidgetLoad();
@@ -229,13 +220,14 @@ export default class Events
    */
   preflightEventListeners()
   {
-    const events = [{ name: "Subscriber",     listener: "subscriber-latest"        }, { name: "Resub",          listener: "subscriber-latest" }, { name: "SubGift",         listener: "subscriber-latest" },
-                    { name: "CommunityGift",  listener: "subscriber-latest"        }, { name: "SubBomb",        listener: "subscriber-latest" }, { name: "SubBombComplete", listener: "subscriber-latest" },
-                    { name: "Tip",            listener: "tip-latest"               }, { name: "Cheer",          listener: "cheer-latest"      }, { name: "Host",            listener: "host-latest"       },
-                    { name: "Raid",           listener: "raid-latest"              }, { name: "Follow",         listener: "follower-latest"   }, { name: "Message",         listener: "message"           },
-                    { name: "DeleteMessage",  listener: "delete-message"           }, { name: "DeleteMessages", listener: "delete-messages"   }, { name: "EventSkip",       listener: "event:skip"        },
-                    { name: "BotCounter",     listener: "bot:counter"              }, { name: "WidgetButton",   listener: "event:test"        }, { name: "KVStoreUpdate",   listener: "kvstore:update"    },
-                    { name: "ToggleSound",    listener: "alertService:toggleSound" }];
+    const events = [
+      { name: "Subscriber",     listener: "subscriber-latest" }, { name: "Resub",           listener: "subscriber-latest" }, { name: "SubGift",         listener: "subscriber-latest"        },
+      { name: "CommunityGift",  listener: "subscriber-latest" }, { name: "SubBomb",         listener: "subscriber-latest" }, { name: "SubBombComplete", listener: "subscriber-latest"        },
+      { name: "Tip",            listener: "tip-latest"        }, { name: "Cheer",           listener: "cheer-latest"      }, { name: "Raid",            listener: "raid-latest"              },
+      { name: "Follow",         listener: "follower-latest"   }, { name: "Message",         listener: "message"           }, { name: "BotCounter",      listener: "bot:counter"              },
+      { name: "DeleteMessage",  listener: "delete-message"    }, { name: "DeleteMessages",  listener: "delete-messages"   }, { name: "EventSkip",       listener: "event:skip"               },
+      { name: "WidgetButton",   listener: "event:test"        }, { name: "KVStoreUpdate",   listener: "kvstore:update"    }, { name: "ToggleSound",     listener: "alertService:toggleSound" },
+    ];
 
     for(let event of events)
     {
@@ -302,6 +294,15 @@ export default class Events
   disableSenderCorrection()
   {
     this.useSenderCorrection = false;
+  }
+
+  /**
+   * Enables debug mode and logs event objects to the console
+   * @since 1.0.2
+   */
+  debugEvents()
+  {
+    this.debugEvents = true;
   }
 
   /**
@@ -386,6 +387,8 @@ export default class Events
    */
   onEventReceivedHandler(p)
   {
+    if(this.debugEvents) console.log('SE-Tools - debug event: ', p?.detail)
+
     const l = p?.detail?.listener;
     const e = p?.detail?.event;
 
@@ -396,12 +399,12 @@ export default class Events
     }
 
     // Chat message
-    if(this.expectsEventName("Message")             && l === "message")
+    if(this.expectsEventName("Message") && l === "message")
     {
       this.onMessageHandler(e);
     }
     // Single message deleted
-    else if(this.expectsEventName("DeleteMessage")  && l === "delete-message")
+    else if(this.expectsEventName("DeleteMessage") && l === "delete-message")
     {
       this.onDeleteMessageHandler(e);
     }
@@ -434,7 +437,7 @@ export default class Events
         this.onResubHandler(e);
       }
       // SubBomb - Main
-      else if(e.bulkGifted)
+      else if(e.bulkGifted && !e.isCommunityGift)
       {
         if(this.expectsEventName("SubBombComplete"))
         {
@@ -474,42 +477,37 @@ export default class Events
       }
     }
     // Tip
-    else if(this.expectsEventName("Tip")           && l === 'tip-latest')
+    else if(this.expectsEventName("Tip") && l === 'tip-latest')
     {
       this.onTipHandler(e);
     }
     // Cheer
-    else if(this.expectsEventName("Cheer")         && l === 'cheer-latest')
+    else if(this.expectsEventName("Cheer") && l === 'cheer-latest')
     {
       this.onCheerHandler(e);
     }
-    // Host
-    else if(this.expectsEventName("Host")          && l === 'host-latest')
-    {
-      this.onHostHandler(e);
-    }
     // Raid
-    else if(this.expectsEventName("Raid")          && l === 'raid-latest')
+    else if(this.expectsEventName("Raid") && l === 'raid-latest')
     {
       this.onRaidHandler(e);
     }
     // Follow
-    else if(this.expectsEventName("Follow")        && l === 'follower-latest')
+    else if(this.expectsEventName("Follow") && l === 'follower-latest')
     {
       this.onFollowHandler(e);
     }
     // Bot-Counter updated
-    else if(this.expectsEventName("BotCounter")    && l === "bot:counter")
+    else if(this.expectsEventName("BotCounter") && l === "bot:counter")
     {
       this.onBotCounterHandler(e);
     }
     // Event skipped
-    else if(this.expectsEventName("EventSkip")     && l === "event:skip")
+    else if(this.expectsEventName("EventSkip") && l === "event:skip")
     {
       this.onEventSkipHandler(e);
     }
     // Widget-Button pressed
-    else if(this.expectsEventName("WidgetButton")  && l === "event:test" && e.listener === "widget-button")
+    else if(this.expectsEventName("WidgetButton") && l === "event:test" && e.listener === "widget-button")
     {
       this.onWidgetButtonHandler(e);
     }
@@ -519,7 +517,7 @@ export default class Events
       this.onKVStoreUpdateHandler(e.data);
     }
     // Alerts were (un)muted by the user
-    else if(this.expectsEventName("ToggleSound")   && l === "alertService:toggleSound")
+    else if(this.expectsEventName("ToggleSound") && l === "alertService:toggleSound")
     {
       this.onToggleSoundHandler(e);
     }
@@ -612,16 +610,6 @@ export default class Events
   onCheerHandler(e)
   {
     Utils.callFunc("onCheer", e);
-  }
-
-  /**
-   * Calls window.onHost and gets triggered when someone hosts your channel.
-   * @param e {HostEvent} - The event data object
-   * @since 1.0.0
-   */
-  onHostHandler(e)
-  {
-    Utils.callFunc("onHost", e);
   }
 
   /**

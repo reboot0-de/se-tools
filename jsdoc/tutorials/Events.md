@@ -140,21 +140,6 @@ function onCommunityGift(data)
 }
 ```
 
-## onHost
-This gets triggered, when somebody hosts your channel.
-
-However, due to some changes to the Twitch API some conditions have to be met to trigger this:
-
-- The hosting channel has to be online and have at least 1+ viewer
-- Auto-hosts also need to have at least 1+ viewer and have to come from a channel that just went offline
-
-```javascript
-function onHost(data)
-{
-    console.log(`${data.name} now hosts our channel for ${data.amount} viewers!`);
-}
-```
-
 ## onRaid
 This gets triggered, when somebody raids your channel.
 
